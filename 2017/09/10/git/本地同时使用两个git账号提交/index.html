@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+
+<html lang="zh">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    本地同时使用多个git账号 |  蜀山柚柚
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/images/logo.png" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-git/本地同时使用两个git账号提交" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  本地同时使用多个git账号
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2017/09/10/git/%E6%9C%AC%E5%9C%B0%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8%E4%B8%A4%E4%B8%AAgit%E8%B4%A6%E5%8F%B7%E6%8F%90%E4%BA%A4/" class="article-date">
+  <time datetime="2017-09-10T07:00:00.000Z" itemprop="datePublished">2017-09-10</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">5 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="config文件说明"><a href="#config文件说明" class="headerlink" title="config文件说明"></a>config文件说明</h1><p><a target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup">Git Document</a>指示在首次安装git的时候需要配置Config的相关内容信息，有三个地方存储了config文件，决定了读取的场景不同。</p>
+<p>1 <code>/etc/gitconfig</code>:系统级别的gitconfig。包含所有当前系统上的user配置。如果<code>git config</code>命令使用了参数<code>--system</code>,将从这个文件的读和写。</p>
+<p>输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --system user.name &quot;testname&quot;</span><br></pre></td></tr></table></figure>
+<p>然后在<code>F:\Git\mingw64\etc\gitconfig</code>找到了user为testname的字符串。</p>
+<p>2 <code>~/.gitconfig</code> or <code>~/.config/git/config</code>：全局的gitconfig, 通过<code> --global</code>参数操作。</p>
+<p>输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;testname&quot;</span><br></pre></td></tr></table></figure>
+<p>然后在<code>C:\Users\你的用户名\.gitconfig</code>找到了user为testname的字符串。<br>由于这里需要在一个用户下使用多个git账号，所以把global的这个config文件删除了<br>或者使用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset user.name</span><br><span class="line">git config --global --unset user.email</span><br></pre></td></tr></table></figure>
+
+<p>3 <code>你的项目/.git/config</code>: 每个项目单独的config文件。<code>.git</code>这个文件夹可能是隐藏的。</p>
+<p>如果三个地方都设置了，优先级为：项目config&gt;global&gt;system</p>
+<blockquote>
+<p>以上均在windows10上操作的结果</p>
+</blockquote>
+<p>查看配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global --list</span><br><span class="line">git config --system --list</span><br><span class="line">git config list</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>hexo deploy的时候使用的global的config。要指定hexo的提交用户，修改global的config。</p>
+</blockquote>
+<h1 id="问题：Permission-to-user1-repo-git-denied-to-user2"><a href="#问题：Permission-to-user1-repo-git-denied-to-user2" class="headerlink" title="问题：Permission to user1/repo.git denied to user2"></a>问题：Permission to user1/repo.git denied to user2</h1><h1 id="解决步骤"><a href="#解决步骤" class="headerlink" title="解决步骤"></a>解决步骤</h1><ol>
+<li>查看<code>_config.yml</code>文件中git库地址是不是https的，如果是修改成ssh的。</li>
+<li>为不同的项目生成多个ssh key</li>
+</ol>
+<h2 id="控制台输入参数"><a href="#控制台输入参数" class="headerlink" title="控制台输入参数"></a>控制台输入参数</h2><p>步骤1 <a target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key">ssh key</a>，cd到目录<code>~/.ssh/</code>(会在当前目录下创建)，输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;git账号邮箱&quot;</span><br></pre></td></tr></table></figure>
+<p>出现如下提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Generating public&#x2F;private rsa key pair.</span><br><span class="line">Enter file in which to save the key (&#x2F;c&#x2F;Users&#x2F;luna&#x2F;.ssh&#x2F;id_rsa):</span><br></pre></td></tr></table></figure>
+<p>这里输入一个存放key的名称(如不输入直接回车使用的是默认的名称id_rsa)，输入后出现提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty for no passphrase):</span><br></pre></td></tr></table></figure>
+<p>直接回车，出现提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure>
+<p>直接回车，出现成功提示，如下，则说明新建成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Your identification has been saved in &quot;这里是之前输入的名称&quot;.</span><br><span class="line">Your public key has been saved in &quot;这里是之前输入的名称&quot;.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:cAK6PaYB7JWoHnkoF453D1weQjTYqsdDE23M &quot;这里是之前输入的邮箱&quot;</span><br><span class="line">The key&#39;s randomart image is:</span><br><span class="line">+---[RSA 2048]----+</span><br><span class="line">|+AA+uu           |</span><br><span class="line">|@B*&#x3D;*.           |</span><br><span class="line">|B+&#x3D;..o .        |</span><br><span class="line">|oo+++  +         |</span><br><span class="line">|o&#x3D;-.  S        |</span><br><span class="line">|o&#x3D; .           |</span><br><span class="line">|+.o              |</span><br><span class="line">|               |</span><br><span class="line">| ..              |</span><br><span class="line">+----[SHA256]-----+</span><br></pre></td></tr></table></figure>
+<h2 id="直接一次性输入参数"><a href="#直接一次性输入参数" class="headerlink" title="直接一次性输入参数"></a>直接一次性输入参数</h2><p>生成ssh key时同时指定保存的文件名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -f ~&#x2F;.ssh&#x2F;id_rsa_first -C &quot;邮件地址&quot;</span><br></pre></td></tr></table></figure>
+<p>之后的两个提示直接回车</p>
+<p>上面的id_rsa_first就是我们指定的文件名，这时~/.ssh目录下会多出id_rsa_first和id_rsa_first.pub两个文件，id_rsa_first.pub里保存的就是我们要使用的key。</p>
+<h2 id="查看ssh-key"><a href="#查看ssh-key" class="headerlink" title="查看ssh key"></a>查看ssh key</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~&#x2F;.ssh&#x2F;id_rsa_first.pub</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：修改了当前账户的ssh key，有时没生效，需要重新新建文件夹来git init。</p>
+</blockquote>
+<h2 id="配置项目的git用户名和邮箱"><a href="#配置项目的git用户名和邮箱" class="headerlink" title="配置项目的git用户名和邮箱"></a>配置项目的git用户名和邮箱</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name &quot;用户名&quot;</span><br><span class="line">git config user.email &quot;邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="新增并配置config文件"><a href="#新增并配置config文件" class="headerlink" title="新增并配置config文件"></a>新增并配置config文件</h2><p>如果config文件存在则直接修改，不存在则先新建一个config文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ~&#x2F;.ssh&#x2F;config</span><br></pre></td></tr></table></figure>
+<p>如果是在windows下新建一个txt文本，然后将名字后缀一起改成config即可</p>
+<h2 id="配置config文件"><a href="#配置config文件" class="headerlink" title="配置config文件"></a>配置config文件</h2><p>在config文件里添加如下内容(User表示你的用户名)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># first</span><br><span class="line">Host first.github.com</span><br><span class="line">HostName github.com</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa_first</span><br><span class="line">User first_user</span><br><span class="line"></span><br><span class="line"># second</span><br><span class="line">Host second.github.com</span><br><span class="line">HostName github.com</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa_second</span><br><span class="line">User second_user</span><br></pre></td></tr></table></figure>
+<p>hostname为host转化后的域名</p>
+<blockquote>
+<p>注意：这里windows下面IdentityFile路径也是用反斜杠</p>
+</blockquote>
+<p>修改remote url git@ 后面的需要与host一样<br>直接修改config文件：打开项目-&gt;.git-&gt;config文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url &#x3D; git@github.com:xxx&#x2F;xxx.git</span><br></pre></td></tr></table></figure>
+<p>修改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url &#x3D; git@first.github.com:xxx&#x2F;xxx.git</span><br></pre></td></tr></table></figure>
+<p>或者使用<a target="_blank" rel="noopener" href="https://help.github.com/articles/changing-a-remote-s-url/">命令行显示并修改remoteurl</a></p>
+<p>根据上面的配置，就要把github.com换成first.github.com, 那么ssh解析的时候就会自动把first.github.com 转换为 github.com</p>
+<h2 id="添加key到项目"><a href="#添加key到项目" class="headerlink" title="添加key到项目"></a>添加key到项目</h2><p>根据上面生成的key添加到对应的项目中。</p>
+<h2 id="测试ssh-key是否配置成功"><a href="#测试ssh-key是否配置成功" class="headerlink" title="测试ssh key是否配置成功"></a>测试ssh key是否配置成功</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@fisrt.github.com</span><br><span class="line">ssh -T git@second.github.com</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里不要后面的xxx.git</p>
+</blockquote>
+<p>如果需要打印详细信息使用-v</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -v git@fisrt.github.com</span><br><span class="line">ssh -v git@second.github.com</span><br></pre></td></tr></table></figure>
+
+<p>如果配置成功，则会显示：<br>Hi username! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+<h1 id="解析步骤"><a href="#解析步骤" class="headerlink" title="解析步骤"></a>解析步骤</h1><ol>
+<li>当push变更时，首先拿到当前项目的remote url如<a href="mailto:&#x67;&#105;&#116;&#x40;&#103;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;">&#x67;&#105;&#116;&#x40;&#103;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;</a>:xxx/xxx.git</li>
+<li>然后在~/.ssh/config中寻找对应的真实的url替换成真实地址<a href="mailto:&#103;&#x69;&#116;&#x40;&#x66;&#x69;&#x72;&#x73;&#116;&#x2e;&#x67;&#105;&#x74;&#x68;&#117;&#x62;&#x2e;&#99;&#111;&#109;">&#103;&#x69;&#116;&#x40;&#x66;&#x69;&#x72;&#x73;&#116;&#x2e;&#x67;&#105;&#x74;&#x68;&#117;&#x62;&#x2e;&#99;&#111;&#109;</a>:xxx/xxx.git</li>
+<li>拿到对应的identiyFile对应的ssh文件中的key提交，完成。</li>
+</ol>
+<p>所以在部署hexo的时候需要把__config例的repo地址修改为<a href="mailto:&#x67;&#105;&#116;&#64;&#102;&#105;&#x72;&#x73;&#116;&#46;&#x67;&#x69;&#116;&#104;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#105;&#116;&#64;&#102;&#105;&#x72;&#x73;&#116;&#46;&#x67;&#x69;&#116;&#104;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;</a>:xxx/xxx.git</p>
+<p>clone某个项目的时候也需要把url修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:xxx&#x2F;xxx.git</span><br></pre></td></tr></table></figure>
+<p>修改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@first.github.com:xxx&#x2F;xxx.git</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh_exchange_identification: Connection closed by remote host</span><br><span class="line">fatal: Could not read from remote repository.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OpenSSH_7.6p1, OpenSSL 1.0.2n  7 Dec 2017</span><br><span class="line">debug1: Reading configuration data &#x2F;etc&#x2F;ssh&#x2F;ssh_config</span><br><span class="line">ssh: Could not resolve hostname source.github.com:xxx&#x2F;xxx.git: Name or service not known</span><br></pre></td></tr></table></figure>
+
+<p>这里没有找到~/user/.ssh/config文件，所以找到了系统的ssh_config文件，发现没有相关配置项。</p>
+<p>新建config文件时新建成了config.config，ssh 客户端找不到config文件，所以读取了系统的<code>/etc/ssh/ssh_config</code></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2017/09/10/git/%E6%9C%AC%E5%9C%B0%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8%E4%B8%A4%E4%B8%AAgit%E8%B4%A6%E5%8F%B7%E6%8F%90%E4%BA%A4/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2017/10/29/%E6%B5%8B%E8%AF%95/TestLink%E7%9B%B8%E5%85%B3/windows%E4%B8%8Btestlink%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            windows下testlink环境搭建
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2017/09/02/linux/%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4%E5%8C%85%E5%90%AB%E6%9F%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%96%87%E4%BB%B6/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">批量删除包含某字符串的文件</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'G71ilS8VcnCiTXsG85hb8dzm-gzGzoHsz',
+        app_key: 'wy55n92Cj56s4f5HCrin2Pou',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '鼓励鼓励吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2016-2020
+        <i class="ri-heart-fill heart_icon"></i> 蜀山柚柚
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278917614&amp;web_id=1278917614'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/logo.png" alt="蜀山柚柚"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/notes">网址</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://xxx.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://xxx.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['明镜亦非台', '', ''],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+    
+  </div>
+</body>
+
+</html>

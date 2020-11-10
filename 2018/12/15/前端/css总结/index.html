@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+
+<html lang="zh">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    css总结 |  蜀山柚柚
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/images/logo.png" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-前端/css总结" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  css总结
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/12/15/%E5%89%8D%E7%AB%AF/css%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2018-12-15T04:25:56.000Z" itemprop="datePublished">2018-12-15</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">10 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>总体见<a target="_blank" rel="noopener" href="https://www.processon.com/view/link/5b6bb3dde4b0be50ead693d1">思维导图</a> 。</p>
+<h1 id="嵌入css方式"><a href="#嵌入css方式" class="headerlink" title="嵌入css方式"></a>嵌入css方式</h1><h2 id="1-内联式"><a href="#1-内联式" class="headerlink" title="1 内联式"></a>1 内联式</h2><p>内联式css样式表就是把css代码直接写在现有的HTML标签中，如下面代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;color:red&quot;</span>&gt;</span>红色<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>并且css样式代码要写在<code>style=&quot;&quot;</code>双引号中</p>
+<p>如果有多条css样式用分号隔开：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;color:red;font-size:12px&quot;</span>&gt;</span>红色<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-嵌入式"><a href="#2-嵌入式" class="headerlink" title="2 嵌入式"></a>2 嵌入式</h2><p>嵌入式css样式，就是可以把css样式代码写在<style type="text/css"></style>标签之间。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span></span><br><span class="line">span&#123;</span><br><span class="line"><span class="css"> <span class="selector-tag">color</span><span class="selector-pseudo">:red</span>;</span></span><br><span class="line"> &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-外部式"><a href="#3-外部式" class="headerlink" title="3 外部式"></a>3 外部式</h2><p>在<code>&lt;head&gt;</code>内使用<code>&lt;link&gt;</code>标签将css样式文件链接到HTML文件内，如下面代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;base.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ol>
+<li>css样式文件名称以有意义的英文字母命名，如 main.css。</li>
+<li><code>rel=&quot;stylesheet&quot; type=&quot;text/css&quot; </code>是固定写法不可修改。</li>
+<li><link>标签位置一般写在<head>标签之内。注意：</li>
+<li>三种方法的优先级:内联式 &gt; 嵌入式 &gt; 外部式</li>
+</ol>
+<p>但是嵌入式&gt;外部式有一个前提：嵌入式css样式的位置一定在外部式的后面。</p>
+<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">选择器</span><br><span class="line">&#123;</span><br><span class="line"> 样式;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="选择器-1"><a href="#选择器-1" class="headerlink" title="选择器"></a>选择器</h2><h3 id="1-标签选择器"><a href="#1-标签选择器" class="headerlink" title="1 标签选择器"></a>1 标签选择器</h3><p>标签选择器其实就是html代码中的标签</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">font-size</span>:<span class="number">12px</span>;<span class="attribute">line-height</span>:<span class="number">1.6em</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-类选择器"><a href="#2-类选择器" class="headerlink" title="2 类选择器"></a>2 类选择器</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.类选器名称 &#123;css样式代码;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-ID选择器"><a href="#3-ID选择器" class="headerlink" title="3 ID选择器"></a>3 ID选择器</h3><p>ID选择器只能在文档中使用一次</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#ID器名称&#123;css样式代码;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-子选择器"><a href="#4-子选择器" class="headerlink" title="4 子选择器"></a>4 子选择器</h3><p><code>&gt;</code>符号表示，选择指定标签元素的第一代子元素（直接后代）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.food&gt;li //选择类标签food下面的第一个li</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-包含-后代选择器"><a href="#5-包含-后代选择器" class="headerlink" title="5 包含(后代选择器)"></a>5 包含(后代选择器)</h3><p>通过<code>空格</code>,用于选择指定标签元素下的后辈元素(所有子后代元)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> <span class="selector-tag">em</span> &#123;<span class="attribute">color</span>:red;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-通用选择器"><a href="#6-通用选择器" class="headerlink" title="6 通用选择器"></a>6 通用选择器</h3><p><code>*</code>匹配html中所有标签元素</p>
+<h3 id="7-伪类选择器"><a href="#7-伪类选择器" class="headerlink" title="7 伪类选择器"></a>7 伪类选择器</h3><p>允许给html不存在的标签（标签的某种状态）设置样式</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:hover&#123;color:red;&#125; //a标签鼠标滑过的状态设置字体颜色</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-分组选择器"><a href="#8-分组选择器" class="headerlink" title="8 分组选择器"></a>8 分组选择器</h3><p>为html中多个标签元素设置同一个样式时，可以使用分组选择符<code>，</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h1,span&#123;color:red;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>//它相当于下面两行代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>&#123;<span class="attribute">color</span>:red;&#125;</span><br><span class="line"><span class="selector-tag">span</span>&#123;<span class="attribute">color</span>:red;&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="布局模型"><a href="#布局模型" class="headerlink" title="布局模型"></a>布局模型</h1><p>CSS包含3种基本的布局模型，用英文概括为：Flow、Layer 和 Float。在网页中，元素有三种布局模型：</p>
+<ol>
+<li>流动模型（Flow）</li>
+<li>浮动模型 (Float)</li>
+<li>层模型（Layer）</li>
+</ol>
+<h2 id="流动模型"><a href="#流动模型" class="headerlink" title="流动模型"></a>流动模型</h2><p>默认的网页布局模式</p>
+<p>flow模型特征：</p>
+<p>1.块状元素自上而下顺序分布，默认状态下，块状元素的宽度都为100%，以行的形式占据位置，霸道独占一行。<br>1.内联元素在所处的包含元素内从左到右水平分布</p>
+<h2 id="浮动模型"><a href="#浮动模型" class="headerlink" title="浮动模型"></a>浮动模型</h2><p>块状元素独占一行，让两个块状元素并排显示，可以使用浮动。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>:<span class="number">200px</span>;</span><br><span class="line">	<span class="attribute">height</span>:<span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">border</span>:<span class="number">2px</span> red solid;</span><br><span class="line">	<span class="attribute">float</span>:left;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;div1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;div2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="层模型"><a href="#层模型" class="headerlink" title="层模型"></a>层模型</h2><h3 id="绝对定位-position-absolute"><a href="#绝对定位-position-absolute" class="headerlink" title="绝对定位(position: absolute)"></a>绝对定位(position: absolute)</h3><p>将元素从文档流中拖出来，绝对定位元素不占文档流,忽略文档流的存在而浮在已有东西的上面<br>left、right、top、bottom属性相对于其最接近的一个具有定位属性的父包含块进行绝对定位,如果不存在这样的包含块，则相对于body元素，即相对于浏览器窗口</p>
+<h3 id="相对定位-position-relative"><a href="#相对定位-position-relative" class="headerlink" title="相对定位(position: relative)"></a>相对定位(position: relative)</h3><p>通过left、right、top、bottom属性确定元素在正常文档流中的偏移位置。<br>它相对定位占文档流 ，所以定位不好它会覆盖已有的东西。</p>
+<h3 id="固定定位-position-fixed"><a href="#固定定位-position-fixed" class="headerlink" title="固定定位(position: fixed)"></a>固定定位(position: fixed)</h3><p>与absolute定位类型类似，但它的相对移动的坐标是视图（屏幕内的网页窗口）本身。<br>不会受文档流动影响，这与background-attachment:fixed;属性功能相同。</p>
+<h3 id="Relative与Absolute组合使用"><a href="#Relative与Absolute组合使用" class="headerlink" title="Relative与Absolute组合使用"></a>Relative与Absolute组合使用</h3><p>相对于其它元素进行定位.<br>参照定位的元素必须是相对定位元素的前辈元素：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;box1&quot;</span>&gt;</span><span class="comment">&lt;!--参照定位的元素--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;box2&quot;</span>&gt;</span>相对参照元素进行定位<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--相对定位元素--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span>//从上面代码可以看出box1是box2的父元素（父元素当然也是前辈元素了）。</span><br></pre></td></tr></table></figure>
+
+<p>参照定位的元素必须加入position:relative;</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#box1</span>&#123;</span><br><span class="line"><span class="attribute">width</span>:<span class="number">200px</span>;</span><br><span class="line"><span class="attribute">height</span>:<span class="number">200px</span>;</span><br><span class="line">position:relative;    //绝对</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>定位元素加入position:absolute，便可以使用top、bottom、left、right来进行偏移定位了。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#box2&#123;    position:absolute;  //相对</span><br><span class="line"><span class="selector-tag">top</span><span class="selector-pseudo">:20px</span>;</span><br><span class="line"><span class="selector-tag">left</span><span class="selector-pseudo">:30px</span>;</span><br><span class="line">&#125;//这样box2就可以相对于父元素box1定位了（这里注意参照物就可以不是浏览器了，而可以自由设置了）。</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><p>箱子装东西的模型。所有的块级元素都具备盒模型特点。</p>
+<h1 id="CSS继承"><a href="#CSS继承" class="headerlink" title="CSS继承"></a>CSS继承</h1><p>样式会自动应用于其后代。</p>
+<p>如：给p设置了颜色，span也会有颜色。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">color</span>:red;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>三年级时，我还是一个<span class="tag">&lt;<span class="name">span</span>&gt;</span>胆小如鼠<span class="tag">&lt;/<span class="name">span</span>&gt;</span>的小女孩。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>有一些css样式是不具有继承性的。如border:1px solid red;</p>
+<p>注意：继承也有权值但很低，有的文献提出它只有0.1，所以可以理解为继承的权值最低。</p>
+<h1 id="代码缩写节能"><a href="#代码缩写节能" class="headerlink" title="代码缩写节能"></a>代码缩写节能</h1><h2 id="1-盒模型"><a href="#1-盒模型" class="headerlink" title="1 盒模型"></a>1 盒模型</h2><p>代码简写盒模型时外边距(margin)、内边距(padding)和边框(border)设置上下左右四个方向的边距是按照顺时针方向设置的：上右下左。</p>
+<p>通常有下面三种缩写方法:</p>
+<p>1、如果top、right、bottom、left的值相同，如下面代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">margin</span><span class="selector-pseudo">:10px</span> 10<span class="selector-tag">px</span> 10<span class="selector-tag">px</span> 10<span class="selector-tag">px</span>;</span><br><span class="line">//可缩写为：</span><br><span class="line"><span class="selector-tag">margin</span><span class="selector-pseudo">:10px</span>;</span><br></pre></td></tr></table></figure>
+
+<p>2、如果top和bottom值相同、left和 right的值相同，如下面代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">margin</span><span class="selector-pseudo">:10px</span> 20<span class="selector-tag">px</span> 10<span class="selector-tag">px</span> 20<span class="selector-tag">px</span>;</span><br><span class="line">//可缩写为：</span><br><span class="line"><span class="selector-tag">margin</span><span class="selector-pseudo">:10px</span> 20<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure>
+
+<p>3、如果left和right的值相同，如下面代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">margin</span><span class="selector-pseudo">:10px</span> 20<span class="selector-tag">px</span> 30<span class="selector-tag">px</span> 20<span class="selector-tag">px</span>;</span><br><span class="line">//可缩写为：</span><br><span class="line"><span class="selector-tag">margin</span><span class="selector-pseudo">:10px</span> 20<span class="selector-tag">px</span> 30<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure>
+<p>注意：padding、border的缩写方法和margin是一致的。</p>
+<h2 id="2-颜色值缩写"><a href="#2-颜色值缩写" class="headerlink" title="2 颜色值缩写"></a>2 颜色值缩写</h2><p>关于颜色的css样式也是可以缩写的，当你设置的颜色是16进制的色彩值时，如果每两位的值相同，可以缩写一半。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">color</span>:<span class="number">#000000</span>;&#125;</span><br><span class="line">//可以缩写为：</span><br><span class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">color</span>: <span class="number">#000</span>;&#125;</span><br><span class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">color</span>: <span class="number">#336699</span>;&#125;</span><br><span class="line">//可以缩写为：</span><br><span class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">color</span>: <span class="number">#369</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="3-字体缩写"><a href="#3-字体缩写" class="headerlink" title="3 字体缩写"></a>3 字体缩写</h2><p>网页中的字体css样式代码也有他自己的缩写方式，下面是给网页设置字体的代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line"> <span class="attribute">font-style</span>:italic;</span><br><span class="line"> <span class="attribute">font-variant</span>:small-caps;</span><br><span class="line"> <span class="attribute">font-weight</span>:bold;</span><br><span class="line"> <span class="attribute">font-size</span>:<span class="number">12px</span>;</span><br><span class="line"> <span class="attribute">line-height</span>:<span class="number">1.5em</span>;</span><br><span class="line"> <span class="attribute">font-family</span>:<span class="string">&quot;宋体&quot;</span>,sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这么多行的代码其实可以缩写为一句：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line"> <span class="attribute">font</span>:italic small-caps bold <span class="number">12px</span>/<span class="number">1.5em</span> <span class="string">&quot;宋体&quot;</span>,sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>1、使用这一简写方式你至少要指定 font-size 和 font-family 属性，其他的属性(如 font-weight、font-style、font-varient、line-height)如未指定将自动使用默认值。</p>
+<p>2、在缩写时 font-size 与 line-height 中间要加入“/”斜扛。</p>
+<p>一般情况下因为对于中文网站，英文还是比较少的，所以下面缩写代码比较常用：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line"> <span class="attribute">font</span>:<span class="number">12px</span>/<span class="number">1.5em</span> <span class="string">&quot;宋体&quot;</span>,sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>只是有字号、行间距、中文字体、英文字体设置。</p>
+<h2 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h2><p>边框三个属性:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line"> <span class="attribute">border-width</span>:<span class="number">2px</span>;</span><br><span class="line"> <span class="attribute">border-style</span>:solid;</span><br><span class="line"> <span class="attribute">border-color</span>:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>1.border-style常见样式有：dashed（虚线）| dotted（点线）| solid（实线）</p>
+<p>1.border-color（边框颜色）中的颜色可设置为十六进制颜色，如:</p>
+<p>1.border-width（边框宽度）中的宽度也可以设置为：thin | medium | thick（不是很常用），常用的还是用象素<br>（px）</p>
+<p>四个边框单独设置：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">border-top</span><span class="selector-pseudo">:1px</span> <span class="selector-tag">solid</span> <span class="selector-tag">red</span>;</span><br><span class="line"><span class="selector-tag">border-bottom</span><span class="selector-pseudo">:1px</span> <span class="selector-tag">solid</span> <span class="selector-tag">red</span>;</span><br><span class="line"><span class="selector-tag">border-right</span><span class="selector-pseudo">:1px</span> <span class="selector-tag">solid</span> <span class="selector-tag">red</span>;</span><br><span class="line"><span class="selector-tag">border-left</span><span class="selector-pseudo">:1px</span> <span class="selector-tag">solid</span> <span class="selector-tag">red</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="宽度和高度"><a href="#宽度和高度" class="headerlink" title="宽度和高度"></a>宽度和高度</h2><p>css内定义的宽（width）和高（height），指的是填充padding以里的内容范围。</p>
+<h2 id="填充padding"><a href="#填充padding" class="headerlink" title="填充padding"></a>填充padding</h2><p>上、右、下、左(顺时针)。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//合起来写：</span><br><span class="line"><span class="selector-tag">div</span>&#123;<span class="attribute">padding</span>:<span class="number">20px</span> <span class="number">10px</span> <span class="number">15px</span> <span class="number">30px</span>;&#125;</span><br><span class="line"></span><br><span class="line">//分开写：</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line"></span><br><span class="line"> <span class="attribute">padding-top</span>:<span class="number">20px</span>;</span><br><span class="line"></span><br><span class="line"> <span class="attribute">padding-right</span>:<span class="number">10px</span>;</span><br><span class="line"></span><br><span class="line"> <span class="attribute">padding-bottom</span>:<span class="number">15px</span>;</span><br><span class="line"></span><br><span class="line"> <span class="attribute">padding-left</span>:<span class="number">30px</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果上、右、下、左的填充都为10px;可以这么写</p>
+<p><code>div&#123;padding:10px;&#125;</code></p>
+<p>如果上下填充一样为10px，左右一样为20px，可以这么写：</p>
+<p><code>div&#123;padding:10px 20px;&#125;</code></p>
+<h2 id="边界margin"><a href="#边界margin" class="headerlink" title="边界margin"></a>边界margin</h2><p>上、右、下、左。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//合起来写：</span><br><span class="line"><span class="selector-tag">div</span>&#123;<span class="attribute">margin</span>:<span class="number">20px</span> <span class="number">10px</span> <span class="number">15px</span> <span class="number">30px</span>;&#125;</span><br><span class="line"></span><br><span class="line">//分开写：</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line"> <span class="attribute">margin-top</span>:<span class="number">20px</span>;</span><br><span class="line"> <span class="attribute">margin-right</span>:<span class="number">10px</span>;</span><br><span class="line"> <span class="attribute">margin-bottom</span>:<span class="number">15px</span>;</span><br><span class="line"> <span class="attribute">margin-left</span>:<span class="number">30px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果上右下左的边界都为10px;可以这么写：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123; <span class="attribute">margin</span>:<span class="number">10px</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果上下边界一样为10px，左右一样为20px，可以这么写：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123; <span class="attribute">margin</span>:<span class="number">10px</span> <span class="number">20px</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="权值"><a href="#权值" class="headerlink" title="权值"></a>权值</h1><p>为同一个元素设置了不同的CSS样式代码，会优先使用权值高的css样式。</p>
+<p>权值的规则：</p>
+<p>标签的权值为1，类选择符的权值为10，ID选择符的权值最高为100。例如下面的代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">color</span>:red;&#125; <span class="comment">/*权值为1*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> <span class="selector-tag">span</span>&#123;<span class="attribute">color</span>:green;&#125; <span class="comment">/*权值为1+1=2*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.warning</span>&#123;<span class="attribute">color</span>:white;&#125; <span class="comment">/*权值为10*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> <span class="selector-tag">span</span><span class="selector-class">.warning</span>&#123;<span class="attribute">color</span>:purple;&#125; <span class="comment">/*权值为1+1+10=12*/</span></span><br><span class="line"></span><br><span class="line"><span class="selector-id">#footer</span> <span class="selector-class">.note</span> <span class="selector-tag">p</span>&#123;<span class="attribute">color</span>:yellow;&#125; <span class="comment">/*权值为100+10+1=111*/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="格式化排版"><a href="#格式化排版" class="headerlink" title="格式化排版"></a>格式化排版</h1><h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;<span class="attribute">font-family</span>:<span class="string">&quot;宋体&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字号、颜色"><a href="#字号、颜色" class="headerlink" title="字号、颜色"></a>字号、颜色</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;<span class="attribute">font-size</span>:<span class="number">12px</span>;<span class="attribute">color</span>:<span class="number">#666</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="粗体，斜体、下划线、删除线"><a href="#粗体，斜体、下划线、删除线" class="headerlink" title="粗体，斜体、下划线、删除线"></a>粗体，斜体、下划线、删除线</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p span&#123;font-weight:bold;&#125; //粗体p</span><br><span class="line">a&#123;font-style:italic;&#125; //斜体p</span><br><span class="line">a&#123;text-decoration:underline;&#125; //下划线</span><br><span class="line">.oldPrice&#123;text-decoration:line-through;&#125; //删除线</span><br></pre></td></tr></table></figure>
+
+<h2 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p&#123;text-indent:2em;&#125; //注意：2em的意思就是文字的2倍大小。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="行间距"><a href="#行间距" class="headerlink" title="行间距"></a>行间距</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span>&#123;<span class="attribute">line-height</span>:<span class="number">1.5em</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字间距、字母间距"><a href="#字间距、字母间距" class="headerlink" title="字间距、字母间距"></a>字间距、字母间距</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">letter-spacing //字母间距</span><br><span class="line">word-spacing //单词间距</span><br></pre></td></tr></table></figure>
+
+<h2 id="对齐"><a href="#对齐" class="headerlink" title="对齐"></a>对齐</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text-align：left/center/right</span><br></pre></td></tr></table></figure>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2018/12/15/%E5%89%8D%E7%AB%AF/css%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/" rel="tag">css</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2019/01/06/%E6%B5%8B%E8%AF%95/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/jsonschema/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            jsonschema
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2018/12/10/python/python%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/%E9%80%9A%E8%BF%87api%E6%93%8D%E4%BD%9Cgoogle_sheets/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">通过API操作google sheets</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'G71ilS8VcnCiTXsG85hb8dzm-gzGzoHsz',
+        app_key: 'wy55n92Cj56s4f5HCrin2Pou',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '鼓励鼓励吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2016-2020
+        <i class="ri-heart-fill heart_icon"></i> 蜀山柚柚
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278917614&amp;web_id=1278917614'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/logo.png" alt="蜀山柚柚"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/notes">网址</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://xxx.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://xxx.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['明镜亦非台', '', ''],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+    
+  </div>
+</body>
+
+</html>

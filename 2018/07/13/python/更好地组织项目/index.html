@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+
+
+<html lang="zh">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    更好的组织代码 |  蜀山柚柚
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/images/logo.png" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-python/更好地组织项目" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  更好的组织代码
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/07/13/python/%E6%9B%B4%E5%A5%BD%E5%9C%B0%E7%BB%84%E7%BB%87%E9%A1%B9%E7%9B%AE/" class="article-date">
+  <time datetime="2018-07-13T02:10:11.000Z" itemprop="datePublished">2018-07-13</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">8 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h1><div align="center"><img src="/images/python/code_organization_for_better_python.png" width=300px></div>
+
+<h1 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">README.rst</span><br><span class="line">LICENSE</span><br><span class="line">setup.py</span><br><span class="line">requirements.txt   # 或者pipfile</span><br><span class="line">sample&#x2F;__init__.py</span><br><span class="line">sample&#x2F;core.py</span><br><span class="line">sample&#x2F;helpers.py</span><br><span class="line">docs&#x2F;conf.py</span><br><span class="line">docs&#x2F;index.rst</span><br><span class="line">tests&#x2F;test_basic.py</span><br><span class="line">tests&#x2F;test_advanced.py</span><br></pre></td></tr></table></figure>
+
+<p>核心代码在<code>./sample/</code>，如果核心的文件只有一个，可以直接放在项目根目录下<code>./sample.py</code>。<br>License: 开源许可，也可以不要开源许可发布。<br>docs：包参考文档。<br>tests: 单元测试。<br>Makefile：管理任务。</p>
+<h1 id="混乱的代码结构"><a href="#混乱的代码结构" class="headerlink" title="混乱的代码结构"></a>混乱的代码结构</h1><h2 id="多重混乱的循环依赖"><a href="#多重混乱的循环依赖" class="headerlink" title="多重混乱的循环依赖"></a>多重混乱的循环依赖</h2><p>furn.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> workers <span class="keyword">import</span> Carpenter</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Table</span>():</span></span><br><span class="line">  <span class="keyword">pass</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chair</span>():</span></span><br><span class="line">  <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>workers.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> furn <span class="keyword">import</span> Table,Chair</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Carpenter</span>():</span></span><br><span class="line">  <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>如果非要使用循环依赖，那只能使用不太好的方式来导入：在method和function中导入使用。</p>
+<h2 id="隐藏耦合"><a href="#隐藏耦合" class="headerlink" title="隐藏耦合"></a>隐藏耦合</h2><p>因为有太多关联，每次修改Table的实现，都需要小心翼翼，容易造成Carpenter的代码逻辑问题。</p>
+<h2 id="大量使用全局变量或上下文"><a href="#大量使用全局变量或上下文" class="headerlink" title="大量使用全局变量或上下文"></a>大量使用全局变量或上下文</h2><p>不显示的传递，而使用大量的全局状态，如height, width, type, wood，这些全局状态容易被代理快速的修改了。一旦被莫名修改后，还需要仔细的检查，能够访问这些全局变量的地方(或者是远程的代码修改了这些全局的状态)。</p>
+<h2 id="面条式代码-Spaghetti-code"><a href="#面条式代码-Spaghetti-code" class="headerlink" title="面条式代码(Spaghetti code)"></a>面条式代码(Spaghetti code)</h2><p>源代码的控制流程复杂，条件句和循环语句中互相嵌套，混乱而难以理解, 大量重复的代码，没有适当的分割，被视为套管程序。python的缩进特性使得它很难维护这样的代码，最好的方式就是不要写太多这样的代码。</p>
+<h2 id="Python中更可能出现混沌代码-Ravioli-code"><a href="#Python中更可能出现混沌代码-Ravioli-code" class="headerlink" title="Python中更可能出现混沌代码(Ravioli code)"></a>Python中更可能出现混沌代码(Ravioli code)</h2><p>这类代码包含上百段相似的逻辑碎片，通常是缺乏合适结构的类或对象，如果写代码时弄不清具体的逻辑，就可能出现混沌代码。</p>
+<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><p>Python模块是最主要的抽象层之一，抽象层允许将代码分为不同部分，每个部分包含相关的数据与功能。<br>例如在项目中，一层控制用户操作相关接口，另一层处理底层数据操作。</p>
+<p>为了保持风格的一致，模块名称应该保持简短，小写，不要使用特殊字符等。不叫用.符号，影响python路径查找(my.spam.py的模块名称误让python以为要找my文件夹下的spam)。</p>
+<p>不要使用下划线来组织命名空间，使用子模块更好：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># OK</span><br><span class="line">import library.plugin.foo</span><br><span class="line"># not OK</span><br><span class="line">import library.foo_plugin</span><br></pre></td></tr></table></figure>
+
+<h2 id="python导入模块原理"><a href="#python导入模块原理" class="headerlink" title="python导入模块原理"></a>python导入模块原理</h2><p><code>import modu</code>会从当前文件夹寻找modu.py文件，如未找到，python解释器会从’path’中递归去寻找，仍然未找到，则抛出ImportError。<br>找到该模块，解释器会在隔离的范围执行该模块，任何顶级modu声明都会被执行，包括其他的imports，模块中的函数和类的<strong>定义</strong>存储在模块的字典中,在模块命名空间的调用者，可以直接调用模块中的变量，函数，和类。</p>
+<p>在其他很多语言中，导入文件的逻辑是，解释器会将该文件的代码复制一份到调用的文件中，这与python是有很大的不同的。python中，导入的module在一个独立的命名空间中，这表示，不需要担心覆盖了当前同名的函数等。</p>
+<p>不要使用*导入所有的模块:<code>from modu import *</code>,使用<code>import *</code>使代码难以阅读和且无法很好的区分依赖。使用<code> from modu import func</code>清晰的说明想导入具体的哪个模块，将其放入全局的命名空间中。</p>
+<p>糟糕的导入方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[...]</span><br><span class="line"><span class="keyword">from</span> modu <span class="keyword">import</span> *</span><br><span class="line">[...]</span><br><span class="line">x = sqrt(<span class="number">4</span>)  <span class="comment"># Is sqrt part of modu? A builtin? Defined above?</span></span><br></pre></td></tr></table></figure>
+
+<p>好一些的导入方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> modu <span class="keyword">import</span> sqrt</span><br><span class="line">[...]</span><br><span class="line">x = sqrt(<span class="number">4</span>)  <span class="comment"># sqrt may be part of modu, if not redefined in between</span></span><br></pre></td></tr></table></figure>
+<p>最好的示范：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> modu</span><br><span class="line">[...]</span><br><span class="line">x = modu.sqrt(<span class="number">4</span>)  <span class="comment"># sqrt is visibly part of modu&#x27;s namespace</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="packages"><a href="#packages" class="headerlink" title="packages"></a>packages</h1><p>python提供了非常直观的包系统，即简单地将模块管理机制扩展到一个目录上。任何包含了<code>__init__.py</code>文件的目录，组成了python的包。</p>
+<p><code>import pack.modu</code>首先找到pach目录下的<code>__init__.py</code>文件,执行所有顶层声明，然后再找到<code>pack/modu.py</code>文件，执行其所有顶层声明。执行完这些所有的操作，<code>modu.py</code>中定义的variable, function, class，在pack.modu的命名空间中都变成了可用状态。</p>
+<p>一个常见的问题是<code>__init__.py</code>添加太多的代码，当项目的结构越来越复杂，包含子包，子包有包含更深层次的包，当导入深层次中的包时，就需要执行很多的<code>__init__.py</code>文件。</p>
+<p>留空<code>__init__.py</code>是最好的做法，如果子包或者更深层次的包不需要共享任何代码时。</p>
+<blockquote>
+<p>当要导入嵌套的生层次的包时，可以给包命个别名，之后使用别名，不使用冗长的包名</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> very.deep.module <span class="keyword">as</span> mod</span><br></pre></td></tr></table></figure>
+
+<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><blockquote>
+<p>In Python, everything is an object。</p>
+</blockquote>
+<p>Functions, classes, strings，其它任意类型都是对象，他们有类型，可以作为参数传递，有方法，有属性。</p>
+<p>选择编程范式：</p>
+<ol>
+<li>使用面向对象：当有对象(windows, buttons, avatars)需要相对长的生命周期在计算机的内存中时</li>
+<li>使用纯函数：<ul>
+<li>纯函数的结果是确定的：给定一个输入，输出总是固定相同。</li>
+<li>当需要重构或优化时，纯函数更易于更改或替换。</li>
+<li>纯函数更容易做单元测试：很少需要复杂的上下文配置和之后的数据清除工作。</li>
+<li>纯函数更容易操作、修饰和分发。</li>
+</ul>
+</li>
+</ol>
+<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><p>装饰器是一个函数或类，它可以 包装(或装饰)一个函数或方法。被’装饰’的函数或方法会替换原来的函数或方法。</p>
+<p>原始方法写装饰器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">    <span class="comment"># do something</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="comment"># 操作函数</span></span><br><span class="line">    <span class="keyword">return</span> func</span><br><span class="line"></span><br><span class="line">foo = decorator(foo)  <span class="comment"># 手动装饰</span></span><br></pre></td></tr></table></figure>
+
+<p>使用@decorators语法更清晰</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@decorator</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bar</span>():</span></span><br><span class="line">    <span class="comment"># Do something</span></span><br><span class="line"><span class="comment"># bar() 是装饰器</span></span><br></pre></td></tr></table></figure>
+
+<p>这个机制对于分离概念和避免外部不相关逻辑“污染”主要逻辑很有用处。</p>
+<p>您需要在table中储存一个函数的结果，并且下次能直接使用该结果，而不是再计算一次。这显然不属于函数的逻辑部分。</p>
+<h1 id="Context-Managers"><a href="#Context-Managers" class="headerlink" title="Context Managers"></a>Context Managers</h1><p>为人熟知的示例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;file.txt&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">   contents = f.read()</span><br></pre></td></tr></table></figure>
+
+<h2 id="两种方式实现"><a href="#两种方式实现" class="headerlink" title="两种方式实现"></a>两种方式实现</h2><p>使用class(处理简单操作的情况建议用这种)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomOpen</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, filename</span>):</span>  <span class="comment"># 首先被实例化</span></span><br><span class="line">        self.file = <span class="built_in">open</span>(filename)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span>(<span class="params">self</span>):</span>  <span class="comment"># 然后，调用enter，返回值在 as f 语句中被赋给 f</span></span><br><span class="line">        <span class="keyword">return</span> self.file</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span>(<span class="params">self, ctx_type, ctx_value, ctx_traceback</span>):</span>  <span class="comment">#with块中的代码执行完i调用exit</span></span><br><span class="line">        self.file.close()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用自定义的context</span></span><br><span class="line"><span class="keyword">with</span> CustomOpen(<span class="string">&#x27;file&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    contents = f.read()</span><br></pre></td></tr></table></figure>
+
+
+<p>使用generator(封装的逻辑量很大建议用这种)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> contextlib <span class="keyword">import</span> contextmanager</span><br><span class="line"></span><br><span class="line"><span class="meta">@contextmanager</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">custom_open</span>(<span class="params">filename</span>):</span> <span class="comment"># custom_open 函数一直运行到 yield 语句</span></span><br><span class="line">    f = <span class="built_in">open</span>(filename)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">yield</span> f  <span class="comment"># 运行到这里将控制权返回给 with 语句</span></span><br><span class="line">    <span class="keyword">finally</span>:   <span class="comment"># with块代码执行完后，执行finally</span></span><br><span class="line">        f.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> custom_open(<span class="string">&#x27;file&#x27;</span>) <span class="keyword">as</span> f:    <span class="comment"># 控制权到with后 as f 部分将yield的 f 赋值给f</span></span><br><span class="line">    contents = f.read()</span><br></pre></td></tr></table></figure>
+
+<h1 id="动态类型"><a href="#动态类型" class="headerlink" title="动态类型"></a>动态类型</h1><p>python是动态类型语言，变量没有固定的类型。变量不是计算机内存中的一段，而是指向该类型对象的某个名称或者tag。</p>
+<blockquote>
+<p>例如：’a’ 设置指向value 1, 随后设置指向 value ‘a string’, 随后设置指向一个function.</p>
+</blockquote>
+<p>要避免同一个变量指向不同的东西!</p>
+<p>Bad</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">a = <span class="string">&#x27;a string&#x27;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">a</span>():</span></span><br><span class="line">    <span class="keyword">pass</span>  <span class="comment"># Do something</span></span><br></pre></td></tr></table></figure>
+
+
+<p>Good</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">count = <span class="number">1</span></span><br><span class="line">msg = <span class="string">&#x27;a string&#x27;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>():</span></span><br><span class="line">    <span class="keyword">pass</span>  <span class="comment"># Do something</span></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="可变和不可变类型"><a href="#可变和不可变类型" class="headerlink" title="可变和不可变类型"></a>可变和不可变类型</h1><p>可变类型:可变类型允许内容的内部修改,有对应使其变化的对象函数,如：lists、dictionaries<br>不可变类型：无对应使其变化的对象函数，无对应使其变化的对象函数：tuple、x=2(变量x指向2)</p>
+<p>string也是不可变类型，要连接字符串有以下几种方法：</p>
+<p>最差：使用<code>+</code>操作符，效率最差</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nums = <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">    nums += <span class="built_in">str</span>(n)</span><br><span class="line"><span class="built_in">print</span> nums</span><br></pre></td></tr></table></figure>
+
+<p>好：使用append方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nums = []</span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">    nums.append(<span class="built_in">str</span>(n))</span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;&quot;</span>.join(nums)  </span><br></pre></td></tr></table></figure>
+
+<p>更好: 列表推导式，使用join</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nums = [<span class="built_in">str</span>(n) <span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>)]</span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;&quot;</span>.join(nums)</span><br></pre></td></tr></table></figure>
+
+<p>使用 join() 并不总是最好的选择, 要分情况：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">foo = <span class="string">&#x27;foo&#x27;</span></span><br><span class="line">bar = <span class="string">&#x27;bar&#x27;</span></span><br><span class="line"></span><br><span class="line">foobar = foo + bar  <span class="comment"># 好，预先 确定数量的字符串创建一个新的字符串时，更快</span></span><br><span class="line"></span><br><span class="line">foo += <span class="string">&#x27;ooo&#x27;</span>  <span class="comment"># 不好,添加到已存在字符串的情况下，使用join更好</span></span><br><span class="line">foo = <span class="string">&#x27;&#x27;</span>.join([foo, <span class="string">&#x27;ooo&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>最好：使用map</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nums = <span class="built_in">map</span>(<span class="built_in">str</span>, <span class="built_in">range</span>(<span class="number">20</span>))</span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;&quot;</span>.join(nums)</span><br></pre></td></tr></table></figure>
+
+
+<p>还可以使用格式化字符串连接确定数量的字符串字符：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">foo = <span class="string">&#x27;foo&#x27;</span></span><br><span class="line">bar = <span class="string">&#x27;bar&#x27;</span></span><br><span class="line"></span><br><span class="line">foobar = <span class="string">&#x27;%s%s&#x27;</span> % (foo, bar) <span class="comment"># OK</span></span><br><span class="line">foobar = <span class="string">&#x27;&#123;0&#125;&#123;1&#125;&#x27;</span>.<span class="built_in">format</span>(foo, bar) <span class="comment"># better</span></span><br><span class="line">foobar = <span class="string">&#x27;&#123;foo&#125;&#123;bar&#125;&#x27;</span>.<span class="built_in">format</span>(foo=foo, bar=bar) <span class="comment"># best</span></span><br></pre></td></tr></table></figure>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2018/07/13/python/%E6%9B%B4%E5%A5%BD%E5%9C%B0%E7%BB%84%E7%BB%87%E9%A1%B9%E7%9B%AE/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2018/10/02/python/python%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/openpyxl%E6%93%8D%E4%BD%9Cexcel/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            openpyxl操作excel
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2018/04/21/python/%E5%8F%91%E7%8E%B0%E5%A5%BD%E7%94%A8%E7%9A%84python%E5%BA%93/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">发现好用的python库</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'G71ilS8VcnCiTXsG85hb8dzm-gzGzoHsz',
+        app_key: 'wy55n92Cj56s4f5HCrin2Pou',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '鼓励鼓励吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2016-2020
+        <i class="ri-heart-fill heart_icon"></i> 蜀山柚柚
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278917614&amp;web_id=1278917614'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/logo.png" alt="蜀山柚柚"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/notes">网址</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://xxx.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://xxx.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['明镜亦非台', '', ''],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+    
+  </div>
+</body>
+
+</html>

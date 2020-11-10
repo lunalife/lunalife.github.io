@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+
+
+<html lang="zh">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    windows下testlink环境搭建 |  蜀山柚柚
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/images/logo.png" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-测试/TestLink相关/windows下testlink环境搭建" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  windows下testlink环境搭建
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2017/10/29/%E6%B5%8B%E8%AF%95/TestLink%E7%9B%B8%E5%85%B3/windows%E4%B8%8Btestlink%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-date">
+  <time datetime="2017-10-29T00:09:03.000Z" itemprop="datePublished">2017-10-29</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">5 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>最好不要使用最新版本，新版本未稳定有各种问题，使用最新版本的前一两个版本最好。该篇使用版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql 5.7</span><br><span class="line">php 7</span><br><span class="line">testlink 1.9.15</span><br></pre></td></tr></table></figure>
+<p>testlink1.9.17还未修改对8.0的代码，有错误，都使用之前的版本。</p>
+<h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><ol>
+<li>安装MySQL</li>
+<li>安装PHP</li>
+<li>安装Apache</li>
+<li>安装TestLink</li>
+</ol>
+<h1 id="安装Mysql"><a href="#安装Mysql" class="headerlink" title="安装Mysql"></a>安装Mysql</h1><p>见<a target="_blank" rel="noopener" href="https://www.cnblogs.com/for-you/p/8940614.html">wondows下安装mysql</a></p>
+<h1 id="安装PHP"><a href="#安装PHP" class="headerlink" title="安装PHP"></a>安装PHP</h1><p><a target="_blank" rel="noopener" href="http://php.net/downloads.php">下载PHP</a>后解压，将PHP的文件的地址添加到环境变量中，即可。</p>
+<blockquote>
+<p>注意：这里要下载安全线程版，供apache使用，非线程安全中没有<code>php7apache2_4.dll</code>文件。<a target="_blank" rel="noopener" href="https://www.quora.com/What-is-the-meaning-of-TS-and-NTS-in-PHP">TS和NTS区别</a>。</p>
+</blockquote>
+<p>打开cmd，输入<code>php -v</code>如果显示出版本则说明环境配置成功。</p>
+<h2 id="配置PHP支持MySQL"><a href="#配置PHP支持MySQL" class="headerlink" title="配置PHP支持MySQL"></a>配置PHP支持MySQL</h2><p>打开php文件夹，复制一个php.ini-development文件，修改为php.ini</p>
+<blockquote>
+<p>这里一定要修改为php.ini，有的程序只认php.ini文件，这样做也可以保存一份最原始的配置文件，之后都修改php.ini文件。</p>
+</blockquote>
+<p>打开php.ini文件，去掉前面的注释符号(；)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">extension&#x3D;php_mysql.dll</span><br><span class="line">extension&#x3D;php_mysqli.dll</span><br></pre></td></tr></table></figure>
+<h2 id="指定extension-dir路径"><a href="#指定extension-dir路径" class="headerlink" title="指定extension_dir路径"></a>指定extension_dir路径</h2><p>打开php.ini文件，修改extension_dir路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extension_dir &#x3D; &quot;F:\php4\ext&quot;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="安装apache"><a href="#安装apache" class="headerlink" title="安装apache"></a>安装apache</h1><p>打开apache主页找到<a target="_blank" rel="noopener" href="https://httpd.apache.org/download.cgi">apache server 下载地址</a></p>
+<img src="/images/test/windows_testlink_install_1.png" width="200px">
+
+<p>点击for windows</p>
+<img src="/images/test/windows_testlink_install_2.png" width="400px">
+
+<p>下载ApacheHaus</p>
+<img src="/images/test/windows_testlink_install_3.png" width="400px">
+
+<blockquote>
+<p>ApacheHaus：<br>Apache Lounge：<br>BitNami WAMP Stack：Bitname集成安装<br>WampServer：Windows集成安装<br>XAMPP：Linux下的集成安装</p>
+</blockquote>
+<p>下载完后解压出来，根据根目录下的read_first进行安装：</p>
+<p><img src="/images/test/windows_testlink_install_4.png"></p>
+<p>步骤：</p>
+<ol>
+<li>以<strong>管理员</strong>身份运行cmd，进入到apache下的bin目录运行命令：<code>httpd.exe</code>，如果有错误则会输出错误，根据错误修改，如果么有错误则光标换行后停留在那里。</li>
+<li>访问<a target="_blank" rel="noopener" href="http://localhost,看到apache/">http://localhost，看到Apache</a> Haus’s 页面则说明环境OK，ctrl+c停止服务。</li>
+<li>输入命令<code>httpd -k install</code>将apache安装为windows服务。</li>
+<li>输入命令<code>httpd -k start</code>启动apache服务，访问<a target="_blank" rel="noopener" href="http://localhost查看是否启动成功./">http://localhost查看是否启动成功。</a></li>
+</ol>
+<h2 id="常用apache命令"><a href="#常用apache命令" class="headerlink" title="常用apache命令"></a>常用apache命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Stop Apache	 	httpd -k stop</span><br><span class="line">Restart Apache	httpd -k restart</span><br><span class="line">Uninstall Apache Service	httpd -k uninstall</span><br><span class="line">Test Config Syntax	httpd -t</span><br><span class="line">Version Details	httpd -V</span><br><span class="line">Command Line Options List	httpd -h</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h2><p>根据需要修改apache相关配置文件(Apache24\conf\httpd.conf)：</p>
+<ul>
+<li>修改apache路径：<code>Define SRVROOT &quot;F:\Apache24&quot;</code></li>
+<li>端口默认80如果冲突则修改：<code>Listen 80</code></li>
+<li>网址根目录默认在apache目录下，可以就使用这个也可以自定义：<code>DocumentRoot &quot;$&#123;SRVROOT&#125;/htdocs&quot;</code></li>
+</ul>
+<h2 id="配置对PHP的支持"><a href="#配置对PHP的支持" class="headerlink" title="配置对PHP的支持"></a>配置对PHP的支持</h2><p>在网站根目录新建一个test.php的文件，输入：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">phpinfo();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>访问该文件：<a target="_blank" rel="noopener" href="http://localhost/test.php%EF%BC%8C%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E6%BA%90%E4%BB%A3%E7%A0%81%EF%BC%8C%E8%AF%B4%E6%98%8Eapache%E8%BF%98%E6%9C%AA%E6%94%AF%E6%8C%81%E5%AF%B9PHP%E7%9A%84%E8%A7%A3%E6%9E%90%EF%BC%8C%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AEapache%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E3%80%82">http://localhost/test.php，页面显示的源代码，说明apache还未支持对PHP的解析，需要配置apache的配置文件。</a></p>
+<p>添加下面两行到apache的配置文件，第一行说明了通过loadmodule方式加载PHP，第二行指定php.ini的路径，第三行定义html和php格式文件都能执行php程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LoadModule php5_module &quot;F:\php\php5apache2_4.dll&quot;</span><br><span class="line">PHPIniDir &quot;F:\php-5.6.36-Win32-VC11-x64&quot;</span><br><span class="line">AddType Application&#x2F;x-httpd-php .php .html</span><br></pre></td></tr></table></figure>
+<p>注意PHP版本号对应，上面版本是5+，如果是版本是7+则要对应修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LoadModule php7_module &quot;F:\php\php7apache2_4.dll&quot;</span><br><span class="line">PHPIniDir &quot;F:\php&quot;</span><br><span class="line">AddType Application&#x2F;x-httpd-php .php .html</span><br></pre></td></tr></table></figure>
+
+<p>重启apache，重新访问<a target="_blank" rel="noopener" href="http://localhost/test.php%EF%BC%8C%E6%88%90%E5%8A%9F%EF%BC%9A">http://localhost/test.php，成功：</a><br><img src="/images/test/windows_testlink_install_5.png" width="500px"></p>
+<h1 id="安装TestLink"><a href="#安装TestLink" class="headerlink" title="安装TestLink"></a>安装TestLink</h1><p>安装testlink是直接在网页安装的，所以所有平台的安装都是相同的。<a target="_blank" rel="noopener" href="http://sourceforge.net/projects/testlink/files/TestLink%201.9/">TestLink下载地址</a>。</p>
+<p>将下载下来的testlink放入到Apache的网站根目录下，访问。浏览器输入<code>localhost:8080/testlink_1.9.13/index.php</code>，点击<code>new installation</code>，根据提示安装。</p>
+<p>最后一步配置：</p>
+<img src="/images/test/windows_testlink_install_6.png" width="500px">
+
+<p>图中红框部分，填写数据库的地址，尤其注意黄色部分，写的是如果数据库是使用的默认端口(3306)号则不加端口号(如：localhost)，如果不是默认端口号则需要添加端口号(如：localhost:5502)。</p>
+<blockquote>
+<p>这里踩了一个大坑：端口号为3306的mysql，写上了端口号，下一步创建数据库一直不成功，报错<code>php_network_getaddresses: getaddrinfo failed </code>。去掉端口号就OK了。</p>
+</blockquote>
+<p>Database admin login： 数据库登录名<br>Database admin password：数据库登录密码<br>主要用于创建testlink数据库。</p>
+<p>TestLink DB login：创建一个testlink DB的账号<br>TestLink DB password：创建一个TestLink DB密码<br>所有需要连接testlink数据库的请求都使用该账号。</p>
+<h1 id="安装错误总结"><a href="#安装错误总结" class="headerlink" title="安装错误总结"></a>安装错误总结</h1><h2 id="修改php目录下的php-ini"><a href="#修改php目录下的php-ini" class="headerlink" title="修改php目录下的php.ini"></a>修改php目录下的php.ini</h2><p>错误<code>checking max.execution time</code><br>max_execution_time时间，修改为120,大概在372行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">max_execution_time &#x3D; 120</span><br></pre></td></tr></table></figure>
+
+<p>错误<code>maximum session idle time before timeout</code><br>修改<code>session.gc_maxlifetime = 2400</code></p>
+<p>错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PHP Warning: date(): It is not safe to rely on the system’s timezone settings. You are *required* to use the date.timezone setting</span><br><span class="line">or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most</span><br><span class="line">likely misspelled the timezone identifier. We selected ‘UTC’...</span><br></pre></td></tr></table></figure>
+<p>设置date.timezone的值为PRC，设置好以后的为：date.timezone=PRC，同时取消这一行代码的注释。</p>
+<h2 id="修改testlink目录下的config-inc-php"><a href="#修改testlink目录下的config-inc-php" class="headerlink" title="修改testlink目录下的config.inc.php"></a>修改testlink目录下的config.inc.php</h2><p>错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">checking if testlink&#x2F;logs&#x2F; directory exists</span><br><span class="line">checking if upload_area directory exists</span><br></pre></td></tr></table></figure>
+
+<p>修改logs路径：<code>$tlCfg-&gt;log_path = &#39;[tesklink安装目录]/logs/&#39;;</code><br>修改upload_area路径：<code>$g_repositoryPath = &#39;[tesklink安装目录]/upload_area/&#39;;</code><br>错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*   copy from config.inc.php, [SMTP] Section into custom_config.inc.php.</span><br><span class="line">*   complete correct data regarding email addresses and mail server.</span><br></pre></td></tr></table></figure>
+<p>修改邮箱。</p>
+<p>安装完后，打开<a target="_blank" rel="noopener" href="http://localhost/testlink/index.html%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8%E4%BA%86%E3%80%82">http://localhost/testlink/index.html就可以开始使用了。</a></p>
+<h1 id="wamp集成安装"><a href="#wamp集成安装" class="headerlink" title="wamp集成安装"></a>wamp集成安装</h1><p>如果不想单独安装各个程序，可以使用<a target="_blank" rel="noopener" href="http://www.wampserver.com/en/">wamp</a>来集成安装PHP and a MySQL。</p>
+<h1 id="bitnami-testlink集成安装"><a href="#bitnami-testlink集成安装" class="headerlink" title="bitnami-testlink集成安装"></a>bitnami-testlink集成安装</h1><p>还可以使用bitnami的集成安装，Apache，mysql，phpadmin，<a target="_blank" rel="noopener" href="https://bitnami.com/stack/testlink/installer">bitnami-testlink下载地址</a>。</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>如果忘记安装过程中填写的testlink密码，可以直接查看数据库的账号密码，密码可以将<a target="_blank" rel="noopener" href="http://www.cmd5.com/">MD5转为明文</a>。</p>
+<p><img src="/images/test/windows_testlink_install_7.png"></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2017/10/29/%E6%B5%8B%E8%AF%95/TestLink%E7%9B%B8%E5%85%B3/windows%E4%B8%8Btestlink%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/testlink/" rel="tag">testlink</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2017/10/29/%E6%B5%8B%E8%AF%95/TestLink%E7%9B%B8%E5%85%B3/TestLink%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            testlink基本使用
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2017/09/10/git/%E6%9C%AC%E5%9C%B0%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8%E4%B8%A4%E4%B8%AAgit%E8%B4%A6%E5%8F%B7%E6%8F%90%E4%BA%A4/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">本地同时使用多个git账号</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'G71ilS8VcnCiTXsG85hb8dzm-gzGzoHsz',
+        app_key: 'wy55n92Cj56s4f5HCrin2Pou',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '鼓励鼓励吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2016-2020
+        <i class="ri-heart-fill heart_icon"></i> 蜀山柚柚
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278917614&amp;web_id=1278917614'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/logo.png" alt="蜀山柚柚"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/notes">网址</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://xxx.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://xxx.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['明镜亦非台', '', ''],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+    
+  </div>
+</body>
+
+</html>

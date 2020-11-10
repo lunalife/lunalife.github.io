@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+
+
+<html lang="zh">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    TestLink的API |  蜀山柚柚
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/images/logo.png" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-测试/TestLink相关/TestLink的API" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  TestLink的API
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/24/%E6%B5%8B%E8%AF%95/TestLink%E7%9B%B8%E5%85%B3/TestLink%E7%9A%84API/" class="article-date">
+  <time datetime="2020-05-24T07:32:12.000Z" itemprop="datePublished">2020-05-24</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">自动化测试</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.6k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">7 min</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>testlink可以做很多你想象得到的事情，如API测试参数管理，Excel导入导出，快速模板创建测试用例，集成Jenkins。<br>TestLink API第三方库: <a target="_blank" rel="noopener" href="https://github.com/lczub/TestLink-API-Python-client">TestLink-API-Python-client 0.8.0</a><br><a target="_blank" rel="noopener" href="https://github.com/lczub/TestLink-API-Python-client/tree/master/example">example</a></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install TestLink-API-Python-client</span><br></pre></td></tr></table></figure>
+
+<h1 id="获取私人key"><a href="#获取私人key" class="headerlink" title="获取私人key"></a>获取私人key</h1><p>点击进入用户的页面，点击生成key按钮，生成成功后会通过邮件发送到该用户邮箱。<br>需要配置testlink配置中的SMTP，否则会报错：<code>LOCALIZE: apikey_cannot_be_reseted_invalid_smtp_hostname。</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;[YOURSERVER]&#x2F;testlink&#x2F;lib&#x2F;api&#x2F;xmlrpc&#x2F;v1&#x2F;xmlrpc.php</span><br></pre></td></tr></table></figure>
+
+<p>如果搭建的未修改为testlink而是原始文件夹<code>testlink-1.9.15</code>,这里链接中的testlink要修改为<code>testlink-1.9.15</code>。</p>
+<h1 id="获取TestlinkAPIClient对象实例"><a href="#获取TestlinkAPIClient对象实例" class="headerlink" title="获取TestlinkAPIClient对象实例"></a>获取TestlinkAPIClient对象实例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url &#x3D; &quot;http:&#x2F;&#x2F;11.12.13.16&#x2F;testlink&#x2F;lib&#x2F;api&#x2F;xmlrpc&#x2F;v1&#x2F;xmlrpc.php&quot;</span><br><span class="line">key &#x3D; &quot;9f5ec9cd058457usdko2191188&quot;</span><br><span class="line">tlc &#x3D; testlink.TestlinkAPIClient(url, key)</span><br></pre></td></tr></table></figure>
+<h1 id="获取基础信息"><a href="#获取基础信息" class="headerlink" title="获取基础信息"></a>获取基础信息</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(tlc.countProjects())</span><br><span class="line">projects &#x3D; tlc.getProjects()</span><br><span class="line">for project in projects:</span><br><span class="line">    print(project)</span><br></pre></td></tr></table></figure>
+
+<h1 id="操作测试用例集"><a href="#操作测试用例集" class="headerlink" title="操作测试用例集"></a>操作测试用例集</h1><h2 id="创建用例集"><a href="#创建用例集" class="headerlink" title="创建用例集"></a>创建用例集</h2><ol>
+<li>无测试用例集<br>新建项目，未创建测试集，此时获取first level的测试集为空。<br>使用创建测试用例集函数createTestSuite时，最后一个参数parentid此时可以不用传输。</li>
+<li>有测试用例集<br>如果是创建在项目的根上，最后一个参数parentid此时可以不用传输。<br>如果是创建在已有的测试用例集下面，最后一个参数parentid此时要传输为目标用例集的ID。</li>
+</ol>
+<h2 id="创建名称相同的用例集"><a href="#创建名称相同的用例集" class="headerlink" title="创建名称相同的用例集"></a>创建名称相同的用例集</h2><p>如创建已经存在相同名称的用例集，不会报错，返回0。<br>创建不重复的用例集，成功后，返回结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[&#123;&#39;id&#39;: 68219, &#39;name&#39;: &#39;&#39;, &#39;name_changed&#39;: False, &#39;status&#39;: True, </span><br><span class="line">&#39;operation&#39;: &#39;createTestSuite&#39;, &#39;additionalInfo&#39;: &#39;&#39;, &#39;message&#39;: &#39;ok&#39;&#125;]</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取用例集"><a href="#获取用例集" class="headerlink" title="获取用例集"></a>获取用例集</h2><ol>
+<li>获取顶级用例集<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getFirstLevelTestSuitesForTestProject(project_id)</span><br></pre></td></tr></table></figure>
+<img src="/images/test/testlink_api_use.png"></li>
+</ol>
+<p>处于顶级用例集下的用例集不会被返回，只返回(一级)标红的用例集。</p>
+<ol start="2">
+<li>获取指定用例集下的用例集<br>用例集下只有一个用例集<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用例集1</span><br><span class="line">  用例集2</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>使用tlc.getTestSuitesForTestSuite(testsuite_id)返回的数据结构如下，开头不会多一个key：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#39;id&#39;: &#39;68596&#39;, &#39;details&#39;: &#39;&#39;, &#39;name&#39;: &#39;用例集2&#39;, &#39;node_type_id&#39;: &#39;2&#39;, &#39;node_order&#39;: &#39;1&#39;, &#39;parent_id&#39;: &#39;68576&#39;&#125;</span><br></pre></td></tr></table></figure>
+<p>用例集下有多个用例集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">用例集1</span><br><span class="line">  用例集2</span><br><span class="line">  用例集3</span><br></pre></td></tr></table></figure>
+<p>使用tlc.getTestSuitesForTestSuite(testsuite_id)返回的数据结构如下, 前面会多一个id的key：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#39;68596&#39;:</span><br><span class="line">    &#123;&#39;id&#39;: &#39;68596&#39;, &#39;details&#39;: &#39;&#39;, &#39;name&#39;: &#39;用例集2&#39;, &#39;node_type_id&#39;: &#39;2&#39;, &#39;node_order&#39;: &#39;1&#39;, &#39;parent_id&#39;: &#39;68576&#39;&#125;,</span><br><span class="line"> &#39;68673&#39;:</span><br><span class="line">    &#123;&#39;id&#39;: &#39;68673&#39;, &#39;details&#39;: &#39;&#39;, &#39;name&#39;: &#39;用例集3&#39;, &#39;node_type_id&#39;: &#39;2&#39;, &#39;node_order&#39;: &#39;2&#39;, &#39;parent_id&#39;: &#39;68576&#39;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>试了下有3个子集的，情况和2个子集相同：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">用例集1</span><br><span class="line">  用例集2</span><br><span class="line">  用例集3</span><br><span class="line">  用例集4</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#39;68596&#39;:</span><br><span class="line">    &#123;&#39;id&#39;: &#39;68596&#39;, &#39;details&#39;: &#39;&#39;, &#39;name&#39;: &#39;用例集2&#39;, &#39;node_type_id&#39;: &#39;2&#39;, &#39;node_order&#39;: &#39;1&#39;, &#39;parent_id&#39;: &#39;68576&#39;&#125;,</span><br><span class="line">&#39;68673&#39;:</span><br><span class="line">    &#123;&#39;id&#39;: &#39;68673&#39;, &#39;details&#39;: &#39;&#39;, &#39;name&#39;: &#39;用例集3&#39;, &#39;node_type_id&#39;: &#39;2&#39;, &#39;node_order&#39;: &#39;2&#39;, &#39;parent_id&#39;: &#39;68576&#39;&#125;,</span><br><span class="line">&#39;68674&#39;:</span><br><span class="line">    &#123;&#39;id&#39;: &#39;68674&#39;, &#39;details&#39;: &#39;&#39;, &#39;name&#39;: &#39;用例集4&#39;, &#39;node_type_id&#39;: &#39;2&#39;, &#39;node_order&#39;: &#39;3&#39;, &#39;parent_id&#39;: &#39;68576&#39;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>针对以上不同格式做不同处理。</p>
+<h1 id="操作测试用例"><a href="#操作测试用例" class="headerlink" title="操作测试用例"></a>操作测试用例</h1><h2 id="通过用例ID获取"><a href="#通过用例ID获取" class="headerlink" title="通过用例ID获取"></a>通过用例ID获取</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> def get_test_case(test_case_id):</span><br><span class="line">     test_case &#x3D; tlc.getTestCase(None, testcaseexternalid&#x3D;test_case_id)</span><br><span class="line">     for i in test_case:</span><br><span class="line">         print (&quot;序列&quot;, &quot;执行步骤&quot;, &quot;预期结果&quot;)</span><br><span class="line">         for m in i.get(&quot;steps&quot;):</span><br><span class="line">             print (m.get(&quot;step_number&quot;), m.get(&quot;actions&quot;), m.get(&quot;expected_results&quot;))</span><br><span class="line"> </span><br><span class="line">get_test_case(&quot;auto-10&quot;)  #要加上项目前缀                       </span><br></pre></td></tr></table></figure>
+<p>注意：这里的用例ID要加上项目前缀，否则获取不到</p>
+<h2 id="通过用例集ID获取其下所有用例"><a href="#通过用例集ID获取其下所有用例" class="headerlink" title="通过用例集ID获取其下所有用例"></a>通过用例集ID获取其下所有用例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test_cases = self.tlc.getTestCasesForTestSuite(testsuiteid=suite_id)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果有其他有用例集，循环获取即可</p>
+</blockquote>
+<h1 id="创建测试用例"><a href="#创建测试用例" class="headerlink" title="创建测试用例"></a>创建测试用例</h1><p>源代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">def createTestCase(self, *argsPositional, **argsOptional):</span><br></pre></td></tr></table></figure>
+<p>参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">positional argument位置参数:</span><br><span class="line">testcasename :测试用例名称</span><br><span class="line">testsuiteid :创建在某个测试集，该测试集的ID</span><br><span class="line">testprojectid :测试项目ID</span><br><span class="line">authorlogin :创建人姓名</span><br><span class="line">summary :用例总结</span><br></pre></td></tr></table></figure>
+<p>可选参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">steps :步骤，为一个list</span><br><span class="line">preconditions :前置条件</span><br><span class="line">importance</span><br><span class="line">executiontype</span><br><span class="line">order</span><br><span class="line">internalid</span><br><span class="line">checkduplicatedname</span><br><span class="line">actiononduplicatedname</span><br><span class="line">status</span><br><span class="line">estimatedexecduration</span><br></pre></td></tr></table></figure>
+<p>创建成功返回值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">&#123;&#39;operation&#39;: &#39;createTestCase&#39;, </span><br><span class="line">&#39;status&#39;: True, </span><br><span class="line">&#39;id&#39;: 71278, </span><br><span class="line">&#39;additionalInfo&#39;: </span><br><span class="line">      &#123;&#39;id&#39;: 71278, </span><br><span class="line">      &#39;external_id&#39;: &#39;119&#39;, </span><br><span class="line">      &#39;status_ok&#39;: 1, </span><br><span class="line">      &#39;msg&#39;: &#39;ok&#39;, </span><br><span class="line">      &#39;new_name&#39;: &#39;&#39;, </span><br><span class="line">      &#39;version_number&#39;: 1, </span><br><span class="line">      &#39;has_duplicate&#39;: False, </span><br><span class="line">      &#39;external_id_already_exists&#39;: False, </span><br><span class="line">      &#39;update_name&#39;: False, </span><br><span class="line">      &#39;tcversion_id&#39;: 71279&#125;, </span><br><span class="line">      &#39;message&#39;: &#39;Success!&#39;&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>external_id: 用例的ID</p>
+<h2 id="步骤预先定义"><a href="#步骤预先定义" class="headerlink" title="步骤预先定义"></a>步骤预先定义</h2><p>方法1 使用list<br>必须是定义好的由字典组成的列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">steps &#x3D;</span><br><span class="line">[&#123;&#39;step_number&#39; : 1, &#39;actions&#39; : &quot;action A&quot; ,</span><br><span class="line">    &#39;expected_results&#39; : &quot;result A&quot;, &#39;execution_type&#39; : 0&#125;,</span><br><span class="line"> &#123;&#39;step_number&#39; : 2, &#39;actions&#39; : &quot;action B&quot; ,</span><br><span class="line">    &#39;expected_results&#39; : &quot;result B&quot;, &#39;execution_type&#39; : 1&#125;,</span><br><span class="line"> &#123;&#39;step_number&#39; : 3, &#39;actions&#39; : &quot;action C&quot; ,</span><br><span class="line">    &#39;expected_results&#39; : &quot;result C&quot;, &#39;execution_type&#39; : 0&#125;]</span><br><span class="line">newTestCase &#x3D; self.tlc.createTestCase(........steps&#x3D;steps)</span><br></pre></td></tr></table></figure>
+<p>方法2 使用initStep</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">该方法无需传递steps参数，已经预存在了tlc对象中</span><br><span class="line">tlc.initStep(&quot;添加一个动作&quot;, &quot;期望一个结果&quot;, 1)</span><br><span class="line">tlc.appendStep(&quot;添加一个动作2&quot;, &quot;期望一个结果2&quot;, 1)</span><br><span class="line">tlc.appendStep(&quot;添加一个动作3&quot;, &quot;期望一个结果3&quot;, 1)</span><br><span class="line">newTestCase &#x3D; self.tlc.createTestCase(.......)</span><br></pre></td></tr></table></figure>
+<h1 id="获取关键字"><a href="#获取关键字" class="headerlink" title="获取关键字"></a>获取关键字</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tlc.listKeywordsForTC(testcase_id)</span><br></pre></td></tr></table></figure>
+
+<h1 id="自定义字段"><a href="#自定义字段" class="headerlink" title="自定义字段"></a>自定义字段</h1><p>自定义关键则的操作方法，在编辑器中输入custom后，搜出的关键字有如下<br>第一个猜测是需求关键字。 get开头的获取关键字。 update开头的是更新关键字。<br>注意: testcaseexternalid一定要写全”au-117”,-符号不能少。</p>
+<h2 id="获取用例自定义字段值"><a href="#获取用例自定义字段值" class="headerlink" title="获取用例自定义字段值"></a>获取用例自定义字段值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getTestCaseCustomFieldDesignValue(</span><br><span class="line">    testcaseexternalid&#x3D;&quot;au-117&quot;,</span><br><span class="line">    testprojectid&#x3D;&quot;68194&quot;,</span><br><span class="line">    customfieldname&#x3D;&#39;版本号&#39;,</span><br><span class="line">    version&#x3D;1</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>这里的version没找到是指哪里，填写1就可以了。</p>
+<h2 id="更新用例自定义字段值"><a href="#更新用例自定义字段值" class="headerlink" title="更新用例自定义字段值"></a>更新用例自定义字段值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tlc.updateTestCaseCustomFieldDesignValue(</span><br><span class="line">    testcaseexternalid&#x3D;&quot;au-117&quot;,</span><br><span class="line">    testprojectid&#x3D;&quot;68194&quot;,</span><br><span class="line">    version&#x3D;1,</span><br><span class="line">    customfields&#x3D;&#123;&quot;版本号&quot;: &quot;6.6&quot;&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/24/%E6%B5%8B%E8%AF%95/TestLink%E7%9B%B8%E5%85%B3/TestLink%E7%9A%84API/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/06/02/%E6%9C%AA%E5%88%86%E7%B1%BB/windows%E5%AE%89%E8%A3%85Docker/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            windows安装docker
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/05/18/%E6%97%A0%E7%BA%BF%E4%B8%8E%E7%BD%91%E7%BB%9C/%E3%80%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%807%E3%80%8B1%E6%A6%82%E8%BF%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">《计算机网络基础第七版》一概述</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'G71ilS8VcnCiTXsG85hb8dzm-gzGzoHsz',
+        app_key: 'wy55n92Cj56s4f5HCrin2Pou',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '鼓励鼓励吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2016-2020
+        <i class="ri-heart-fill heart_icon"></i> 蜀山柚柚
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+        <span class="division">|</span>
+        Theme - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278917614&amp;web_id=1278917614'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/logo.png" alt="蜀山柚柚"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/notes">网址</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://xxx.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://xxx.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['明镜亦非台', '', ''],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+    
+  </div>
+</body>
+
+</html>
