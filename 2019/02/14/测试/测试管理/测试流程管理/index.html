@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="山中何事？松花酿酒，春水煎茶。">
+    <meta name="author" content="Whisper">
+    
+    <title>
+        
+            测试流程管理 |
+        
+        Whisper&#39;s blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/tx.jpeg">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"lucia.xicp.cn","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#8FBC94","logo":"/images/tx.jpeg","favicon":"/images/tx.jpeg","avatar":"/images/tx.jpeg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg2.jpg","description":"自动化测试、性能、测试平台、爬虫等","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":true}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":"pnFXCwy6hixUgDahewOq2sls-gzGzoHsz","appkey":"b5mv8NuY7ayVPdjnyiK5fLw7","server_urls":null,"placeholder":"闲聊"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/tx.jpeg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Whisper&#39;s blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">测试流程管理</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/tx.jpeg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Whisper</span>
+                            
+                                <span class="author-label">Lv4</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fas fa-edit"></i>&nbsp;
+        
+        <span class="pc">2019-02-14 08:40:02</span>
+        <span class="mobile">2019-02-14 08:40</span>
+    </span>
+    
+    
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>当做为测试执行时，考虑更多的是该用例用什么方法测试覆盖更全。</p>
+<p>开始测试管理后，考虑的除了细节，更多是全局考虑，和部门的合作。</p>
+<h1 id="文档管理"><a href="#文档管理" class="headerlink" title="文档管理"></a>文档管理</h1><p>过分重要的一环，前期一定要搭建好框架，如：</p>
+<ol>
+<li>测试技术占比</li>
+<li>bug管理池</li>
+<li>遗留bug的整理</li>
+<li>重要实现的流程图</li>
+<li>重要点修改原因(本来是产品做，但是如果产品不做自己得做起来，会影响测试)</li>
+</ol>
+<blockquote>
+<p>下面按照常用测试流程说明每个过程的知识点</p>
+</blockquote>
+<h1 id="定制用例编写规则"><a href="#定制用例编写规则" class="headerlink" title="定制用例编写规则"></a>定制用例编写规则</h1><ol>
+<li>每个模块需要有一个最高级别的功能用例，此类用例用作给研发的自测和上线的快速回归：如，新建xxx后，重新拉取，显示的值与保存的一致</li>
+<li>多个平台有相同的功能，需要在新建和修改时查看数据库或者配置保存的是否一致</li>
+<li>中级用例 + 高级用例用于测试环境的核心测试</li>
+<li>低级用例用于基本只测一次的显示等</li>
+</ol>
+<h1 id="优先级制定"><a href="#优先级制定" class="headerlink" title="优先级制定"></a>优先级制定</h1><p>虽然有很多对于优先级的范围定义，但是没有具体到业务，在定制的时候，还是有很多模糊的边界导致无法统一优先级。</p>
+<ol>
+<li>极高：在高中挑选出要阻塞测试流程的部分，如增加会严重影响流程，但是修改和删除影响范围较小，出问题后提bug可以进行其他的测试，随意增加定为极高。</li>
+<li>高：修改，删除等操作，和后台以及数据库有接口请求的功能。</li>
+<li>中：</li>
+<li>低：纯前端逻辑操作，以及界面显示，无接口请求。</li>
+</ol>
+<h1 id="写用例"><a href="#写用例" class="headerlink" title="写用例"></a>写用例</h1><p>如果没有后面的测试流程，只写用例，写用例的方法有很多，Excel，思维导图列用例点。<br>为了方便测试用例多人执行管理，使用有结果保存和备注的testlink是最佳选择。</p>
+<p>纯前端用例：与服务器无数据传输，纯前端检测部分<br>有数据传输：有api的调用</p>
+<h1 id="P0研发自测用例"><a href="#P0研发自测用例" class="headerlink" title="P0研发自测用例"></a>P0研发自测用例</h1><p>p0的用例分给研发：<br>前端，主要是增，删与改不用分在页面流程上不影响流程。</p>
+<p>p1 - p3:按优先级测试，先将主要流程的bug提出来，然后再测低优先级的。</p>
+<p>编写testlink测试步骤文档给研发使用。</p>
+<blockquote>
+<p>重要重要，记得分配那些对于需求可能有歧义的给研发，将需求的讨论提前到提测前面。</p>
+</blockquote>
+<h1 id="测试用例分配"><a href="#测试用例分配" class="headerlink" title="测试用例分配"></a>测试用例分配</h1><ol>
+<li>不同的计划，侧重点不同</li>
+<li>测试分配时，<strong>责任到每个人</strong>, 不建议自己挑选着测试</li>
+</ol>
+<h1 id="测试执行"><a href="#测试执行" class="headerlink" title="测试执行"></a>测试执行</h1><p>定一个统一的标准，先执行高优先级(影响主要流程)的，高优先级的执行完后，此部分的issue应该都是严重的bug。</p>
+<p>再执行中级的用例，最后执行低级的用例，每个等级的用例如果执行完了，需要去标注当前的进度条。</p>
+<p>测试内部流程管理表</p>
+<div align="center"><img src="/images/test/test_manage.png" width=700px></div>
+一个完整的测试包含的步骤，需要不断完善流程！
+
+<blockquote>
+<p>以上流程可以做成不同的执行计划，具体的用例也需要放入testlink中，方便管理</p>
+</blockquote>
+<p>测试前注意事项：</p>
+<ol>
+<li>需要恢复出厂配置来测试</li>
+<li>测试环境搭建较复杂的环境</li>
+</ol>
+<h1 id="测试报告"><a href="#测试报告" class="headerlink" title="测试报告"></a>测试报告</h1><ol>
+<li>测试覆盖的范围</li>
+<li>测试的轮数</li>
+<li>遇到的重大的问题，给出的建议</li>
+<li>上线后注意的点</li>
+</ol>
+<h1 id="测试反馈"><a href="#测试反馈" class="headerlink" title="测试反馈"></a>测试反馈</h1><p>每次测试完后，可以在内部手机一些测试流程或者整个研发流程中的问题和优化建议(如果有人需要分享的话)。</p>
+<h1 id="提取模板"><a href="#提取模板" class="headerlink" title="提取模板"></a>提取模板</h1><p>流程中的所有可复用部分记得提取成为模板。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">测试流程管理</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Whisper</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2019-02-14 08:40:02</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2019/02/14/测试/测试管理/测试流程管理/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2019/05/19/%E6%B5%8B%E8%AF%95/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/API%E6%B5%8B%E8%AF%95%E5%B8%B8%E7%94%A8%E6%9E%B6%E6%9E%84/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">API测试常用架构</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2019/02/14/%E6%B5%8B%E8%AF%95/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/chrome%20F12%E5%B8%B8%E7%94%A8/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">chrome F12</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E7%AE%A1%E7%90%86"><span class="nav-text">文档管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E5%88%B6%E7%94%A8%E4%BE%8B%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99"><span class="nav-text">定制用例编写规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7%E5%88%B6%E5%AE%9A"><span class="nav-text">优先级制定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%99%E7%94%A8%E4%BE%8B"><span class="nav-text">写用例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P0%E7%A0%94%E5%8F%91%E8%87%AA%E6%B5%8B%E7%94%A8%E4%BE%8B"><span class="nav-text">P0研发自测用例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%88%86%E9%85%8D"><span class="nav-text">测试用例分配</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%89%A7%E8%A1%8C"><span class="nav-text">测试执行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A"><span class="nav-text">测试报告</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E5%8F%8D%E9%A6%88"><span class="nav-text">测试反馈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%90%E5%8F%96%E6%A8%A1%E6%9D%BF"><span class="nav-text">提取模板</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2015</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Whisper</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>

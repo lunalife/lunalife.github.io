@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="山中何事？松花酿酒，春水煎茶。">
+    <meta name="author" content="Whisper">
+    
+    <title>
+        
+            PPPoE |
+        
+        Whisper&#39;s blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/tx.jpeg">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"lucia.xicp.cn","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#8FBC94","logo":"/images/tx.jpeg","favicon":"/images/tx.jpeg","avatar":"/images/tx.jpeg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg2.jpg","description":"自动化测试、性能、测试平台、爬虫等","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":true}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":"pnFXCwy6hixUgDahewOq2sls-gzGzoHsz","appkey":"b5mv8NuY7ayVPdjnyiK5fLw7","server_urls":null,"placeholder":"闲聊"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/tx.jpeg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Whisper&#39;s blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">PPPoE</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/tx.jpeg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Whisper</span>
+                            
+                                <span class="author-label">Lv4</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fas fa-edit"></i>&nbsp;
+        
+        <span class="pc">2019-10-02 11:00:12</span>
+        <span class="mobile">2019-10-02 11:00</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%97%A0%E7%BA%BF%E4%B8%8E%E7%BD%91%E7%BB%9C/">无线与网络</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>Point-to-Point Protocol Over Ethernet协议，以太网上的点对点协议，是将点对点协议（PPP）封装在以太网（Ethernet）框架中的一种网络隧道协议。</p>
+<blockquote>
+<p>可以使用ros 软路由在虚拟机中搭建PPPoE服务器</p>
+</blockquote>
+<p>PPPOE发现阶段和会话阶段。<br>打开wireshark，选择要目标网卡-&gt;设置路由器的上网方式PPPoE，设置账号密码。接下来抓包分析协议：</p>
+<h1 id="发现阶段"><a href="#发现阶段" class="headerlink" title="发现阶段"></a>发现阶段</h1><p>该阶段目标：客户端和服务器确认彼此的Mac地址，建立PPPoE的Session_ID</p>
+<p>发现阶段主要四个过程：PADI，PADO，PADR，PADS：</p>
+<img src="../../images/protocol/813466-20200331123159035-385989221.png" style="zoom:50%;" />
+
+
+
+<p>wireshark抓包查看发现阶段：</p>
+<img src="../../images/protocol/813466-20200331123221703-2085525572.png" style="zoom:50%;" />
+
+<div align="center"><img src="" width=400px></div>
+
+<h2 id="PADI"><a href="#PADI" class="headerlink" title="PADI"></a>PADI</h2><p>发送广播PADI报文，请求建立链接。</p>
+<img src="../../images/protocol/813466-20200331123233893-1188579102.png" style="zoom:50%;" />
+
+
+
+<p>如果服务器端配置了service name，服务器端配置的service name和PADI报文中的service name相同则进行下一步交互，否则交互终止。</p>
+<h2 id="PADO"><a href="#PADO" class="headerlink" title="PADO"></a>PADO</h2><p>服务器对请求给出响应。</p>
+<img src="../../images/protocol/813466-20200331123254222-977593761.png" style="zoom:50%;" />
+
+<div align="center"><img src="" width=600px></div>
+
+<h2 id="PADR"><a href="#PADR" class="headerlink" title="PADR"></a>PADR</h2><p>选择一个AC，发送PADR报文，请求与该服务器建立链接。</p>
+<img src="../../images/protocol/813466-20200331123300164-1414949268.png" style="zoom:50%;" />
+
+<div align="center"><img src="" width=600px></div>
+
+
+<h2 id="PADS"><a href="#PADS" class="headerlink" title="PADS"></a>PADS</h2><p>目标服务器创建Seesion Id，单播给该客户端作为响应。发现阶段完成。</p>
+<img src="../../images/protocol/813466-20200331123311753-2018521173.png" style="zoom:50%;" />
+
+<div align="center"><img src="" width=600px></div>
+
+
+
+<h1 id="会话阶段"><a href="#会话阶段" class="headerlink" title="会话阶段"></a>会话阶段</h1><h2 id="协商阶段"><a href="#协商阶段" class="headerlink" title="协商阶段"></a>协商阶段</h2><p>客户端和服务器互相发送LCP Request以确认发送的最大传输单元，认证方式等，协商的内容写在option字段中，会话阶段的SESSION ID必须是发现阶段分配的ID。</p>
+<p>协商阶段的报文分为以下几种：</p>
+<ol>
+<li>链路发现：确定唯一链路的相关信息如：Configure-Request、Configure-Ack、Configure-Nak和Configure-Reject报文</li>
+<li>链路维护：管理调试链路，如：Code-Reject、Protocol-Reject、Echo-Request、Echo-Reply、Discard-Request报文</li>
+<li>链路终止：断开链路，如：Terminate-Request和Terminate-Reply报文</li>
+</ol>
+<h3 id="链路配置"><a href="#链路配置" class="headerlink" title="链路配置"></a>链路配置</h3><p>服务器-&gt;客户端: Configuration Request 认证方式</p>
+<img src="../../images/protocol/813466-20200331123319688-2146924466.png" style="zoom:50%;" />
+
+<div align="center"><img src="" width=600px></div>
+
+
+<p>客户端-&gt;服务器：Configuration Request 最大传输单元</p>
+<img src="https://img2020.cnblogs.com/blog/813466/202003/813466-20200331123331718-98879994.png" style="zoom: 50%;" />
+
+
+<p>服务器-&gt;客户端：Configuration Ack 最大传输单元</p>
+<img src="https://img2020.cnblogs.com/blog/813466/202003/813466-20200331123337999-1564355750.png" style="zoom: 50%;" />
+
+
+
+<p>服务器-&gt;客户端: Configuration Request 认证方式</p>
+<img src="../../images/protocol/813466-20200331123347113-1010177418.png" style="zoom:50%;" />
+
+<div align="center"><img src="" width=600px></div>
+
+<p>客户端-&gt;服务器：Configuration Ack 认证方式</p>
+<img src="../../images/protocol/813466-20200331123354852-1027659601.png" style="zoom:50%;" />
+
+<div align="center"><img src="" width=600px></div>
+
+
+
+
+<p>认证方式有4种:</p>
+<ol>
+<li>PAP</li>
+<li>CHAP</li>
+<li>MS-CHAP</li>
+<li>MS-CHAP2</li>
+</ol>
+<blockquote>
+<p>上面协商的为 MS-CHAP-2</p>
+</blockquote>
+<p>响应报文有以下几种：</p>
+<ol>
+<li>Configuration ACK: Configuration Request协商通过</li>
+<li>Configuration NAK: 支持Configuration Requst的option，协商未通过，响应携带期望的内容</li>
+<li>Configuration Reject: 不支持Configuration Request协商的option，协商未通过，响应携带不支持的option</li>
+</ol>
+<blockquote>
+<p>以上只演示了ACK报文</p>
+</blockquote>
+<h2 id="认证阶段"><a href="#认证阶段" class="headerlink" title="认证阶段"></a>认证阶段</h2><p>chap认证</p>
+<p>wireshark查看</p>
+<p>challenge:</p>
+<img src="../../images/protocol/813466-20200331123429623-1693825737.png" style="zoom:50%;" />
+
+
+<p>response:</p>
+<img src="../../images/protocol/813466-20200331123435473-1759865141.png" style="zoom:50%;" />
+
+
+
+<p>success:</p>
+<img src="../../images/protocol/813466-20200331123442511-558801532.png" style="zoom:50%;" />
+
+
+<h3 id="NCP协商阶段（IPCP协议）"><a href="#NCP协商阶段（IPCP协议）" class="headerlink" title="NCP协商阶段（IPCP协议）"></a>NCP协商阶段（IPCP协议）</h3><p>包括动态分配IP,DNS功能，也会进行多次协商，如果不同意就会出现NAK或者Reject报文。</p>
+<p>过程：</p>
+<img src="../../images/protocol/813466-20200331123459791-2012002996.png" style="zoom:50%;" />
+
+<div align="center"><img src="" width=300px></div>
+
+
+<p>客户端-&gt;服务器ACK确认ip</p>
+<p>最后服务器-&gt;客户端ACK确认了分配的IP 和 DNS，网关等：</p>
+<img src="../../images/protocol/813466-20200331123530199-1593442233.png" style="zoom: 50%;" />
+
+
+
+<h3 id="链路-会话-维护-Session-Keep-alive"><a href="#链路-会话-维护-Session-Keep-alive" class="headerlink" title="链路(会话)维护 Session Keep-alive"></a>链路(会话)维护 Session Keep-alive</h3><p>客户端发送Echo Request进行PPPoE心跳保活，若3次未得到服务器的响应，则客户端主动释放地址。发LCP Echo Request 的时候，Magic Number字段要和之前的Configure Request使用的Configure Request一致。</p>
+<p>客户端-&gt;服务器：Echo Request</p>
+<img src="../../images/protocol/813466-20200331123544842-1759528855.png" style="zoom:50%;" />
+
+
+<p>服务端-&gt;客户端：Echo Reply</p>
+<h2 id="会话结束（Session-Termination）"><a href="#会话结束（Session-Termination）" class="headerlink" title="会话结束（Session Termination）"></a>会话结束（Session Termination）</h2><p>发送PADT(PPPOE Active Discovery Terminate)请求和响应。</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">PPPoE</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Whisper</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2019-10-02 11:00:12</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2019/10/02/无线与网络/PPPoE/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2020/01/02/%E6%97%A0%E7%BA%BF%E4%B8%8E%E7%BD%91%E7%BB%9C/DHCP/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">DHCP</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2019/06/04/python/Mac%E5%AE%89%E8%A3%85python3%E7%8E%AF%E5%A2%83/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Mac安装python3环境</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%91%E7%8E%B0%E9%98%B6%E6%AE%B5"><span class="nav-text">发现阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PADI"><span class="nav-text">PADI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PADO"><span class="nav-text">PADO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PADR"><span class="nav-text">PADR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PADS"><span class="nav-text">PADS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E9%98%B6%E6%AE%B5"><span class="nav-text">会话阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8F%E5%95%86%E9%98%B6%E6%AE%B5"><span class="nav-text">协商阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E8%B7%AF%E9%85%8D%E7%BD%AE"><span class="nav-text">链路配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A4%E8%AF%81%E9%98%B6%E6%AE%B5"><span class="nav-text">认证阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NCP%E5%8D%8F%E5%95%86%E9%98%B6%E6%AE%B5%EF%BC%88IPCP%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-text">NCP协商阶段（IPCP协议）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E8%B7%AF-%E4%BC%9A%E8%AF%9D-%E7%BB%B4%E6%8A%A4-Session-Keep-alive"><span class="nav-text">链路(会话)维护 Session Keep-alive</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E7%BB%93%E6%9D%9F%EF%BC%88Session-Termination%EF%BC%89"><span class="nav-text">会话结束（Session Termination）</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2015</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Whisper</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>

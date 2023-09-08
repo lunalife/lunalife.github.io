@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="山中何事？松花酿酒，春水煎茶。">
+    <meta name="author" content="Whisper">
+    
+    <title>
+        
+            网络数据包处理Scapy |
+        
+        Whisper&#39;s blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/tx.jpeg">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"lucia.xicp.cn","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#8FBC94","logo":"/images/tx.jpeg","favicon":"/images/tx.jpeg","avatar":"/images/tx.jpeg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg2.jpg","description":"自动化测试、性能、测试平台、爬虫等","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":true}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":"pnFXCwy6hixUgDahewOq2sls-gzGzoHsz","appkey":"b5mv8NuY7ayVPdjnyiK5fLw7","server_urls":null,"placeholder":"闲聊"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/tx.jpeg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               Whisper&#39;s blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">网络数据包处理Scapy</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/tx.jpeg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Whisper</span>
+                            
+                                <span class="author-label">Lv4</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fas fa-edit"></i>&nbsp;
+        
+        <span class="pc">2020-05-02 00:00:00</span>
+        <span class="mobile">2020-05-02 00:00</span>
+    </span>
+    
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%97%A0%E7%BA%BF%E4%B8%8E%E7%BD%91%E7%BB%9C/">无线与网络</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install scapy</span><br></pre></td></tr></table></figure>
+<h1 id="Windows使用"><a href="#Windows使用" class="headerlink" title="Windows使用"></a>Windows使用</h1><p>直接输入scapy(没有安装额外的matplotlib，PyX忽略即可)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\luna&gt;scapy</span><br><span class="line">INFO: Can&#x27;t import matplotlib. Won&#x27;t be able to plot.</span><br><span class="line">INFO: Can&#x27;t import PyX. Won&#x27;t be able to use psdump() or pdfdump().</span><br><span class="line">WARNING: No route found for IPv6 destination :: (no default route?)</span><br><span class="line">WARNING: IPython not available. Using standard Python shell instead.</span><br><span class="line">AutoCompletion, History are disabled.</span><br><span class="line">WARNING: On Windows, colors are also disabled</span><br><span class="line"></span><br><span class="line">                     aSPY//YASa</span><br><span class="line">             apyyyyCY//////////YCa       |</span><br><span class="line">            sY//////YSpcs  scpCY//Pp     | Welcome to Scapy</span><br><span class="line"> ayp ayyyyyyySCP//Pp           syY//C    | Version 2.4.3</span><br><span class="line"> AYAsAYYYYYYYY///Ps              cY//S   |</span><br><span class="line">         pCCCCY//p          cSSps y//Y   | https://github.com/secdev/scapy</span><br><span class="line">         SPPPP///a          pP///AC//Y   |</span><br><span class="line">              A//A            cyP////C   | Have fun!</span><br><span class="line">              p///Ac            sC///a   |</span><br><span class="line">              P////YCpc           A//A   | Craft packets like I craft my beer.</span><br><span class="line">       scccccp///pSP///p          p//Y   |               -- Jean De Clerck</span><br><span class="line">      sY/////////y  caa           S//P   |</span><br><span class="line">       cayCyayP//Ya              pY/Ya</span><br><span class="line">        sY/PsY////YCc          aC//Yp</span><br><span class="line">         sc  sccaCY//PCypaapyCP//YSs</span><br><span class="line">                  spCPY//////YPSps</span><br><span class="line">                       ccaacs</span><br></pre></td></tr></table></figure>
+<h1 id="定制终端"><a href="#定制终端" class="headerlink" title="定制终端"></a>定制终端</h1><p>设置颜色</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conf.color_theme = BrightTheme()</span><br></pre></td></tr></table></figure>
+<p>可选的color_theme: <code>DefaultTheme, BrightTheme, RastaTheme, ColorOnBlackTheme, BlackAndWhite, HTMLTheme, LatexTheme</code>，设置完后立即生效。</p>
+<p>各颜色演示：<br><img src="/images/protocol/813466-20200426115416118-1840109870.gif"></p>
+<p>其他定制见<code>conf.prompt</code>。</p>
+<h1 id="基础使用"><a href="#基础使用" class="headerlink" title="基础使用"></a>基础使用</h1><h2 id="构造数据包"><a href="#构造数据包" class="headerlink" title="构造数据包"></a>构造数据包</h2><p>使用IP()创建一个默认的数据包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = IP()  //创建一个IP对象</span><br><span class="line">&gt;&gt;&gt; a </span><br><span class="line">&lt;IP  |&gt;</span><br><span class="line">&gt;&gt;&gt; a.dst = &quot;192.168.1.110&quot;  //设置该对象的目标地址为192.168.1.110</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">&lt;IP  dst=192.168.1.110 |&gt;   </span><br><span class="line">&gt;&gt;&gt; a.summary()       //查看概要信息</span><br><span class="line">&#x27;192.168.127.161 &gt; 192.168.1.110 ip&#x27;</span><br><span class="line">&gt;&gt;&gt; ls(a)      //查看该对象的参数</span><br><span class="line">version    : BitField (4 bits)                   = 4               (4)</span><br><span class="line">ihl        : BitField (4 bits)                   = None            (None)</span><br><span class="line">tos        : XByteField                          = 0               (0)</span><br><span class="line">len        : ShortField                          = None            (None)</span><br><span class="line">id         : ShortField                          = 1               (1)</span><br><span class="line">flags      : FlagsField (3 bits)                 = &lt;Flag 0 ()&gt;     (&lt;Flag 0 ()&gt;)</span><br><span class="line">frag       : BitField (13 bits)                  = 0               (0)</span><br><span class="line">ttl        : ByteField                           = 64              (64)</span><br><span class="line">proto      : ByteEnumField                       = 0               (0)</span><br><span class="line">chksum     : XShortField                         = None            (None)</span><br><span class="line">src        : SourceIPField                       = &#x27;192.168.127.161&#x27; (None)</span><br><span class="line">dst        : DestIPField                         = &#x27;192.168.1.110&#x27; (None)</span><br><span class="line">options    : PacketListField                     = []              ([])</span><br><span class="line">&gt;&gt;&gt; a.show()  //查看数据包信息</span><br><span class="line">###[ IP ]###</span><br><span class="line">  version   = 4</span><br><span class="line">  ihl       = None</span><br><span class="line">  tos       = 0x0</span><br><span class="line">  len       = None</span><br><span class="line">  id        = 1</span><br><span class="line">  flags     =</span><br><span class="line">  frag      = 0</span><br><span class="line">  ttl       = 64</span><br><span class="line">  proto     = ip</span><br><span class="line">  chksum    = None</span><br><span class="line">  src       = 192.168.127.161</span><br><span class="line">  dst       = 192.168.1.110</span><br><span class="line">  \options   \</span><br><span class="line">&gt;&gt;&gt; hexdump(a)     //查看数据包的字节信息</span><br><span class="line">0000  45 00 00 14 00 01 00 00 40 00 78 89 C0 A8 7F A1  E.......@.x.....</span><br><span class="line">0010  C0 A8 01 6E                                      ...n</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看IP数据包可以有哪些参数"><a href="#查看IP数据包可以有哪些参数" class="headerlink" title="查看IP数据包可以有哪些参数"></a>查看IP数据包可以有哪些参数</h2><ul>
+<li>ls(IP())</li>
+<li>ls(TCP())</li>
+</ul>
+<p>TCP&#x2F;IP 数据传输流程</p>
+<p><img src="/images/protocol/813466-20200426154309897-314347052.png"></p>
+<p>客户端在应用层发出一个 HTTP 请求-&gt;<br>为了方便传输，在传输层 (TCP 协议) 把从应用层处收到的数据 (HTTP 请求报文) 进行分割，并在各个报文上打上标记序号及端口号后转发给网络层。<br>在网络层 (IP 协议)，增加作为通信目的地的 MAC 地址后转发给数据链路层。这样，发送给服务端的请求就准备齐全了。<br>当服务端在链路层接收到数据时，按序往上层发送，一直到应用层。当传输到应用层时，才算真正的接收到由客户端发送过来的请求。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a class="link"   target="_blank" rel="noopener" href="https://scapy.net/" >官网<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://scapy.readthedocs.io/en/latest/installation.html" >文档<i class="fas fa-external-link-alt"></i></a></p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">网络数据包处理Scapy</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Whisper</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2020-05-02 00:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2020/05/02/无线与网络/网络数据包处理Scapy/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2020/05/11/%E7%BB%BC%E5%90%88%E6%8A%80%E6%9C%AF/docker%E6%90%AD%E5%BB%BA%E7%A6%85%E9%81%93/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">docker搭建禅道</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2020/02/16/%E6%B5%8B%E8%AF%95/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/%E5%85%8D%E8%B4%B9%E7%9A%84%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E5%88%97%E8%A1%A8/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">免费的测试用例管理工具列表</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows%E4%BD%BF%E7%94%A8"><span class="nav-text">Windows使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E5%88%B6%E7%BB%88%E7%AB%AF"><span class="nav-text">定制终端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8"><span class="nav-text">基础使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%95%B0%E6%8D%AE%E5%8C%85"><span class="nav-text">构造数据包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8BIP%E6%95%B0%E6%8D%AE%E5%8C%85%E5%8F%AF%E4%BB%A5%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8F%82%E6%95%B0"><span class="nav-text">查看IP数据包可以有哪些参数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-text">参考</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2015</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Whisper</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>
