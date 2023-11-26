@@ -9,7 +9,7 @@
     
     <title>
         
-            PPPoE |
+            jmeter脚本常用命令 |
         
         Whisper&#39;s blog
     </title>
@@ -180,7 +180,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">PPPoE</span>
+                <span class="title-hover-animation">jmeter脚本常用命令</span>
             </div>
 
             
@@ -202,8 +202,8 @@
         
             <i class="fas fa-edit"></i>&nbsp;
         
-        <span class="pc">2019-10-02 11:00:12</span>
-        <span class="mobile">2019-10-02 11:00</span>
+        <span class="pc">2021-10-21 22:19:23</span>
+        <span class="mobile">2021-10-21 22:19</span>
     </span>
     
     
@@ -212,7 +212,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/%E6%97%A0%E7%BA%BF%E4%B8%8E%E7%BD%91%E7%BB%9C/">无线与网络</a>&nbsp;
+                        <a href="/categories/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/">性能测试</a>&nbsp;
                     </li>
                 
             </ul>
@@ -234,135 +234,21 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <p>Point-to-Point Protocol Over Ethernet协议，以太网上的点对点协议，是将点对点协议（PPP）封装在以太网（Ethernet）框架中的一种网络隧道协议。</p>
-<blockquote>
-<p>可以使用ros 软路由在虚拟机中搭建PPPoE服务器</p>
-</blockquote>
-<p>PPPOE发现阶段和会话阶段。<br>打开wireshark，选择要目标网卡-&gt;设置路由器的上网方式PPPoE，设置账号密码。接下来抓包分析协议：</p>
-<h1 id="发现阶段"><a href="#发现阶段" class="headerlink" title="发现阶段"></a>发现阶段</h1><p>该阶段目标：客户端和服务器确认彼此的Mac地址，建立PPPoE的Session_ID</p>
-<p>发现阶段主要四个过程：PADI，PADO，PADR，PADS：</p>
-<img src="../../images/protocol/813466-20200331123159035-385989221.png" style="zoom:50%;" />
+                <h1 id="命令参数"><a href="#命令参数" class="headerlink" title="命令参数"></a>命令参数</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-n 非GUI模式，命令行模式（表示在非GUI模式下运行）</span><br><span class="line">-t 测试文件， 要运行的jmeter测试脚本文件（一般使用绝对路径）</span><br><span class="line">-l 结果文件，记录结果的文件</span><br><span class="line">-h 获取jmeter帮助信息</span><br><span class="line">-r 远程执行，启动远程服务器（non-gui模式下启动remote-hosts配置的所有远程代理机）</span><br><span class="line">-R 远程执行,（non-gui模式下启动指定的机器(IP:PORT)作为代理机）</span><br><span class="line">-e 设置测试完成后生成测试报表</span><br><span class="line">-o 指定测试报表生成的文件夹，文件夹必须为空/不存在</span><br><span class="line">-H 代理主机（设置jmeter使用的代理主机）</span><br><span class="line">-P 代理端口（设置jmeter使用的代理端口）</span><br><span class="line">-X 退出（non-gui模式下测试结束时退出）</span><br></pre></td></tr></table></figure>
+
+<h1 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h1><p>1）单机执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmeter -n -t xxx.jmx  -l report.jtl</span><br></pre></td></tr></table></figure>
+
+<p>2）远程执行-所有执行机执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmeter -n -t xxx.jmx  -r -l report.jtl</span><br></pre></td></tr></table></figure>
+
+<p>3）远程执行-指定执行机执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmeter -n -t xxx.jmx  -R 192.168.xxx.xx1, 192.168.xxx.xx2  -l report.jtl</span><br></pre></td></tr></table></figure>
+
+<h1 id="生成报告"><a href="#生成报告" class="headerlink" title="生成报告"></a>生成报告</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmeter -g report.jtl -o .\report</span><br></pre></td></tr></table></figure>
 
 
 
-<p>wireshark抓包查看发现阶段：</p>
-<img src="../../images/protocol/813466-20200331123221703-2085525572.png" style="zoom:50%;" />
-
-<div align="center"><img src="" width=400px></div>
-
-<h2 id="PADI"><a href="#PADI" class="headerlink" title="PADI"></a>PADI</h2><p>发送广播PADI报文，请求建立链接。</p>
-<img src="../../images/protocol/813466-20200331123233893-1188579102.png" style="zoom:50%;" />
-
-
-
-<p>如果服务器端配置了service name，服务器端配置的service name和PADI报文中的service name相同则进行下一步交互，否则交互终止。</p>
-<h2 id="PADO"><a href="#PADO" class="headerlink" title="PADO"></a>PADO</h2><p>服务器对请求给出响应。</p>
-<img src="../../images/protocol/813466-20200331123254222-977593761.png" style="zoom:50%;" />
-
-<div align="center"><img src="" width=600px></div>
-
-<h2 id="PADR"><a href="#PADR" class="headerlink" title="PADR"></a>PADR</h2><p>选择一个AC，发送PADR报文，请求与该服务器建立链接。</p>
-<img src="../../images/protocol/813466-20200331123300164-1414949268.png" style="zoom:50%;" />
-
-<div align="center"><img src="" width=600px></div>
-
-
-<h2 id="PADS"><a href="#PADS" class="headerlink" title="PADS"></a>PADS</h2><p>目标服务器创建Seesion Id，单播给该客户端作为响应。发现阶段完成。</p>
-<img src="../../images/protocol/813466-20200331123311753-2018521173.png" style="zoom:50%;" />
-
-<div align="center"><img src="" width=600px></div>
-
-
-
-<h1 id="会话阶段"><a href="#会话阶段" class="headerlink" title="会话阶段"></a>会话阶段</h1><h2 id="协商阶段"><a href="#协商阶段" class="headerlink" title="协商阶段"></a>协商阶段</h2><p>客户端和服务器互相发送LCP Request以确认发送的最大传输单元，认证方式等，协商的内容写在option字段中，会话阶段的SESSION ID必须是发现阶段分配的ID。</p>
-<p>协商阶段的报文分为以下几种：</p>
-<ol>
-<li>链路发现：确定唯一链路的相关信息如：Configure-Request、Configure-Ack、Configure-Nak和Configure-Reject报文</li>
-<li>链路维护：管理调试链路，如：Code-Reject、Protocol-Reject、Echo-Request、Echo-Reply、Discard-Request报文</li>
-<li>链路终止：断开链路，如：Terminate-Request和Terminate-Reply报文</li>
-</ol>
-<h3 id="链路配置"><a href="#链路配置" class="headerlink" title="链路配置"></a>链路配置</h3><p>服务器-&gt;客户端: Configuration Request 认证方式</p>
-<img src="../../images/protocol/813466-20200331123319688-2146924466.png" style="zoom:50%;" />
-
-<div align="center"><img src="" width=600px></div>
-
-
-<p>客户端-&gt;服务器：Configuration Request 最大传输单元</p>
-<img src="https://img2020.cnblogs.com/blog/813466/202003/813466-20200331123331718-98879994.png" style="zoom: 50%;" />
-
-
-<p>服务器-&gt;客户端：Configuration Ack 最大传输单元</p>
-<img src="https://img2020.cnblogs.com/blog/813466/202003/813466-20200331123337999-1564355750.png" style="zoom: 50%;" />
-
-
-
-<p>服务器-&gt;客户端: Configuration Request 认证方式</p>
-<img src="../../images/protocol/813466-20200331123347113-1010177418.png" style="zoom:50%;" />
-
-<div align="center"><img src="" width=600px></div>
-
-<p>客户端-&gt;服务器：Configuration Ack 认证方式</p>
-<img src="../../images/protocol/813466-20200331123354852-1027659601.png" style="zoom:50%;" />
-
-<div align="center"><img src="" width=600px></div>
-
-
-
-
-<p>认证方式有4种:</p>
-<ol>
-<li>PAP</li>
-<li>CHAP</li>
-<li>MS-CHAP</li>
-<li>MS-CHAP2</li>
-</ol>
-<blockquote>
-<p>上面协商的为 MS-CHAP-2</p>
-</blockquote>
-<p>响应报文有以下几种：</p>
-<ol>
-<li>Configuration ACK: Configuration Request协商通过</li>
-<li>Configuration NAK: 支持Configuration Requst的option，协商未通过，响应携带期望的内容</li>
-<li>Configuration Reject: 不支持Configuration Request协商的option，协商未通过，响应携带不支持的option</li>
-</ol>
-<blockquote>
-<p>以上只演示了ACK报文</p>
-</blockquote>
-<h2 id="认证阶段"><a href="#认证阶段" class="headerlink" title="认证阶段"></a>认证阶段</h2><p>chap认证</p>
-<p>wireshark查看</p>
-<p>challenge:</p>
-<img src="../../images/protocol/813466-20200331123429623-1693825737.png" style="zoom:50%;" />
-
-
-<p>response:</p>
-<img src="../../images/protocol/813466-20200331123435473-1759865141.png" style="zoom:50%;" />
-
-
-
-<p>success:</p>
-<img src="../../images/protocol/813466-20200331123442511-558801532.png" style="zoom:50%;" />
-
-
-<h3 id="NCP协商阶段（IPCP协议）"><a href="#NCP协商阶段（IPCP协议）" class="headerlink" title="NCP协商阶段（IPCP协议）"></a>NCP协商阶段（IPCP协议）</h3><p>包括动态分配IP,DNS功能，也会进行多次协商，如果不同意就会出现NAK或者Reject报文。</p>
-<p>过程：</p>
-<img src="../../images/protocol/813466-20200331123459791-2012002996.png" style="zoom:50%;" />
-
-<div align="center"><img src="" width=300px></div>
-
-
-<p>客户端-&gt;服务器ACK确认ip</p>
-<p>最后服务器-&gt;客户端ACK确认了分配的IP 和 DNS，网关等：</p>
-<img src="../../images/protocol/813466-20200331123530199-1593442233.png" style="zoom: 50%;" />
-
-
-
-<h3 id="链路-会话-维护-Session-Keep-alive"><a href="#链路-会话-维护-Session-Keep-alive" class="headerlink" title="链路(会话)维护 Session Keep-alive"></a>链路(会话)维护 Session Keep-alive</h3><p>客户端发送Echo Request进行PPPoE心跳保活，若3次未得到服务器的响应，则客户端主动释放地址。发LCP Echo Request 的时候，Magic Number字段要和之前的Configure Request使用的Configure Request一致。</p>
-<p>客户端-&gt;服务器：Echo Request</p>
-<img src="../../images/protocol/813466-20200331123544842-1759528855.png" style="zoom:50%;" />
-
-
-<p>服务端-&gt;客户端：Echo Reply</p>
-<h2 id="会话结束（Session-Termination）"><a href="#会话结束（Session-Termination）" class="headerlink" title="会话结束（Session Termination）"></a>会话结束（Session Termination）</h2><p>发送PADT(PPPOE Active Discovery Terminate)请求和响应。</p>
 
             </div>
 
@@ -372,16 +258,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content">PPPoE</span>
+            <span class="type">本文标题</span>：<span class="content">jmeter脚本常用命令</span>
         </li>
         <li class="post-author">
             <span class="type">本文作者</span>：<span class="content">Whisper</span>
         </li>
         <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2019-10-02 11:00:12</span>
+            <span class="type">创建时间</span>：<span class="content">2021-10-21 22:19:23</span>
         </li>
         <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2019/10/02/无线与网络/PPPoE/</span>
+            <span class="type">本文链接</span>：<span class="content">2021/10/21/测试/性能测试/jmeter脚本常用命令/</span>
         </li>
         <li class="post-license">
             <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
@@ -403,13 +289,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2020/01/02/%E6%97%A0%E7%BA%BF%E4%B8%8E%E7%BD%91%E7%BB%9C/DHCP/"
+                               href="/2021/12/25/%E7%88%AC%E8%99%AB/html2text%E4%BF%AE%E6%94%B9%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">DHCP</span>
+                                <span class="post-nav-title-item">html2text修改图片存储</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             </a>
@@ -419,10 +305,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2019/06/04/python/Mac%E5%AE%89%E8%A3%85python3%E7%8E%AF%E5%A2%83/"
+                               href="/2021/02/09/%E7%88%AC%E8%99%AB/%E7%88%AC%E5%8F%96%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0%E5%AD%98%E4%B8%BAmarkdown/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Mac安装python3环境</span>
+                                <span class="post-nav-title-item">爬取技术文本存为markdown</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -441,7 +327,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%91%E7%8E%B0%E9%98%B6%E6%AE%B5"><span class="nav-text">发现阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PADI"><span class="nav-text">PADI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PADO"><span class="nav-text">PADO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PADR"><span class="nav-text">PADR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PADS"><span class="nav-text">PADS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E9%98%B6%E6%AE%B5"><span class="nav-text">会话阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8F%E5%95%86%E9%98%B6%E6%AE%B5"><span class="nav-text">协商阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E8%B7%AF%E9%85%8D%E7%BD%AE"><span class="nav-text">链路配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A4%E8%AF%81%E9%98%B6%E6%AE%B5"><span class="nav-text">认证阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NCP%E5%8D%8F%E5%95%86%E9%98%B6%E6%AE%B5%EF%BC%88IPCP%E5%8D%8F%E8%AE%AE%EF%BC%89"><span class="nav-text">NCP协商阶段（IPCP协议）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E8%B7%AF-%E4%BC%9A%E8%AF%9D-%E7%BB%B4%E6%8A%A4-Session-Keep-alive"><span class="nav-text">链路(会话)维护 Session Keep-alive</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%9A%E8%AF%9D%E7%BB%93%E6%9D%9F%EF%BC%88Session-Termination%EF%BC%89"><span class="nav-text">会话结束（Session Termination）</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E5%8F%82%E6%95%B0"><span class="nav-text">命令参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="nav-text">执行脚本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E6%8A%A5%E5%91%8A"><span class="nav-text">生成报告</span></a></li></ol>
     </div>
 </div>
 
