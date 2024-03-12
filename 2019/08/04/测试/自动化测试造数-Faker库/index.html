@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="山中何事？松花酿酒，春水煎茶。">
+    <meta name="author" content="Whisper">
+    
+    <title>
+        
+            自动化测试造数-Faker库 |
+        
+        但知行好事，莫要问前程
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/tx.jpeg">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"lucia.xicp.cn","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#8FBC94","logo":"/images/tx.jpeg","favicon":"/images/tx.jpeg","avatar":"/images/tx.jpeg","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"header_transparent":false,"background_img":"/images/bg2.jpg","description":"自动化测试、性能、前后端、测试平台、安全、爬虫等","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":true}},"local_search":{"enable":true,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":"pnFXCwy6hixUgDahewOq2sls-gzGzoHsz","appkey":"b5mv8NuY7ayVPdjnyiK5fLw7","server_urls":null,"placeholder":"闲聊"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":true,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/images/tx.jpeg">
+                </a>
+            
+            <a class="logo-title" href="/">
+               但知行好事，莫要问前程
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">自动化测试造数-Faker库</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/tx.jpeg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Whisper</span>
+                            
+                                <span class="author-label">Lv4</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fas fa-edit"></i>&nbsp;
+        
+        <span class="pc">2019-08-04 10:00:00</span>
+        <span class="mobile">2019-08-04 10:00</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">第三方库</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install Faker</span><br></pre></td></tr></table></figure>
+
+<h1 id="初始化一个Faker的实例"><a href="#初始化一个Faker的实例" class="headerlink" title="初始化一个Faker的实例"></a>初始化一个Faker的实例</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> faker <span class="keyword">import</span> Faker  </span><br><span class="line">f = Faker()</span><br></pre></td></tr></table></figure>
+
+<h1 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> faker <span class="keyword">import</span> Faker</span><br><span class="line">fake = Faker()</span><br><span class="line"></span><br><span class="line">fake.name() <span class="comment"># 随机一个名称</span></span><br><span class="line">fake.address() <span class="comment"># 随机一个地址</span></span><br><span class="line">fake.text() <span class="comment"># 随机一段文本</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h1><p>语言默认为en-US，可以通过在conftest中的<code>faker_session_locale</code>修改。<br>可以设置多个语言，给每个语言一个权重，随机时会根据权重返回某种语言。如果传入的参数名不存在，则会默认使用英文。</p>
+<p>常用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">zh_CN</span><br><span class="line">en_US</span><br><span class="line">en_GB</span><br><span class="line">ko_KR</span><br></pre></td></tr></table></figure>
+<p>还有一些其他的，不过一般我们测试的时候只用中文英文，如果有多语言测试的需求可以写一个配置文件，每次更换语言或者随机语言来测试。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">faker = Faker(<span class="string">&quot;zh_CN&quot;</span>)  </span><br></pre></td></tr></table></figure>
+
+<h1 id="说明模拟数据"><a href="#说明模拟数据" class="headerlink" title="说明模拟数据"></a>说明模拟数据</h1><p>facker的mock data都是通过providers package提供的。需要使用哪个providers就需要导入对应的包。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> faker <span class="keyword">import</span> Faker</span><br><span class="line"><span class="keyword">from</span> faker.providers <span class="keyword">import</span> internet</span><br><span class="line"></span><br><span class="line">fake = Faker()</span><br><span class="line">fake.add_provider(internet)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(fake.ipv4_private())</span><br></pre></td></tr></table></figure>
+
+<h1 id="常用模拟数据"><a href="#常用模拟数据" class="headerlink" title="常用模拟数据"></a>常用模拟数据</h1><p>接下来依次说明不同providers的作用。f为Faker实例。</p>
+<h2 id="人名"><a href="#人名" class="headerlink" title="人名"></a>人名</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">f.name() <span class="comment"># &#x27;董建国&#x27;</span></span><br><span class="line">f.name_female() <span class="comment"># &#x27;李凤兰&#x27;</span></span><br><span class="line">f.name_male() <span class="comment"># &#x27;敖磊&#x27;</span></span><br><span class="line">f.first_name() <span class="comment"># &#x27;兰英&#x27;</span></span><br><span class="line">f.first_name_female() <span class="comment"># &#x27;畅&#x27;</span></span><br><span class="line">f.first_name_male() <span class="comment"># &#x27;岩&#x27;</span></span><br><span class="line">f.last_name() <span class="comment"># &#x27;王&#x27;</span></span><br><span class="line">f.last_name_female() <span class="comment"># &#x27;夏&#x27;</span></span><br><span class="line">f.last_name_male() <span class="comment"># &#x27;苏&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="电话号码"><a href="#电话号码" class="headerlink" title="电话号码"></a>电话号码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f.country_calling_code() <span class="comment"># &#x27;+974&#x27;</span></span><br><span class="line">f.phone_number() <span class="comment"># &#x27;18787000124&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="身份识别码"><a href="#身份识别码" class="headerlink" title="身份识别码"></a>身份识别码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f.ssn() <span class="comment"># &#x27;430822194611241875&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="日期时间"><a href="#日期时间" class="headerlink" title="日期时间"></a>日期时间</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">f.date() <span class="comment"># &#x27;1972-09-04&#x27;</span></span><br><span class="line">f.day_of_week() <span class="comment"># &#x27;星期三&#x27;</span></span><br><span class="line">f.iso8601() <span class="comment"># &#x27;1978-07-03T23:04:33&#x27;</span></span><br><span class="line">f.month() <span class="comment"># &#x27;01&#x27;</span></span><br><span class="line">f.month_name() <span class="comment"># &#x27;二月&#x27;</span></span><br><span class="line">f.day_of_month() <span class="comment"># &#x27;29&#x27;</span></span><br><span class="line">f.time() <span class="comment"># &#x27;12:33:14&#x27;</span></span><br><span class="line">f.timezone() <span class="comment"># &#x27;Europe/Sofia&#x27;</span></span><br><span class="line">f.year() <span class="comment"># &#x27;2017&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="地址"><a href="#地址" class="headerlink" title="地址"></a>地址</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">f.address() <span class="comment"># &#x27;四川省莉县花溪韩路d座 448665&#x27;</span></span><br><span class="line">f.city() <span class="comment"># &#x27;哈尔滨市&#x27;</span></span><br><span class="line">f.city_suffix()  </span><br><span class="line">f.current_country() <span class="comment"># &quot;People&#x27;s Republic of China&quot;</span></span><br><span class="line">f.current_country_code() <span class="comment"># &#x27;CN&#x27;</span></span><br><span class="line">f.country()  <span class="comment"># &#x27;土耳其&#x27;</span></span><br><span class="line">f.country_code() <span class="comment"># &#x27;PY&#x27; 国家的简称码</span></span><br><span class="line">f.postcode() <span class="comment"># &#x27;143563&#x27;</span></span><br><span class="line">f.street_address() <span class="comment"># &#x27;兰州街u座&#x27;</span></span><br><span class="line">f.district()</span><br><span class="line">f.street_name() <span class="comment"># &#x27;南京街&#x27;</span></span><br><span class="line">f.street_suffix() <span class="comment"># &#x27;街&#x27; 类似于什么什么‘路’，什么什么‘街’</span></span><br></pre></td></tr></table></figure>
+<h2 id="地理位置"><a href="#地理位置" class="headerlink" title="地理位置"></a>地理位置</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f.coordinate() <span class="comment"># &#x27;158.520628&#x27;</span></span><br><span class="line">f.latitude() <span class="comment"># &#x27;23.364486&#x27;</span></span><br><span class="line">f.longitude() <span class="comment"># &#x27;-42.130718&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="银行"><a href="#银行" class="headerlink" title="银行"></a>银行</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f.bban() <span class="comment"># &#x27;VPEA89639484229785&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="信用卡"><a href="#信用卡" class="headerlink" title="信用卡"></a>信用卡</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f.credit_card_full() <span class="comment"># &#x27;VISA 16 digit\n颖 单\n4138084319004488 09/28\nCVC: 687\n&#x27; 全部信息</span></span><br><span class="line">f.credit_card_expire() <span class="comment"># &#x27;02/25&#x27; 过期信息</span></span><br><span class="line">f.credit_card_number() <span class="comment"># &#x27;4488057676892097&#x27;</span></span><br><span class="line">f.credit_card_provider() <span class="comment"># &#x27;VISA 19 digit&#x27; 信用卡提供商名称</span></span><br><span class="line">f.credit_card_security_code() <span class="comment"># &#x27;017&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f.color() <span class="comment"># &#x27;#d3cb2a&#x27;</span></span><br><span class="line">f.color(hue=<span class="string">&#x27;red&#x27;</span>) <span class="comment"># 红色系</span></span><br><span class="line">f.color_name() <span class="comment"># &#x27;Olive&#x27;</span></span><br><span class="line">f.rgb_color() <span class="comment"># &#x27;53,18,40&#x27;</span></span><br><span class="line">f.rgb_css_color()  <span class="comment">#&#x27;rgb(231,139,110)&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="企业"><a href="#企业" class="headerlink" title="企业"></a>企业</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">f.bs() <span class="comment"># &#x27;deploy B2B niches&#x27;</span></span><br><span class="line">f.company() <span class="comment"># &#x27;戴硕电子科技有限公司&#x27;</span></span><br><span class="line">f.company_suffix() <span class="comment"># &#x27;信息有限公司&#x27; 公司的后缀</span></span><br><span class="line">f.company_email() <span class="comment"># &#x27;eyu@zeng.cn&#x27;</span></span><br><span class="line">f.company_prefix() <span class="comment"># &#x27;东方峻景&#x27; 公司前缀</span></span><br><span class="line">f.job() <span class="comment"># &#x27;电信网络工程师&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f.random_int() <span class="comment"># 6063</span></span><br><span class="line">f.random_digit() <span class="comment"># 9</span></span><br><span class="line">f.random_number() <span class="comment"># 1847439 </span></span><br></pre></td></tr></table></figure>
+<h2 id="货币"><a href="#货币" class="headerlink" title="货币"></a>货币</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f.cryptocurrency_name() <span class="comment"># &#x27;SwiftCoin&#x27;</span></span><br><span class="line">f.currency_code() <span class="comment"># &#x27;KYD&#x27;</span></span><br><span class="line">f.pricetag() <span class="comment"># &#x27;$5,453.54&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="文本段落"><a href="#文本段落" class="headerlink" title="文本段落"></a>文本段落</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">f.text() <span class="comment"># &#x27;上海感觉觉得根据的话是一.空间标题联系是否为了之间.\n学习各种那个如何然后然后.所以人民生产操作学校他的国内.责任技术今年价格起来的话世界.\n帮助功能加入电话参加以及投资.主要不是说明质量一点.报告其他关于.\n一般过程没有是一一些研究积分.对于必须精华活动不会.\n虽然文章是否城市作者.网络当前的话只是也是.\n在线内容没有主题情况详细.商品主要解决电话直接经营.实现用户游戏网站那个手机直接.&#x27;</span></span><br><span class="line">f.texts() <span class="comment"># [&#x27;一起电影能够信息因此学生.资料一定显示欢迎.必须美国状态之间认为语言教育图片.程序最大具有在线可是如此系统.\n发生来源企业根据.已经在线包括国际国家.电子工作基本大学.原因销售根据时候.\n由于活动不同各种.\n阅读基本得到一起.孩子部门那些日期简介女人.有限业务浏览.\n以下个人或者市场论坛作品语言.软件因为资料阅读世界工作.\n今天方法决定之间网上当然全国.&#x27;, &#x27;以后我们不是投资作为还有管理学生.可以美国查看.\n国内这么点击没有点击.电脑大家方法或者成为.规定显示电话搜索规定一起有关.你们帖子各种可以看到.\n应用只是资源是一作为男人发表.已经更新所以不断组织具有他的方面.下载软件发生如此.\n需要比较开发以上数据.广告参加需要组织.\n只有一直学习位置.国内之间发布建设以上首页进行.软件进行大家作者如何可以.&#x27;, &#x27;得到东西网上到了都是搜索.时间完全发布.\n来自产品使用你们.网上空间更新地方.您的责任希望全部.\n起来任何操作价格女人.环境责任浏览提高查看.\n然后论坛成功女人社会销售能够.\n出来而且出现在线什么文化工程.合作单位直接作品方面方法用户.\n看到那么一定虽然回复信息知道.处理浏览所以当前其实应该.\n成为公司的话生产孩子.而且发现浏览大学主题希望.关于发表帮助那么.&#x27;]</span></span><br><span class="line">f.word() <span class="comment"># &#x27;那些&#x27;</span></span><br><span class="line">f.words() <span class="comment"># [&#x27;之间&#x27;, &#x27;人民&#x27;, &#x27;时候&#x27;]</span></span><br><span class="line">f.paragraph() <span class="comment"># &#x27;电脑人员进入完成.经营支持国内.一个工具选择时间需要政府标准.&#x27;</span></span><br><span class="line">f.paragraphs() <span class="comment"># [&#x27;电脑今天你们信息不会环境.时间那些阅读为了关于.所以全国手机原因专业其中.&#x27;, &#x27;一下服务名称你的一下怎么首页.在线时间法律.&#x27;, &#x27;更新查看法律那些这样非常.设计大家还有环境相关世界.&#x27;]</span></span><br><span class="line">f.sentence() <span class="comment"># &#x27;发生以上提高得到电脑.&#x27;</span></span><br><span class="line">f.sentences() <span class="comment"># [&#x27;记者环境相关登录.&#x27;, &#x27;部分位置显示详细.&#x27;, &#x27;地方生活东西其实.&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="各种格式的文本"><a href="#各种格式的文本" class="headerlink" title="各种格式的文本"></a>各种格式的文本</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f.boolean() <span class="comment"># True</span></span><br><span class="line">f.md5()</span><br><span class="line">f.password(length=<span class="number">8</span>) <span class="comment"># &#x27;h!8dFM3p&#x27;</span></span><br><span class="line">f.uuid4() <span class="comment"># &#x27;08cd77ef-a0ea-4645-a346-1590f3e429b2&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f.chrome() <span class="comment"># &#x27;Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10_7_8) AppleWebKit/533.0 (KHTML, like Gecko) Chrome/34.0.865.0 Safari/533.0&#x27;</span></span><br><span class="line">f.firefox() <span class="comment"># &#x27;Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_2 like Mac OS X) AppleWebKit/532.1 (KHTML, like Gecko) FxiOS/18.6l2208.0 Mobile/99Q085 Safari/532.1&#x27;</span></span><br><span class="line">f.user_agent() <span class="comment"># &#x27;Mozilla/5.0 (compatible; MSIE 5.0; Windows NT 4.0; Trident/4.0)&#x27; 这种不制定浏览器类型，随机返回一种</span></span><br><span class="line">f.android_platform_token() <span class="comment"># &#x27;Android 1.6&#x27;</span></span><br><span class="line">f.ios_platform_token() <span class="comment"># &#x27;iPhone; CPU iPhone OS 12_4_8 like Mac OS X&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="网络信息"><a href="#网络信息" class="headerlink" title="网络信息"></a>网络信息</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">f.domain_name() <span class="comment"># &#x27;gu.net&#x27; 域名名称</span></span><br><span class="line">f.free_email() <span class="comment"># &#x27;xia55@gmail.com&#x27;</span></span><br><span class="line">f.hostname() <span class="comment"># &#x27;desktop-50.naming.cn&#x27; 全域名</span></span><br><span class="line">f.http_method() <span class="comment"># &#x27;PUT&#x27; http方法</span></span><br><span class="line">f.image_url() <span class="comment"># &#x27;https://placekitten.com/246/563&#x27;</span></span><br><span class="line">f.image() <span class="comment"># 是图片的二进制码</span></span><br><span class="line">f.ipv4_private() <span class="comment"># &#x27;172.20.65.243&#x27; </span></span><br><span class="line">f.ipv4_public() <span class="comment"># &#x27;118.117.90.82&#x27;</span></span><br><span class="line">f.ipv6() <span class="comment"># &#x27;e4d1:2d57:d354:a25e:2803:a6d5:f0d4:e919&#x27;</span></span><br><span class="line">f.mac_address() <span class="comment"># &#x27;ed:48:9e:1d:38:c3&#x27; 随机一个mac地址</span></span><br><span class="line">f.port_number() <span class="comment"># 227 随机端口号</span></span><br><span class="line">f.url() <span class="comment"># &#x27;https://www.guiying.cn/&#x27;</span></span><br><span class="line">f.user_name() <span class="comment"># &#x27;yanyan&#x27; 随机用户名</span></span><br></pre></td></tr></table></figure>
+<h2 id="emoji"><a href="#emoji" class="headerlink" title="emoji"></a>emoji</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f.emoji() <span class="comment"># &#x27;👮🏽&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="结合Pytest-fixtures使用"><a href="#结合Pytest-fixtures使用" class="headerlink" title="结合Pytest fixtures使用"></a>结合Pytest fixtures使用</h1><p>用pytest做测试时，可以结合faker使用更方便。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">test_faker</span>(<span class="params">faker</span>):</span><br><span class="line">    <span class="keyword">assert</span> <span class="built_in">isinstance</span>(faker.name(), <span class="built_in">str</span>)</span><br></pre></td></tr></table></figure>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">自动化测试造数-Faker库</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Whisper</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2019-08-04 10:00:00</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2019/08/04/测试/自动化测试造数-Faker库/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/">#第三方库</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2020/01/12/%E6%B5%8B%E8%AF%95/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/github%20issue%E5%B7%A5%E5%85%B7pygithub/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">github issue工具pygithub</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2019/06/04/python/Mac%E5%AE%89%E8%A3%85python3%E7%8E%AF%E5%A2%83/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Mac安装python3环境</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E4%B8%AAFaker%E7%9A%84%E5%AE%9E%E4%BE%8B"><span class="nav-text">初始化一个Faker的实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="nav-text">简单使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E8%AF%AD%E8%A8%80"><span class="nav-text">多语言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E%E6%A8%A1%E6%8B%9F%E6%95%B0%E6%8D%AE"><span class="nav-text">说明模拟数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%A8%A1%E6%8B%9F%E6%95%B0%E6%8D%AE"><span class="nav-text">常用模拟数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%BA%E5%90%8D"><span class="nav-text">人名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81"><span class="nav-text">电话号码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BA%AB%E4%BB%BD%E8%AF%86%E5%88%AB%E7%A0%81"><span class="nav-text">身份识别码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4"><span class="nav-text">日期时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%B0%E5%9D%80"><span class="nav-text">地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE"><span class="nav-text">地理位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%B6%E8%A1%8C"><span class="nav-text">银行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E7%94%A8%E5%8D%A1"><span class="nav-text">信用卡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%9C%E8%89%B2"><span class="nav-text">颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%81%E4%B8%9A"><span class="nav-text">企业</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%97"><span class="nav-text">数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A7%E5%B8%81"><span class="nav-text">货币</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E6%AE%B5%E8%90%BD"><span class="nav-text">文本段落</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%84%E7%A7%8D%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%96%87%E6%9C%AC"><span class="nav-text">各种格式的文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%90%86"><span class="nav-text">代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF"><span class="nav-text">网络信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#emoji"><span class="nav-text">emoji</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E5%90%88Pytest-fixtures%E4%BD%BF%E7%94%A8"><span class="nav-text">结合Pytest fixtures使用</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2015</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Whisper</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+
+</body>
+</html>

@@ -9,7 +9,7 @@
     
     <title>
         
-            element-ui修改自定义主题 |
+            标签: docker |
         
         但知行好事，莫要问前程
     </title>
@@ -91,7 +91,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class=""
+                            <a class="active"
                                href="/tags"
                             >
                                 标签
@@ -146,7 +146,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class=""
+                    <a class="active"
                        href="/tags">标签</a>
                 </li>
             
@@ -176,150 +176,42 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="post-page-container">
-        <div class="article-content-container">
-
-            <div class="article-title">
-                <span class="title-hover-animation">element-ui修改自定义主题</span>
-            </div>
-
+    <div class="tag-container">
+        <div class="tag-name"><i class="fas fa-tag"></i>&nbsp;docker
+        </div>
+        <div class="tag-post-list">
             
-                <div class="article-header">
-                    <div class="avatar">
-                        <img src="/images/tx.jpeg">
-                    </div>
-                    <div class="info">
-                        <div class="author">
-                            <span class="name">Whisper</span>
-                            
-                                <span class="author-label">Lv4</span>
-                            
-                        </div>
-                        <div class="meta-info">
-                            
-<div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        
-            <i class="fas fa-edit"></i>&nbsp;
-        
-        <span class="pc">2022-10-26 15:12:52</span>
-        <span class="mobile">2022-10-26 15:12</span>
-    </span>
+<div class="archive-list-container">
     
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
+        <section class="archive-item">
+            <div class="archive-item-header">
+                <span class="archive-year">2021</span>
+                <span class="archive-year-post-count">[1]</span>
+            </div>
+            <ul class="article-list">
                 
-                    <li>
-                        <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>&nbsp;
+                    <li class="article-item">
+                        <a class="article-title"
+                           href="/2021/09/12/%E7%BB%BC%E5%90%88%E6%8A%80%E6%9C%AF/docker%E6%90%AD%E5%BB%BAjforum/"
+                        >docker搭建jforum</a>
+                        <span class="article-date">09-12</span>
                     </li>
                 
             </ul>
-        </span>
-    
-    
-
-    
-    
-    
+        </section>
     
 </div>
 
-                        </div>
-                    </div>
-                </div>
-            
-
-            <div class="article-content keep-markdown-body">
-                
-
-                <p>official document：<a class="link"   target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/component/custom-theme" >https://element.eleme.cn/#/zh-CN/component/custom-theme<i class="fas fa-external-link-alt"></i></a></p>
-<h1 id="change-color"><a href="#change-color" class="headerlink" title="change color"></a>change color</h1><ol>
-<li>open：<a class="link"   target="_blank" rel="noopener" href="https://elementui.github.io/theme-chalk-preview/" >theme editor online<i class="fas fa-external-link-alt"></i></a> button，modify color ，click 【change theme color】button  upper left corner，chose one color you favorite</li>
-<li>click【download theme 】button，the folder structure like this:</li>
-</ol>
-<p><img src="/images/web/813466-20200323111419276-1456360699.png"></p>
-<ol start="3">
-<li>in project root create a new folder，put the folder you just downloaded in it.</li>
-</ol>
-<p><img src="/images/web/813466-20200323111429985-982312509.png"></p>
-<ol start="4">
-<li><p>open main.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import &#x27;element-ui/lib/theme-chalk/index.css&#x27;</span><br><span class="line">import ElementUI from &#x27;element-ui&#x27;</span><br><span class="line">import Vue from &#x27;vue&#x27;</span><br><span class="line"></span><br><span class="line">Vue.use(ElementUI)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>modify import part</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import &#x27;../theme/index.css&#x27;  //theme path just downloaded</span><br><span class="line">import ElementUI from &#x27;element-ui&#x27;</span><br><span class="line">import Vue from &#x27;vue&#x27;</span><br><span class="line"></span><br><span class="line">Vue.use(ElementUI)</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-            </div>
-
-            
-                <div class="post-copyright-info">
-                    
-<div class="article-copyright-info-container">
-    <ul class="copyright-info-content">
-        <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content">element-ui修改自定义主题</span>
-        </li>
-        <li class="post-author">
-            <span class="type">本文作者</span>：<span class="content">Whisper</span>
-        </li>
-        <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2022-10-26 15:12:52</span>
-        </li>
-        <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2022/10/26/前端/element-ui修改自定义主题/</span>
-        </li>
-        <li class="post-license">
-            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
-        </li>
-    </ul>
-    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
-        <i class="fa-solid fa-copy"></i>
-    </div>
-</div>
-
-                </div>
-            
-
-            
-
-            
-                <div class="article-nav">
-                    
-                    
-                        <div class="article-next">
-                            <a class="next"
-                               rel="next"
-                               href="/2022/06/04/python/pip%E5%AE%89%E8%A3%85github%E5%8C%85%E7%A1%AE%E5%AE%9Aegg%E5%90%8D%E7%A7%B0/"
-                            >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">pip安装github包确定egg名称</span>
-                                <span class="post-nav-item">下一篇</span>
-                            </span>
-                                <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                            </a>
-                        </div>
-                    
-                </div>
-            
-
-            
         </div>
-
-        
-            <div class="toc-content-container">
-                <div class="post-toc-wrap">
-    <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#change-color"><span class="nav-text">change color</span></a></li></ol>
     </div>
+
+    <div class="tag-paginator">
+        <div class="paginator">
+    
+
+    
 </div>
 
-            </div>
-        
     </div>
 </div>
 
@@ -356,23 +248,6 @@
         </div>
     </div>
 
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
-
-        <!-- go comment -->
-        
-    </ul>
-</div>
-
-        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -480,20 +355,6 @@
 
 
 <div class="post-scripts">
-    
-        
-<script src="/js/post-helper.js"></script>
-
-        
-            
-<script src="/js/libs/anime.min.js"></script>
-
-        
-        
-            
-<script src="/js/toc.js"></script>
-
-        
     
 </div>
 

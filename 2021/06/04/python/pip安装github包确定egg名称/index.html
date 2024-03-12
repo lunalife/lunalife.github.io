@@ -9,7 +9,7 @@
     
     <title>
         
-            爬虫tips |
+            pip安装github包确定egg名称 |
         
         但知行好事，莫要问前程
     </title>
@@ -180,7 +180,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">爬虫tips</span>
+                <span class="title-hover-animation">pip安装github包确定egg名称</span>
             </div>
 
             
@@ -202,21 +202,10 @@
         
             <i class="fas fa-edit"></i>&nbsp;
         
-        <span class="pc">2022-01-23 12:00:30</span>
-        <span class="mobile">2022-01-23 12:00</span>
+        <span class="pc">2021-06-04 14:30:12</span>
+        <span class="mobile">2021-06-04 14:30</span>
     </span>
     
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -224,7 +213,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a>&nbsp;
+                        <a href="/tags/python/">python</a>&nbsp;
                     </li>
                 
             </ul>
@@ -245,15 +234,13 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <h1 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h1><h2 id="乱码问题"><a href="#乱码问题" class="headerlink" title="乱码问题"></a>乱码问题</h2><p>解决1</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = requests.get(url, headers=headers)</span><br></pre></td></tr></table></figure>
-<p>读取时读取r.content</p>
-<p>解决2<br>查看原网页中head标签中的charset设置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bf = bs4.BeautifulSoup(html,&#x27;html.parser&#x27;,from_encoding=&quot;xxx&quot;)</span><br></pre></td></tr></table></figure>
-<h2 id="requests-get返回空内容"><a href="#requests-get返回空内容" class="headerlink" title="requests.get返回空内容"></a>requests.get返回空内容</h2><p>构造headers传入get</p>
-<h1 id="base64编码存图片"><a href="#base64编码存图片" class="headerlink" title="base64编码存图片"></a>base64编码存图片</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8 import os, base64 </span></span><br><span class="line">img_str = <span class="string">&#x27;xxxxxxxxxxxx&#x27;</span> </span><br><span class="line">img_data = base64.b64decode(img_str)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果是&quot;data:image/jpg:base64,&quot;，保存以png格式</span></span><br><span class="line"><span class="comment"># 如果是&quot;data:image/png:base64,&quot;保存以jpg格式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;test.png&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:       </span><br><span class="line">    f.write(img_data) </span><br></pre></td></tr></table></figure>
+                <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipenv install git+https://github.com/bluejeans/api-rest-meetings.git@pip-repo#egg=BlueJeansMeetingsRestApi</span><br></pre></td></tr></table></figure>
 
 
+<h1 id="setup-py"><a href="#setup-py" class="headerlink" title="setup.py"></a>setup.py</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> setuptools <span class="keyword">import</span> setup, find_packages </span><br><span class="line"></span><br><span class="line">NAME = <span class="string">&quot;BlueJeansMeetingsRestApi&quot;</span></span><br><span class="line">VERSION = <span class="string">&quot;1.0.4402212019&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># To install the library, run the following</span></span><br><span class="line"><span class="comment"># python setup.py install</span></span><br><span class="line"><span class="comment"># prerequisite: setuptools</span></span><br><span class="line"><span class="comment"># http://pypi.python.org/pypi/setuptools</span></span><br><span class="line"></span><br><span class="line">REQUIRES = [<span class="string">&quot;urllib3 &gt;= 1.15&quot;</span>, <span class="string">&quot;six &gt;= 1.10&quot;</span>, <span class="string">&quot;certifi&quot;</span>, <span class="string">&quot;python-dateutil&quot;</span>]</span><br><span class="line"></span><br><span class="line">setup(</span><br><span class="line">    name=NAME,</span><br><span class="line">    version=VERSION,</span><br><span class="line">    description=<span class="string">&quot;BlueJeans Meetings REST API&quot;</span>,</span><br><span class="line">    author_email=<span class="string">&quot;glenn@bluejeans.com&quot;</span>,</span><br><span class="line">    url=<span class="string">&quot;&quot;</span>,</span><br><span class="line">    keywords=[<span class="string">&quot;Swagger&quot;</span>, <span class="string">&quot;BlueJeans Meetings REST API&quot;</span>],</span><br><span class="line">    install_requires=REQUIRES,</span><br><span class="line">    packages=find_packages(),</span><br><span class="line">    include_package_data=<span class="literal">True</span>,</span><br><span class="line">    long_description=<span class="string">&quot;xxx&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>egg: set中name名称</p>
+<p>官方Dpc：<a class="link"   target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/distutils/setupscript.html" >https://docs.python.org/zh-cn/3/distutils/setupscript.html<i class="fas fa-external-link-alt"></i></a></p>
 
             </div>
 
@@ -263,16 +250,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content">爬虫tips</span>
+            <span class="type">本文标题</span>：<span class="content">pip安装github包确定egg名称</span>
         </li>
         <li class="post-author">
             <span class="type">本文作者</span>：<span class="content">Whisper</span>
         </li>
         <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2022-01-23 12:00:30</span>
+            <span class="type">创建时间</span>：<span class="content">2021-06-04 14:30:12</span>
         </li>
         <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2022/01/23/爬虫/爬虫tips/</span>
+            <span class="type">本文链接</span>：<span class="content">2021/06/04/python/pip安装github包确定egg名称/</span>
         </li>
         <li class="post-license">
             <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
@@ -290,7 +277,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/%E7%88%AC%E8%99%AB/">#爬虫</a>&nbsp;
+                            <a href="/tags/python/">#python</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -302,13 +289,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2022/06/04/python/pip%E5%AE%89%E8%A3%85github%E5%8C%85%E7%A1%AE%E5%AE%9Aegg%E5%90%8D%E7%A7%B0/"
+                               href="/2021/08/26/%E5%89%8D%E7%AB%AF/element-ui%E4%BF%AE%E6%94%B9%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">pip安装github包确定egg名称</span>
+                                <span class="post-nav-title-item">element-ui修改自定义主题</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             </a>
@@ -318,10 +305,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2021/12/25/%E7%88%AC%E8%99%AB/html2text%E4%BF%AE%E6%94%B9%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8/"
+                               href="/2021/02/09/%E7%88%AC%E8%99%AB/%E7%88%AC%E5%8F%96%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0%E5%AD%98%E4%B8%BAmarkdown/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">html2text修改图片存储</span>
+                                <span class="post-nav-title-item">爬取技术文本存为markdown</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -340,7 +327,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93"><span class="nav-text">问题总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98"><span class="nav-text">乱码问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#requests-get%E8%BF%94%E5%9B%9E%E7%A9%BA%E5%86%85%E5%AE%B9"><span class="nav-text">requests.get返回空内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#base64%E7%BC%96%E7%A0%81%E5%AD%98%E5%9B%BE%E7%89%87"><span class="nav-text">base64编码存图片</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#setup-py"><span class="nav-text">setup.py</span></a></li></ol>
     </div>
 </div>
 

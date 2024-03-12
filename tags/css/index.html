@@ -9,7 +9,7 @@
     
     <title>
         
-            pip安装github包确定egg名称 |
+            标签: css |
         
         但知行好事，莫要问前程
     </title>
@@ -91,7 +91,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class=""
+                            <a class="active"
                                href="/tags"
                             >
                                 标签
@@ -146,7 +146,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class=""
+                    <a class="active"
                        href="/tags">标签</a>
                 </li>
             
@@ -176,163 +176,42 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="post-page-container">
-        <div class="article-content-container">
-
-            <div class="article-title">
-                <span class="title-hover-animation">pip安装github包确定egg名称</span>
-            </div>
-
+    <div class="tag-container">
+        <div class="tag-name"><i class="fas fa-tag"></i>&nbsp;css
+        </div>
+        <div class="tag-post-list">
             
-                <div class="article-header">
-                    <div class="avatar">
-                        <img src="/images/tx.jpeg">
-                    </div>
-                    <div class="info">
-                        <div class="author">
-                            <span class="name">Whisper</span>
-                            
-                                <span class="author-label">Lv4</span>
-                            
-                        </div>
-                        <div class="meta-info">
-                            
-<div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        
-            <i class="fas fa-edit"></i>&nbsp;
-        
-        <span class="pc">2022-06-04 14:30:12</span>
-        <span class="mobile">2022-06-04 14:30</span>
-    </span>
+<div class="archive-list-container">
     
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
+        <section class="archive-item">
+            <div class="archive-item-header">
+                <span class="archive-year">2018</span>
+                <span class="archive-year-post-count">[1]</span>
+            </div>
+            <ul class="article-list">
                 
-                    <li>
-                        <a href="/tags/python/">python</a>&nbsp;
+                    <li class="article-item">
+                        <a class="article-title"
+                           href="/2018/12/15/%E5%89%8D%E7%AB%AF/css%E6%80%BB%E7%BB%93/"
+                        >css总结</a>
+                        <span class="article-date">12-15</span>
                     </li>
                 
             </ul>
-        </span>
-    
-
-    
-    
-    
+        </section>
     
 </div>
 
-                        </div>
-                    </div>
-                </div>
-            
-
-            <div class="article-content keep-markdown-body">
-                
-
-                <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipenv install git+https://github.com/bluejeans/api-rest-meetings.git@pip-repo#egg=BlueJeansMeetingsRestApi</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="setup-py"><a href="#setup-py" class="headerlink" title="setup.py"></a>setup.py</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> setuptools <span class="keyword">import</span> setup, find_packages </span><br><span class="line"></span><br><span class="line">NAME = <span class="string">&quot;BlueJeansMeetingsRestApi&quot;</span></span><br><span class="line">VERSION = <span class="string">&quot;1.0.4402212019&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># To install the library, run the following</span></span><br><span class="line"><span class="comment"># python setup.py install</span></span><br><span class="line"><span class="comment"># prerequisite: setuptools</span></span><br><span class="line"><span class="comment"># http://pypi.python.org/pypi/setuptools</span></span><br><span class="line"></span><br><span class="line">REQUIRES = [<span class="string">&quot;urllib3 &gt;= 1.15&quot;</span>, <span class="string">&quot;six &gt;= 1.10&quot;</span>, <span class="string">&quot;certifi&quot;</span>, <span class="string">&quot;python-dateutil&quot;</span>]</span><br><span class="line"></span><br><span class="line">setup(</span><br><span class="line">    name=NAME,</span><br><span class="line">    version=VERSION,</span><br><span class="line">    description=<span class="string">&quot;BlueJeans Meetings REST API&quot;</span>,</span><br><span class="line">    author_email=<span class="string">&quot;glenn@bluejeans.com&quot;</span>,</span><br><span class="line">    url=<span class="string">&quot;&quot;</span>,</span><br><span class="line">    keywords=[<span class="string">&quot;Swagger&quot;</span>, <span class="string">&quot;BlueJeans Meetings REST API&quot;</span>],</span><br><span class="line">    install_requires=REQUIRES,</span><br><span class="line">    packages=find_packages(),</span><br><span class="line">    include_package_data=<span class="literal">True</span>,</span><br><span class="line">    long_description=<span class="string">&quot;xxx&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>egg: set中name名称</p>
-<p>官方Dpc：<a class="link"   target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/distutils/setupscript.html" >https://docs.python.org/zh-cn/3/distutils/setupscript.html<i class="fas fa-external-link-alt"></i></a></p>
-
-            </div>
-
-            
-                <div class="post-copyright-info">
-                    
-<div class="article-copyright-info-container">
-    <ul class="copyright-info-content">
-        <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content">pip安装github包确定egg名称</span>
-        </li>
-        <li class="post-author">
-            <span class="type">本文作者</span>：<span class="content">Whisper</span>
-        </li>
-        <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2022-06-04 14:30:12</span>
-        </li>
-        <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2022/06/04/python/pip安装github包确定egg名称/</span>
-        </li>
-        <li class="post-license">
-            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
-        </li>
-    </ul>
-    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
-        <i class="fa-solid fa-copy"></i>
-    </div>
-</div>
-
-                </div>
-            
-
-            
-                <ul class="post-tags-box">
-                    
-                        <li class="tag-item">
-                            <a href="/tags/python/">#python</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            
-
-            
-                <div class="article-nav">
-                    
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2022/10/26/%E5%89%8D%E7%AB%AF/element-ui%E4%BF%AE%E6%94%B9%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">element-ui修改自定义主题</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                            </a>
-                        </div>
-                    
-                    
-                        <div class="article-next">
-                            <a class="next"
-                               rel="next"
-                               href="/2022/01/23/%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%ABtips/"
-                            >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">爬虫tips</span>
-                                <span class="post-nav-item">下一篇</span>
-                            </span>
-                                <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                            </a>
-                        </div>
-                    
-                </div>
-            
-
-            
         </div>
-
-        
-            <div class="toc-content-container">
-                <div class="post-toc-wrap">
-    <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#setup-py"><span class="nav-text">setup.py</span></a></li></ol>
     </div>
+
+    <div class="tag-paginator">
+        <div class="paginator">
+    
+
+    
 </div>
 
-            </div>
-        
     </div>
 </div>
 
@@ -369,23 +248,6 @@
         </div>
     </div>
 
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="tools-item flex-center toggle-show-toc">
-                <i class="fas fa-list"></i>
-            </li>
-        
-
-        <!-- go comment -->
-        
-    </ul>
-</div>
-
-        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -493,20 +355,6 @@
 
 
 <div class="post-scripts">
-    
-        
-<script src="/js/post-helper.js"></script>
-
-        
-            
-<script src="/js/libs/anime.min.js"></script>
-
-        
-        
-            
-<script src="/js/toc.js"></script>
-
-        
     
 </div>
 
