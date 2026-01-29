@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="山中何事？松花酿酒，春水煎茶。">
+    <meta name="author" content="Whisper">
+    
+    <title>
+        
+            从测试感悟到的项目管理 |
+        
+        但知行好事，莫要问前程
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/tx.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/keep-theme-custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"lucia.xicp.cn","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#10ac84","title":"但知行好事，莫要问前程","author":"Whisper","avatar":"/images/tx.jpg","logo":"/images/tx.jpg","favicon":"/images/tx.jpg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg5.jpg","background_img_dark":"/images/bg5.jpg","description":"自动化测试、性能、前后端、测试平台、安全、爬虫等","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":false},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2016,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/keep-theme-custom.css"],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/tx.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               但知行好事，莫要问前程
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        从测试感悟到的项目管理
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/tx.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Whisper</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2018-10-20 08:09:03</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Thu Jan 29 2026 13:31:50 GMT+0800">2026-01-29 13:31:50</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>&emsp;&emsp;一个项目从孕育到生产的这个完整的流程，需要各个部门密切顺滑的配合才能够像齿轮一样的环环扣紧不脱轨。在这中间，所有的技术人员都像一颗螺丝钉，如果自己的任务钉对了位置，方能愉快的做好自己的事情，如果中间的沟通协作等流程出现了问题，各个螺丝钉都会感觉不自在以致痛苦。人肉的项目管理流程毕竟不能够带来严谨的工作态度，测试作为生产线上的最后一个环节，如果前面的生产环节出了一点小问题，堆积到测试这里就会绕城一大坨大问题。</p>
+<p>&emsp;&emsp;经历多了坑的流程，我一直对流程化、自动化的东西很是在意，常常思考作为测试怎样在没有完善流程的项目中，贡献自己的力量。</p>
+<p>&emsp;&emsp;项目不仅应该根据定好的时间点，完整的分割每天的任务量，且有责任监督文档的完整性，可读性，可测性，了解从研发到UI到测试的工作流程与提高工作效率的方法，来调整文档的规范性。</p>
+<p>&emsp;&emsp;从研发内部的协作自动化，部门直接的协作也很有兴趣，核心就在于换位思考，了解各个职位的详细工作流程，以及在各个岗位最希望应用的工作模式。</p>
+<h1 id="利其器"><a href="#利其器" class="headerlink" title="利其器"></a>利其器</h1><p>&emsp;&emsp;个人认为不管是多大的团队，都应该善于使用各种管理工具，有的认为团队小高效率就应该任何事情口头立马沟通交流，但是长久以往，所有的信息没有载体记录，流程会因为节点的不清晰而变得混乱，后期总结归纳起来也特别不方便。不管团队大小，总有适合当前场景的管理工具，重量级到轻量级的工具，找到适合自己的就好。</p>
+<p>版本管理：SVN，Git</p>
+<p>项目管理工具：</p>
+<ol>
+<li>Excel</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://products.office.com/en-us/project/project-and-portfolio-management-software" >Microsoft Project<i class="fas fa-external-link-alt"></i></a></li>
+<li>dotProject</li>
+<li>redmine: bug 需求也可以管理</li>
+<li>Jira</li>
+<li>Teambition</li>
+<li>Worktile</li>
+<li>trello</li>
+</ol>
+<p>不仅要用项目管理工具提升效率，还有很多其它常用工具能大大提高平时的工作效率，参见：<a class="link"   target="_blank" rel="noopener" href="https://www.processon.com/view/link/5b51585ee4b040415ae46da8" >it常用工具思维导图<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="风险评估"><a href="#风险评估" class="headerlink" title="风险评估"></a>风险评估</h1><p>&emsp;&emsp;测试需要评估bug的风险，对公司的受益影响，对用户的使用体验影响，对版本开发迭代的影响。项目同样也需要评估风险，对需求的改动，版本的更新，资源的调动使用都是需要对相互的影响作出评估。</p>
+<h1 id="沟通"><a href="#沟通" class="headerlink" title="沟通"></a>沟通</h1><p>&emsp;&emsp;测试需要针对功能问题，流程，效率，和各个部门进行沟通，项目需要对资源等进行沟通调配。</p>
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>&emsp;&emsp;需求的产生，并不是随意的有一个idea，或是抄抄别人家的产品画个图就可以了。从测试角度，版本每次测的兼容性，如果产品阶段考虑的好，向前的兼容性就能很好，功能性兼容，接口层面的兼容都应该考虑到，而不是每次强制用户升级造成用户体验极差。</p>
+<p>&emsp;&emsp;从用户角度实用性，易用性也同样需要兼顾，所以需求的考虑是一个复杂的过程，具有前瞻性，多往后考虑1到3个版本，不是就当前版本简单的列个功能性列表，开头没开好，整个团队会为了填需求的大坑疲倦不堪。而这些坑，往往从每一个环节堆积，到最后的测试环节就会凸显的特别明显，作为测试对这种坑真的太深恶痛绝。</p>
+<p>&emsp;&emsp;所以想要团队效率高，轻松过渡，需求环节太重要了。设计者的技术知识实在不可缺，但有的公司并不在意这个点，浪费了时间和金钱，导致资金链断裂，公司岌岌可危还以为是市场没有做好。</p>
+<h1 id="任务分割"><a href="#任务分割" class="headerlink" title="任务分割"></a>任务分割</h1><p>&emsp;&emsp;任务分割及其的重要，将任务分割到每小时，每天，这样任务的可控性也会大大提高。对于项目的管理，风险的预期都是很有益处的。测试对于细节要求会很高，希望控制到每个细节，这样会比较有安全感。对于项目管理来说，也有相同的效果，对细小的东西掌控的很好，在合起来的时候，才能做到心理有底。对后续开展工作能得心应手。</p>
+<h1 id="项目规划点"><a href="#项目规划点" class="headerlink" title="项目规划点"></a>项目规划点</h1><ul>
+<li>error code：考虑到兼容性，从立项开始前端特定的error code按照规定的提示，没有规定的error code，按照服务端返回的error message提示。</li>
+<li>版本记录：每个版本应该记录除了需求意外的变化，比如APP具体修改的功能细节，服务端接口的变化，如果有特殊的接口还应该详细记录，包括其兼容性的影响。</li>
+</ul>
+<blockquote>
+<p>大而谈之，不如切分为每日任务，踏实做之.</p>
+</blockquote>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2018/12/10/python/%E9%80%9A%E8%BF%87api%E6%93%8D%E4%BD%9Cgoogle_sheets/"
+                                   title="通过API操作google sheets"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">通过API操作google sheets</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2018/10/18/python/%E6%9B%B4%E5%A5%BD%E7%9A%84%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC/"
+                                   title="更好的代码风格"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">更好的代码风格</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%A9%E5%85%B6%E5%99%A8"><span class="nav-text">利其器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0"><span class="nav-text">风险评估</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B2%9F%E9%80%9A"><span class="nav-text">沟通</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E6%B1%82"><span class="nav-text">需求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E5%88%86%E5%89%B2"><span class="nav-text">任务分割</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E8%A7%84%E5%88%92%E7%82%B9"><span class="nav-text">项目规划点</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2016</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Whisper</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%A9%E5%85%B6%E5%99%A8"><span class="nav-text">利其器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0"><span class="nav-text">风险评估</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B2%9F%E9%80%9A"><span class="nav-text">沟通</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E6%B1%82"><span class="nav-text">需求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E5%88%86%E5%89%B2"><span class="nav-text">任务分割</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E8%A7%84%E5%88%92%E7%82%B9"><span class="nav-text">项目规划点</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+
+</body>
+</html>

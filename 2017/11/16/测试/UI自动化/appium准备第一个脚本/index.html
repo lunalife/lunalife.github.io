@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="山中何事？松花酿酒，春水煎茶。">
+    <meta name="author" content="Whisper">
+    
+    <title>
+        
+            appium准备第一个脚本 |
+        
+        但知行好事，莫要问前程
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/tx.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/keep-theme-custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"lucia.xicp.cn","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#10ac84","title":"但知行好事，莫要问前程","author":"Whisper","avatar":"/images/tx.jpg","logo":"/images/tx.jpg","favicon":"/images/tx.jpg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg5.jpg","background_img_dark":"/images/bg5.jpg","description":"自动化测试、性能、前后端、测试平台、安全、爬虫等","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":false},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2016,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/keep-theme-custom.css"],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/tx.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               但知行好事，莫要问前程
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        appium准备第一个脚本
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/tx.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Whisper</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2017-11-16 11:09:03</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Thu Jan 29 2026 13:31:50 GMT+0800">2026-01-29 13:31:50</span>
+                </span>
+            
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/appium/">appium</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="设置DesiredCapabilities"><a href="#设置DesiredCapabilities" class="headerlink" title="设置DesiredCapabilities"></a>设置DesiredCapabilities</h1><p>存在于以下库中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.openqa.selenium.remote.DesiredCapabilities</span><br></pre></td></tr></table></figure>
+<p>Desired Capabilities告诉Appium Server需要哪种ssession。以hash键值对的形式存储。</p>
+<h2 id="常用-android和ios共有的"><a href="#常用-android和ios共有的" class="headerlink" title="常用(android和ios共有的)"></a><a class="link"   target="_blank" rel="noopener" href="https://nishantverma.gitbooks.io/appium-for-android/understanding_desired_capabilities.html" >常用<i class="fas fa-external-link-alt"></i></a>(android和ios共有的)</h2><table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Description</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>automationName</td>
+<td>Which automation engine to use</td>
+<td>Appium (default) or Selendroid</td>
+</tr>
+<tr>
+<td>platformName</td>
+<td>Which mobile OS platform to use</td>
+<td>iOS, Android, or FirefoxOS</td>
+</tr>
+<tr>
+<td>platformVersion</td>
+<td>Mobile OS version</td>
+<td>e.g., 7.1, 4.4</td>
+</tr>
+<tr>
+<td>deviceName</td>
+<td>The kind of mobile device or emulator to use</td>
+<td>iPhone Simulator, iPad Simulator, iPhone Retina 4-inch, Android Emulator, Galaxy S4, etc…</td>
+</tr>
+</tbody></table>
+<h2 id="Android专用"><a href="#Android专用" class="headerlink" title="Android专用"></a><a class="link"   target="_blank" rel="noopener" href="https://nishantverma.gitbooks.io/appium-for-android/desired_capabilities_for_android.html" >Android专用<i class="fas fa-external-link-alt"></i></a></h2><table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Description</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>appActivity</td>
+<td>Activity name for the Android activity you want to launch from your package</td>
+<td>MainActivity, .Settings</td>
+</tr>
+<tr>
+<td>appPackage</td>
+<td>Java package of the Android app you want to run</td>
+<td>com.example.android.myApp, com.android.settings</td>
+</tr>
+<tr>
+<td>appWaitActivity</td>
+<td>Activity name for the Android activity you want to wait for</td>
+<td>SplashActivity</td>
+</tr>
+<tr>
+<td>appWaitPackage</td>
+<td>Java package of the Android app you want to wait for</td>
+<td>com.example.android.myApp, com.android.settings</td>
+</tr>
+</tbody></table>
+<h1 id="获取Android手机型号与设备信息"><a href="#获取Android手机型号与设备信息" class="headerlink" title="获取Android手机型号与设备信息"></a>获取Android手机型号与设备信息</h1><ol>
+<li>在命令行中输入“adb shell”</li>
+<li>进入shell之后，再输入<code>cat /system/build.prop | grep &quot;product&quot;</code></li>
+</ol>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">shell@HS8916QC:/ $ cat /system/build.prop | grep &quot;product&quot;</span><br><span class="line">ro.product.model=Hisense I635T</span><br><span class="line">ro.product.brand=Hisense</span><br><span class="line">ro.product.name=I635T</span><br><span class="line">ro.product.device=HS8916QC</span><br><span class="line">ro.product.board=msm8916</span><br><span class="line">ro.product.cpu.abi=armeabi-v7a</span><br><span class="line">ro.product.cpu.abi2=armeabi</span><br><span class="line">ro.product.manufacturer=Hisense</span><br><span class="line">ro.product.locale.language=zh</span><br><span class="line">ro.product.locale.region=CN</span><br><span class="line"># ro.build.product is obsolete; use ro.product.device</span><br><span class="line">ro.build.product=I635T</span><br><span class="line">ro.hmct.product.fullname=Hisense I635T</span><br><span class="line">#add for product operator,this value is ct/cu/cmcc</span><br><span class="line">ro.hmct.product.operator=ct</span><br><span class="line">ro.hmct.smsregister.product=HS-Hisense I635T</span><br><span class="line">ro.hmct.product.ua=Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; HS-Hisense I635T</span><br><span class="line">Build/KTU84L)</span><br><span class="line">ro.hmct.product.ua.suffix=AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Mob</span><br><span class="line">ile Safari/537.36</span><br></pre></td></tr></table></figure>
+
+<p>型号：Hisense I635T</p>
+<p>查看具体的参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">getprop 查看机器的全部信息参数</span><br><span class="line">getprop ro.serialno 查看机器的SN号</span><br><span class="line">getprop ro.carrier 查看机器的CID号</span><br><span class="line">getprop ro.hardware 查看机器板子代号</span><br><span class="line">getprop ro.bootloader 查看SPL（Hboot）版本号</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="设备通过wifi链接PC"><a href="#设备通过wifi链接PC" class="headerlink" title="设备通过wifi链接PC"></a>设备通过wifi链接PC</h1><p><a target="_blank" rel="noopener" href="https://developer.android.com/studio/command-line/adb.html?hl=zh-cn#wireless"><br>官方教程</a><br>Appium有很多良好的特性,其中一个是通过wifi连接设备。<br>适用于多个设备连接一个server的情况。</p>
+<p>前提：<br>Android SDK应该安装在机器上。<br>应该安装Android SDK包。</p>
+<h2 id="验证设备已经属于调试模式"><a href="#验证设备已经属于调试模式" class="headerlink" title="验证设备已经属于调试模式"></a>验证设备已经属于调试模式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
+<h2 id="启动设备tcp-ip端口"><a href="#启动设备tcp-ip端口" class="headerlink" title="启动设备tcp&#x2F;ip端口"></a>启动设备tcp&#x2F;ip端口</h2><p>首先用USB连接你的Android设备，然后在终端运行命令，它可以启动设备的5555端口使其在网络上可以连接<br>在TCP&#x2F;IP模式下重启adb守护进程，然后监听5555端口（adb的默认端口）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb tcpip 5555</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看设备ip地址"><a href="#查看设备ip地址" class="headerlink" title="查看设备ip地址"></a>查看设备ip地址</h2><p>现在断开USB连接, 确保设备和你的电脑连接同一个无线网络</p>
+<p>查看手机ip，设置—wifi—你连接的wifi—IP地址</p>
+<h2 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h2><p>使用电脑上的adb服务连接设备上的IP地址（使用默认的5555端口）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb connect 10.70.108.70:5555</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试是否连接成功"><a href="#测试是否连接成功" class="headerlink" title="测试是否连接成功"></a>测试是否连接成功</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C:\Users&gt;adb devices</span><br><span class="line">List of devices attached</span><br><span class="line">10.70.108.70:5555 device</span><br></pre></td></tr></table></figure>
+
+<p>通过wifi连接的特别不稳定，还是usb的方便点。</p>
+<h1 id="找到apk的appPackage和appActivity"><a href="#找到apk的appPackage和appActivity" class="headerlink" title="找到apk的appPackage和appActivity"></a>找到apk的appPackage和appActivity</h1><h2 id="通过命令行"><a href="#通过命令行" class="headerlink" title="通过命令行"></a>通过命令行</h2><p>准备步骤：</p>
+<ol>
+<li>在设备上打开目标app</li>
+<li>保证设备连上了电脑</li>
+<li>Andoid SDK已经安装在系统上</li>
+</ol>
+<p>步骤1：打开命令行，输入<code>adb devices</code>查看设备是否连接<br>步骤2：输入<code>adb shell</code>进入与设备交互状态<br>步骤3：打开目标app如facebook输入以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dumpsys window windows | grep -E &#x27;mCurrentFocus|mFocusedApp&#x27;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mCurrentFocus=Window&#123;2d31b9ee u0 com.facebook.katana/com.facebook.katana.LoginActivity&#125;</span><br><span class="line">mFocusedApp=AppWindowToken&#123;370ebfde token=Token&#123;ad82319 ActivityRecord&#123;7067260 u0 com.facebook.katana/.LoginActivity t3624&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>appPackage是：com.facebook.katana<br>aapActivity是：com.facebook.katana.LoginActivity<br>第一行斜杠前后的那一串。</p>
+<blockquote>
+<p>注意：执行命令，要保证app没有锁屏，打开了目标app。</p>
+</blockquote>
+<p>退出交互模式输入：exit回车。</p>
+<p>其他方法：通过Appium client自动识别，或者，通过第三方识别设备信息的app如SnapDeal。</p>
+<h1 id="使用UIAutomatorviewer"><a href="#使用UIAutomatorviewer" class="headerlink" title="使用UIAutomatorviewer"></a>使用UIAutomatorviewer</h1><p>UIAutomatorviewer在Android sdk和tools文件夹下。用于查看布局层次结构。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uiautomatorviewer</span><br></pre></td></tr></table></figure>
+<p><img   src="/images/UIAutomatorFlipkartLogo.png" ></p>
+<h1 id="第一个appium测试脚本"><a href="#第一个appium测试脚本" class="headerlink" title="第一个appium测试脚本"></a>第一个appium测试脚本</h1><h2 id="运行appium"><a href="#运行appium" class="headerlink" title="运行appium"></a>运行appium</h2><p>打开cmd，输入命令<code>appium</code></p>
+<h2 id="连接手机"><a href="#连接手机" class="headerlink" title="连接手机"></a>连接手机</h2><p>查看是否连接上，cmd输入<code>adb devices</code>查看设备连接列表。</p>
+<h2 id="编写python测试脚本"><a href="#编写python测试脚本" class="headerlink" title="编写python测试脚本"></a>编写python测试脚本</h2><h3 id="1-安装python-client-appium库"><a href="#1-安装python-client-appium库" class="headerlink" title="1 安装python-client-appium库:"></a>1 安装python-client-appium库:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install Appium-Python-Client</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<h3 id="2-启动uiautomatorviewer"><a href="#2-启动uiautomatorviewer" class="headerlink" title="2 启动uiautomatorviewer"></a>2 启动uiautomatorviewer</h3><p>cmd输入命令<code>uiautomatorviewer</code>启动UI。</p>
+<p>UIAutomatorviewer和Android sdk打包在一起，在tools目录下。用于检查UI的层级关系，记以及视图与控件相关联的属性。可以查看到元素的查看element的package，属性和id。</p>
+<h3 id="3-编写python脚本"><a href="#3-编写python脚本" class="headerlink" title="3 编写python脚本"></a>3 编写python脚本</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> appium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment"># Returns abs path relative to this file and not cwd</span></span><br><span class="line">PATH = <span class="keyword">lambda</span> p: os.path.abspath(</span><br><span class="line">os.path.join(os.path.dirname(__file__), p)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">desired_caps = &#123;&#125;</span><br><span class="line">desired_caps[<span class="string">&#x27;platformName&#x27;</span>] = <span class="string">&#x27;Android&#x27;</span></span><br><span class="line">desired_caps[<span class="string">&#x27;platformVersion&#x27;</span>] = <span class="string">&#x27;4.4.4&#x27;</span></span><br><span class="line">desired_caps[<span class="string">&#x27;deviceName&#x27;</span>] = <span class="string">&#x27;Hisense I635T&#x27;</span></span><br><span class="line">desired_caps[<span class="string">&#x27;appPackage&#x27;</span>] = <span class="string">&#x27;io.appium.android.apis&#x27;</span></span><br><span class="line">desired_caps[<span class="string">&#x27;appActivity&#x27;</span>] = <span class="string">&#x27;io.appium.android.apis.ApiDemos&#x27;</span></span><br><span class="line">desired_caps[<span class="string">&#x27;app&#x27;</span>] = PATH(</span><br><span class="line"><span class="string">&#x27;./apps/ApiDemos.apk&#x27;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">driver = webdriver.Remote(<span class="string">&#x27;http://localhost:4723/wd/hub&#x27;</span>, desired_caps)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">arr = driver.find_element_by_accessibility_id(<span class="string">&quot;App&quot;</span>)</span><br><span class="line"><span class="keyword">assert</span> arr <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="遇到的错误"><a href="#遇到的错误" class="headerlink" title="遇到的错误"></a>遇到的错误</h3><p>错误 1： python运行报错：urllib2.URLError: &lt;urlopen error [Errno 10061] &gt;</p>
+<p>appium没有启动完全，启动要等一下运行py。</p>
+<p>错误2：未解决</p>
+<p>Telnet command got response: a[K[Dav[K[D[Davd[K[D[D[Davd [K[D[D[D[Davd n[K[D[D[D[D[Davd na[K[D[D[D[D[D[Davd nam[K[D[D[D[D[D[D[Davd name[K<br>错误3：<br>Original error: Activity used to start app doesn’t exist or cannot be launched! Make sure it exists and is a launchable activity</p>
+<p>appactivity写错了，去掉前面的包名称，试试。</p>
+<p>错误4：Original error: Permission to start activity。</p>
+<p>没有权限，解决方法是让开发在AndroidManifest.xml文件中将Activity设置成允许调用：Android:exported&#x3D;”true”。<br>再次运行，搞定。</p>
+<h2 id="测试模拟器"><a href="#测试模拟器" class="headerlink" title="测试模拟器"></a>测试模拟器</h2><p>以上步骤也可以在模拟器上面进行测试。步骤如下：</p>
+<p>进入Android安装目录，双击<code>AVD Manager.exe</code>启动。创建一个模拟器并start。</p>
+<p>错误：HAXM未安装，到SDK Manager中安装下，如果还是提示未安装，则到android sdk目录下的\extras\intel\Hardware_Accelerated_Execution_Manager双击下intelhaxm-android.exe进行安装。重新启动模拟器应该就OK了。</p>
+<p>Device Name填写的是模拟器的名称，启动模拟器,appium后，再启动Inspector就能Reflesh启动App，来进行操作。可是这存在一个问题：模拟器比较慢，而且多少和真机不一样，比如说模拟器不能调出手机键盘等；所以如果我们要做自动化测试的时候，最好还是用真机来运行app,然后进行定位。</p>
+<blockquote>
+<p>注：<br>能用真机，别用模拟器。模拟器慢的呀。</p>
+</blockquote>
+<h1 id="appium测试内嵌webview"><a href="#appium测试内嵌webview" class="headerlink" title="appium测试内嵌webview"></a>appium测试内嵌webview</h1><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/hybrid.md" >官文<i class="fas fa-external-link-alt"></i></a></p>
+<p>Appium 通过 Chromedriver 内建混合应用支持。Appium 也可以使用 Selendroid 做为 4.4 之前的设备对 webview 支持的背部引擎。（你需要在 desired capability 里指定 “device”: “selendroid”）。</p>
+<p>Appium的核心原则之一是你不应该改变你的应用程序来测试它。可以使用 Selenium 测试传统 web 应用的方法来测试混合 web 应用。这里会有一些技术性的复杂，Appium 需要知道你是想测试原生部分呢还是web部分。</p>
+<!--more-->
+
+<p>测试步骤：</p>
+<ol>
+<li>导航进入webview部分(可通过uiautomatorviewer找到对应的webview的名称)</li>
+<li>调用<code>GET session/:sessionId/contexts</code></li>
+<li>查看所有context：返回一个可以使用的contexts列表, 如 ‘NATIVE_APP’ or ‘WEBVIEW_1’</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 假设已经初始化了driver对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到webview</span></span><br><span class="line">webview = driver.contexts.last</span><br><span class="line">driver.switch_to.context(webview)</span><br><span class="line"></span><br><span class="line"><span class="comment"># do some webby stuff</span></span><br><span class="line">driver.find_element(:css, <span class="string">&quot;.green_button&quot;</span>).click</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换回native view</span></span><br><span class="line">driver.switch_to.context(driver.contexts.first)</span><br><span class="line"></span><br><span class="line"><span class="comment"># do more native testing if we want</span></span><br><span class="line"></span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="错误集锦"><a href="#错误集锦" class="headerlink" title="错误集锦"></a>错误集锦</h1><h2 id="手机跑过appium脚本后弹不出键盘"><a href="#手机跑过appium脚本后弹不出键盘" class="headerlink" title="手机跑过appium脚本后弹不出键盘"></a>手机跑过appium脚本后弹不出键盘</h2><p>跑appium脚本的时候，会自动安装一个appium输入法到手机上，而且设置为默认输入法。所以当在输入框手动输入文字的时候，弹不出平常用的搜狗键盘来。<br>解决办法就是，到手机设置→语言和输入法→默认输入法选择为搜狗输入法即可。</p>
+<h2 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">selenium.common.exceptions.WebDriverException: Message: A new session</span><br><span class="line">could not be created. Details: Problem getting session data for driver</span><br><span class="line">type AndroidDriver; does it implement &#x27;get driverData&#x27;?</span><br></pre></td></tr></table></figure>
+<!--more-->
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb.exe -P 5037 -s I635T shell getprop ro.build.version.release&#x27; exited with code 1&#123;&quot;stdout&quot;:&quot;&quot;,&quot;stderr&quot;:&quot;error: unknown host service\r\n&quot;,&quot;code&quot;:1&#125;</span><br></pre></td></tr></table></figure>
+<p>错误显示某个程序占了5037端口，根据端口号查找对应的进程号：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano | findstr 5037</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Administrator&gt;netstat -ano | findstr 5037</span><br><span class="line">TCP 127.0.0.1:5037 0.0.0.0:0 LISTENING 368</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50000 ESTABLISHED 368</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50031 ESTABLISHED 368</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50809 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50810 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50811 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50812 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50814 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50815 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50844 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50845 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50856 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50857 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50896 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50897 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50927 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50928 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50968 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50969 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50971 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50972 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50979 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50980 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50982 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50983 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50984 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:5037 127.0.0.1:50985 TIME_WAIT 0</span><br><span class="line">TCP 127.0.0.1:50000 127.0.0.1:5037 ESTABLISHED 148</span><br><span class="line">TCP 127.0.0.1:50031 127.0.0.1:5037 ESTABLISHED 148</span><br></pre></td></tr></table></figure>
+<p>发现 5037 端口被 PID(进程号)为 368 的进程占用。</p>
+<p>据进程号寻找进程名称：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist | findstr 368</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Administrator&gt;tasklist|findstr 368</span><br><span class="line">360MobileLoader.exe 368 Console 1 5,844 K</span><br></pre></td></tr></table></figure>
+<p>从任务管理器中查找该程序，手动杀死即可。<br>在任务管理器中找不到该程序,从命令行杀死该程序了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill -PID &lt;进程号&gt; -F //强制关闭某个进程</span><br></pre></td></tr></table></figure>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/appium/">appium</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2018/01/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Mac%E5%AE%89%E8%A3%85MySQL/"
+                                   title="Mac安装MySQL"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Mac安装MySQL</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2017/10/29/%E6%B5%8B%E8%AF%95/TestLink%E7%9B%B8%E5%85%B3/windows%E4%B8%8Btestlink%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"
+                                   title="windows下testlink环境搭建"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">windows下testlink环境搭建</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEDesiredCapabilities"><span class="nav-text">设置DesiredCapabilities</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8-android%E5%92%8Cios%E5%85%B1%E6%9C%89%E7%9A%84"><span class="nav-text">常用(android和ios共有的)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android%E4%B8%93%E7%94%A8"><span class="nav-text">Android专用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96Android%E6%89%8B%E6%9C%BA%E5%9E%8B%E5%8F%B7%E4%B8%8E%E8%AE%BE%E5%A4%87%E4%BF%A1%E6%81%AF"><span class="nav-text">获取Android手机型号与设备信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E9%80%9A%E8%BF%87wifi%E9%93%BE%E6%8E%A5PC"><span class="nav-text">设备通过wifi链接PC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E8%AE%BE%E5%A4%87%E5%B7%B2%E7%BB%8F%E5%B1%9E%E4%BA%8E%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F"><span class="nav-text">验证设备已经属于调试模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E8%AE%BE%E5%A4%87tcp-ip%E7%AB%AF%E5%8F%A3"><span class="nav-text">启动设备tcp&#x2F;ip端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%AE%BE%E5%A4%87ip%E5%9C%B0%E5%9D%80"><span class="nav-text">查看设备ip地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5"><span class="nav-text">连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%98%AF%E5%90%A6%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F"><span class="nav-text">测试是否连接成功</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%BE%E5%88%B0apk%E7%9A%84appPackage%E5%92%8CappActivity"><span class="nav-text">找到apk的appPackage和appActivity</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="nav-text">通过命令行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8UIAutomatorviewer"><span class="nav-text">使用UIAutomatorviewer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AAappium%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC"><span class="nav-text">第一个appium测试脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8Cappium"><span class="nav-text">运行appium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%89%8B%E6%9C%BA"><span class="nav-text">连接手机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99python%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC"><span class="nav-text">编写python测试脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85python-client-appium%E5%BA%93"><span class="nav-text">1 安装python-client-appium库:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%90%AF%E5%8A%A8uiautomatorviewer"><span class="nav-text">2 启动uiautomatorviewer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%BC%96%E5%86%99python%E8%84%9A%E6%9C%AC"><span class="nav-text">3 编写python脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF"><span class="nav-text">遇到的错误</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%A8%A1%E6%8B%9F%E5%99%A8"><span class="nav-text">测试模拟器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#appium%E6%B5%8B%E8%AF%95%E5%86%85%E5%B5%8Cwebview"><span class="nav-text">appium测试内嵌webview</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6"><span class="nav-text">错误集锦</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%8B%E6%9C%BA%E8%B7%91%E8%BF%87appium%E8%84%9A%E6%9C%AC%E5%90%8E%E5%BC%B9%E4%B8%8D%E5%87%BA%E9%94%AE%E7%9B%98"><span class="nav-text">手机跑过appium脚本后弹不出键盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%982"><span class="nav-text">问题2</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2016</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Whisper</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEDesiredCapabilities"><span class="nav-text">设置DesiredCapabilities</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8-android%E5%92%8Cios%E5%85%B1%E6%9C%89%E7%9A%84"><span class="nav-text">常用(android和ios共有的)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android%E4%B8%93%E7%94%A8"><span class="nav-text">Android专用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96Android%E6%89%8B%E6%9C%BA%E5%9E%8B%E5%8F%B7%E4%B8%8E%E8%AE%BE%E5%A4%87%E4%BF%A1%E6%81%AF"><span class="nav-text">获取Android手机型号与设备信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E9%80%9A%E8%BF%87wifi%E9%93%BE%E6%8E%A5PC"><span class="nav-text">设备通过wifi链接PC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E8%AE%BE%E5%A4%87%E5%B7%B2%E7%BB%8F%E5%B1%9E%E4%BA%8E%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F"><span class="nav-text">验证设备已经属于调试模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E8%AE%BE%E5%A4%87tcp-ip%E7%AB%AF%E5%8F%A3"><span class="nav-text">启动设备tcp&#x2F;ip端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%AE%BE%E5%A4%87ip%E5%9C%B0%E5%9D%80"><span class="nav-text">查看设备ip地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5"><span class="nav-text">连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%98%AF%E5%90%A6%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F"><span class="nav-text">测试是否连接成功</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%BE%E5%88%B0apk%E7%9A%84appPackage%E5%92%8CappActivity"><span class="nav-text">找到apk的appPackage和appActivity</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="nav-text">通过命令行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8UIAutomatorviewer"><span class="nav-text">使用UIAutomatorviewer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AAappium%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC"><span class="nav-text">第一个appium测试脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8Cappium"><span class="nav-text">运行appium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%89%8B%E6%9C%BA"><span class="nav-text">连接手机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99python%E6%B5%8B%E8%AF%95%E8%84%9A%E6%9C%AC"><span class="nav-text">编写python测试脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85python-client-appium%E5%BA%93"><span class="nav-text">1 安装python-client-appium库:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%90%AF%E5%8A%A8uiautomatorviewer"><span class="nav-text">2 启动uiautomatorviewer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%BC%96%E5%86%99python%E8%84%9A%E6%9C%AC"><span class="nav-text">3 编写python脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%94%99%E8%AF%AF"><span class="nav-text">遇到的错误</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%A8%A1%E6%8B%9F%E5%99%A8"><span class="nav-text">测试模拟器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#appium%E6%B5%8B%E8%AF%95%E5%86%85%E5%B5%8Cwebview"><span class="nav-text">appium测试内嵌webview</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6"><span class="nav-text">错误集锦</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%8B%E6%9C%BA%E8%B7%91%E8%BF%87appium%E8%84%9A%E6%9C%AC%E5%90%8E%E5%BC%B9%E4%B8%8D%E5%87%BA%E9%94%AE%E7%9B%98"><span class="nav-text">手机跑过appium脚本后弹不出键盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%982"><span class="nav-text">问题2</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+
+</body>
+</html>

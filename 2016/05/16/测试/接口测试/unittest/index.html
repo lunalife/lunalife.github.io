@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="山中何事？松花酿酒，春水煎茶。">
+    <meta name="author" content="Whisper">
+    
+    <title>
+        
+            python单元测试unittest |
+        
+        但知行好事，莫要问前程
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/tx.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/keep-theme-custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"lucia.xicp.cn","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#10ac84","title":"但知行好事，莫要问前程","author":"Whisper","avatar":"/images/tx.jpg","logo":"/images/tx.jpg","favicon":"/images/tx.jpg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg5.jpg","background_img_dark":"/images/bg5.jpg","description":"自动化测试、性能、前后端、测试平台、安全、爬虫等","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":false},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2016,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/keep-theme-custom.css"],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/tx.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               但知行好事，莫要问前程
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        python单元测试unittest
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/tx.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Whisper</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2016-05-16 11:09:03</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Thu Jan 29 2026 13:31:50 GMT+0800">2026-01-29 13:31:50</span>
+                </span>
+            
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="由示例开始"><a href="#由示例开始" class="headerlink" title="由示例开始"></a>由示例开始</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestStringMethods</span>(unittest.TestCase):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_upper</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.assertEqual(<span class="string">&#x27;foo&#x27;</span>.upper(),<span class="string">&#x27;FOO&#x27;</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_isupper</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.assertEqualTure(<span class="string">&#x27;FOO&#x27;</span>.isupper())</span><br><span class="line">        <span class="variable language_">self</span>.assertFalse(<span class="string">&#x27;Foo&#x27;</span>.isupper())</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_split</span>(<span class="params">self</span>):</span><br><span class="line">        s = <span class="string">&#x27;hello world&#x27;</span></span><br><span class="line">        <span class="variable language_">self</span>.assertEqual(s.split(),[<span class="string">&#x27;hello&#x27;</span>,<span class="string">&#x27;world&#x27;</span>])</span><br><span class="line">        <span class="keyword">with</span> <span class="variable language_">self</span>.assertEqualRaise(TypeError):</span><br><span class="line">            s.slipt(<span class="number">2</span>)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>: <span class="comment">#unittest.main：为测试提供了入口。</span></span><br><span class="line">    unittest.main()</span><br><span class="line"></span><br><span class="line"><span class="comment">#运行结果：</span></span><br><span class="line">...</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Ran <span class="number">3</span> tests <span class="keyword">in</span> <span class="number">0.064</span>s</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="整体结构概览"><a href="#整体结构概览" class="headerlink" title="整体结构概览"></a>整体结构概览</h1><p>unittest原名为PyUnit，是由java的JUnit衍生而来。对于单元测试，需要设置预先条件，对比预期结果和实际结果。</p>
+<p>整体结构：<br>unittest库提供了test cases, test suites, test fixtures，test runner：</p>
+<ol>
+<li><strong>test case</strong> ：通过继承TestCase类，我们可以创建一个test，或者一组tests，包括测试前准备环境的搭建(setUp)，执行测试代码(run)，以及测试后环境的还原(tearDown)。</li>
+<li><strong>test suites</strong> ： 测试套件,多个测试用例集合在一起,TestSuite也可以嵌套TestSuite。</li>
+<li><strong>test fixtures</strong> ： setup + test case + teardown结构</li>
+<li><strong>TestLoader</strong>:用来加载TestCase到TestSuite中，其中的方法从各个地方寻找TestCase，创建它们的实例，然后add到TestSuite中，返回一个TestSuite实例。</li>
+<li><strong>test runner</strong>：执行测试用例，其中的run()会执行TestSuite&#x2F;TestCase。</li>
+<li><strong>TextTestResult</strong>：测试的结果会保存到TextTestResult实例中，包括运行用例数，成功数，失败数等。</li>
+</ol>
+<div align=center><img     src="/images/test/unittest_1.png"   width=400px></div>
+
+
+<p>写好TestCase，然后由TestLoader加载TestCase到TestSuite，然后由TextTestRunner来运行TestSuite，运行的结果保存在TextTestResult中，整个过程集成在unittest.main模块中。</p>
+<blockquote>
+<p>注:<br>所有的测试函数以test开头，test_XXX。</p>
+</blockquote>
+<p>其他与unittest类似的单元测试库：<a class="link"   target="_blank" rel="noopener" href="https://nose.readthedocs.org/en/latest/" > nose<i class="fas fa-external-link-alt"></i></a>, pytest。</p>
+<h1 id="常用命令行"><a href="#常用命令行" class="headerlink" title="常用命令行"></a>常用命令行</h1><p>从命令行中可以运行单元测试的<strong>模块</strong>，<strong>类</strong>，甚至单独的<strong>测试方法</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python -m unittest test_module1 test_module2  #同时运行多个测试模块</span><br><span class="line">python -m unittest test_module.TestClass #运行指定测试类</span><br><span class="line">python -m unittest test_module.TestClass.test_method #运行指定测试类下的测试方法</span><br></pre></td></tr></table></figure>
+<p>显示更详细的测试结果的说明使用<code>-v</code>flag：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m unittest -v test_module</span><br></pre></td></tr></table></figure>
+<p>查看所有的命令行选项使用命令<code>python -m unittest -h</code></p>
+<h1 id="开始写测试用例"><a href="#开始写测试用例" class="headerlink" title="开始写测试用例"></a>开始写测试用例</h1><h2 id="Testcase类"><a href="#Testcase类" class="headerlink" title="Testcase类"></a>Testcase类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class unittest.TestCase(methodName=&#x27;runTest&#x27;)</span><br></pre></td></tr></table></figure>
+<p>TestCase的实例是最小的可测试单元。 testcase 是由unittest的<a class="link"   target="_blank" rel="noopener" href="https://docs.python.org/2/library/unittest.html#unittest.TestCase" >TestCase<i class="fas fa-external-link-alt"></i></a>类的实例表示的。要编写自己的测试用例必须继承TestCase类,或者使用FunctionTestCase。且Testcase类提供了各种assert的方法来检测预期结果和实际结果。</p>
+<p>看下面的例子(创建一个测试类DefaultWidgetSizeTestCase)：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DefaultWidgetSizeTestCase</span>(unittest.TestCase): <span class="comment">#unittest.TestCase表示某个测试函数</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">runTest</span>(<span class="params">self</span>):</span><br><span class="line">        widget = Widget(<span class="string">&#x27;The widget&#x27;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.assertEqual(widget.size(), (<span class="number">50</span>, <span class="number">50</span>), <span class="string">&#x27;incorrect default size&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>创建实例<br>建立这样一个测试用例的一个实例,使用该类的构造函数，且不带参数(这样会执行所有的测试方法):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">testCase = DefaultWidgetSizeTestCase()</span><br></pre></td></tr></table></figure>
+<p>我们也可以创建多个实例，且每个实例之间都是独立的。<br>当我们需要对不同的实例执行不同的测试方法时，我们可以将要执行的测试用例方法在创建实例时通过类参数传入。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#建了两个WidgetTestCase的实例，每个实例只运行WidgetTestCase类中的一个测试方法(通过参数传入)</span></span><br><span class="line">defaultSizeTestCase = WidgetTestCase(<span class="string">&#x27;test_default_size&#x27;</span>)</span><br><span class="line">resizeTestCase = WidgetTestCase(<span class="string">&#x27;test_resize&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="测试固定装置fixtures"><a href="#测试固定装置fixtures" class="headerlink" title="测试固定装置fixtures"></a>测试固定装置fixtures</h1><h2 id="方法固定装置"><a href="#方法固定装置" class="headerlink" title="方法固定装置"></a>方法固定装置</h2><p>如果要对一个模块中的每一个测试函数都做同样的初始化操作和结尾清除等操作，那么创建n个测试用例就得写n遍一样的代码，为了减少重复的代码，可以使用下面两个函数：</p>
+<ul>
+<li>setUp(): 每次执行测试用例之前调用。无参数，无返回值。该方法抛出的异常都视为error，而不是测试不通过。没有默认的实现。</li>
+<li>tearDown(): 每次执行测试用例之后调用。无参数，无返回值。测试方法抛出异常，该方法也正常调用，该方法抛出的异常都视为error，而不是测试不通过。只用setUp()调用成功，该方法才会被调用。没有默认的实现。<br>通过setup 和 tesrDown组装一个module成为一个固定的测试装置。<blockquote>
+<p>注意：如果setup运行抛出错误，则测试用例代码则不会执行。但是，如果setpu执行成功，不管测试用例是否执行成功都会执行teardown。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Class固定装置："><a href="#Class固定装置：" class="headerlink" title="Class固定装置："></a>Class固定装置：</h2><p>必须为类实现</p>
+<ul>
+<li><code>setUpClass()</code>:一个类方法在单个类测试之前运行。setUpClass作为唯一的参数被调用时,必须使用classmethod()作为装饰器。</li>
+<li><code>tearDownClass()</code>:一个类方法在单个类测试之后运行。setUpClass作为唯一的参数被调用时,必须使用classmethod()作为装饰器。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span>(unittest.TestCase):</span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setUpClass</span>(<span class="params">cls</span>): <span class="comment">#这里的cls是当前类的对象</span></span><br><span class="line">        cls._connection = createExpensiveConnectionObject()</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">tearDownClass</span>(<span class="params">cls</span>):</span><br><span class="line">        cls._connection.destroy()</span><br></pre></td></tr></table></figure>
+
+<h2 id="Module固定装置："><a href="#Module固定装置：" class="headerlink" title="Module固定装置："></a>Module固定装置：</h2><p>必须为方法实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">setUpModule</span>():</span><br><span class="line">    createConnection()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tearDownModule</span>():</span><br><span class="line">    closeConnection()</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="setUpClass中的值在testcase中使用"><a href="#setUpClass中的值在testcase中使用" class="headerlink" title="setUpClass中的值在testcase中使用"></a>setUpClass中的值在testcase中使用</h2><p>将获取的值赋值给类属性，然后再testcase中直接使用self调用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Login</span>(unittest.TestCase):</span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setUpClass</span>(<span class="params">cls</span>):</span><br><span class="line">        cls.s = requests.Session()</span><br><span class="line">        url = <span class="string">&quot;http://xxxxxx&quot;</span></span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">&quot;account&quot;</span>: apis.LOGIN_ACCOUNT,</span><br><span class="line">            <span class="string">&quot;password&quot;</span>: apis.LOGIN_PASSWORD</span><br><span class="line">        &#125;</span><br><span class="line">        res = cls.s.post(url, json=data)</span><br><span class="line">        <span class="keyword">assert</span> res.status_code == <span class="number">200</span>, res.content</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_get_list</span>(<span class="params">self</span>):</span><br><span class="line">        url = <span class="string">&quot;xxxx&quot;</span></span><br><span class="line">        res = <span class="variable language_">self</span>.s.get(url)  </span><br><span class="line">        <span class="keyword">assert</span> res.status_code == <span class="number">200</span>, res.content</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="测试套件组织测试代码"><a href="#测试套件组织测试代码" class="headerlink" title="测试套件组织测试代码"></a>测试套件组织测试代码</h1><p>根据不同的业务需求，可能需要在不同的module中选择某一个或者多个测试用例来执行，此时可以根据不同的测试场景来对测试用例进行组织，<br>有多种方式添加用例到测试套件中，如下：</p>
+<h2 id="使用TestSuite添加"><a href="#使用TestSuite添加" class="headerlink" title="使用TestSuite添加"></a>使用TestSuite添加</h2><p>将testcase添加到TestSuite实例的常用方法:</p>
+<p>方法1 <code>TestSuite实例.addTest(test)</code>: 添加一个测试用例或者测试套件到测试套件中。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ts = unittest.TestSuite() <span class="comment">#创建一个测试套件实例</span></span><br><span class="line">ts.addTest(SomeTestClass(<span class="string">&#x27;test_default_size&#x27;</span>)) <span class="comment">#添加测试类SomeTestClass的test_default_size到测试套件中</span></span><br><span class="line">ts.addTest(SomeTestClass(<span class="string">&#x27;test_resize&#x27;</span>))  <span class="comment">#添加测试类SomeTestClass中的test_resize到测试套件中</span></span><br></pre></td></tr></table></figure>
+<p>方法2 <code>TestSuite实例.addTests(tests)</code>: 批量添加测试用例或者测试套件到测试套件中。相当于多次调用addTest()来添加。</p>
+<p>方法3 或者在初始化实例的时候直接写入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts = unittest.TestSuite(tests=())</span><br></pre></td></tr></table></figure>
+<h2 id="使用WidgetTestCase，将该测试套件直接返回"><a href="#使用WidgetTestCase，将该测试套件直接返回" class="headerlink" title="使用WidgetTestCase，将该测试套件直接返回"></a>使用WidgetTestCase，将该测试套件直接返回</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">suite</span>():</span><br><span class="line">    suite = unittest.TestSuite()</span><br><span class="line">    suite.addTest(WidgetTestCase(<span class="string">&#x27;test_default_size&#x27;</span>))</span><br><span class="line">    suite.addTest(WidgetTestCase(<span class="string">&#x27;test_resize&#x27;</span>))</span><br><span class="line">    <span class="keyword">return</span> suite</span><br></pre></td></tr></table></figure>
+<p>使用更简洁的写法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">suite</span>():</span><br><span class="line">    tests = [<span class="string">&#x27;test_default_size&#x27;</span>, <span class="string">&#x27;test_resize&#x27;</span>]</span><br><span class="line">    <span class="keyword">return</span> unittest.TestSuite(<span class="built_in">map</span>(WidgetTestCase, tests))</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用TestLoader导入整个Class和Module中的用例"><a href="#使用TestLoader导入整个Class和Module中的用例" class="headerlink" title="使用TestLoader导入整个Class和Module中的用例"></a>使用TestLoader导入整个Class和Module中的用例</h2><p>TestLoader用来从clases和modules中快速load所有测试用例，<br>并创建test suites实例，将测试用例添加到该实例，返回该实例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class unittest.TestLoader</span><br></pre></td></tr></table></figure>
+<p>该类有以下<a class="link"   target="_blank" rel="noopener" href="https://docs.python.org/2.7/library/unittest.html#loading-and-running-tests" >方法<i class="fas fa-external-link-alt"></i></a>:</p>
+<ul>
+<li><code>loadTestsFromTestCase(testCaseClass)</code>:</li>
+<li><code>loadTestsFromModule(module)</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">suite = unittest.TestLoader().loadTestsFromTestCase(WidgetTestCase)</span><br></pre></td></tr></table></figure>
+
+<p>你可以将测试用例和测试套件放在一个module中，但是建议最好将测试套件放在单独的一个module中，如果测试策略改变了，方便重构管理，也方便维护。</p>
+<h2 id="在测试套件中添加测试套件"><a href="#在测试套件中添加测试套件" class="headerlink" title="在测试套件中添加测试套件"></a>在测试套件中添加测试套件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">suite1 = module1.TheTestSuite()</span><br><span class="line">suite2 = module2.TheTestSuite()</span><br><span class="line">alltests = unittest.TestSuite([suite1, suite2])</span><br></pre></td></tr></table></figure>
+
+<p>注意：删改添加到了list中的测试套件还需要在经过TestSuite的加工才能运行。</p>
+<h1 id="执行测试"><a href="#执行测试" class="headerlink" title="执行测试"></a>执行测试</h1><h2 id="运行测试套件"><a href="#运行测试套件" class="headerlink" title="运行测试套件"></a>运行测试套件</h2><p>使用unittest.TextTestRunner类的实例直接运行(run)测试套件。<br>上面制作测试套件的方法已经熟悉了，接下来通过TextTestRunner的实例调用run(测试套件)可运行测试套件中的所有测试用例。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    some_suite = unittest.TestLoader().loadTestsFromTestCase(SomeTestClass)</span><br><span class="line">    runner = unittest.TextTestRunner()</span><br><span class="line">    runner.run(some_suite)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="用例执行顺序"><a href="#用例执行顺序" class="headerlink" title="用例执行顺序"></a>用例执行顺序</h2><p>unittest的执行的顺序是根据<strong>测试用例的名称</strong>来的。0-9 A-Z a-z来排序。<br>每个测试用例之间的数据最好不要相互依赖，如果一定要相互依赖则调整用力的执行顺序来保证运行的正确性。</p>
+<p>要改变运行顺序，可以使用addTest通过测试套件添加测试用例的顺序，运行测试。<br>示例：test_order.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Order</span>(unittest.TestCase):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_c</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;ccccccc&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.assertEqual(<span class="number">3</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_a</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;aaaaaaa&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.assertEqual(<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_b</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;bbbbbbb&quot;</span>)</span><br><span class="line">        <span class="variable language_">self</span>.assertEqual(<span class="number">2</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>运行输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">aaaaaaa</span><br><span class="line">bbbbbbb</span><br><span class="line">ccccccc</span><br></pre></td></tr></table></figure>
+<p>可以看到上面代码按照名称顺序执行。</p>
+<p>通过添加suite添加执行后，顺序仍然是按照名称顺序执行的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    ts = unittest.TestSuite()</span><br><span class="line">    ts.addTest(Order(<span class="string">&#x27;test_c&#x27;</span>))</span><br><span class="line">    ts.addTest(Order(<span class="string">&#x27;test_a&#x27;</span>))</span><br><span class="line">    ts.addTest(Order(<span class="string">&#x27;test_b&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<p>所以，要固定测试用例的顺序可以在名称上加上字母或者数字<code>test_a_login</code>, <code>test_b_logout</code>等，虽然这样看起来显得比较随意，但是这正是unittest力求简单的地方。</p>
+<h1 id="常用断言方法"><a href="#常用断言方法" class="headerlink" title="常用断言方法"></a>常用<a class="link"   target="_blank" rel="noopener" href="https://docs.python.org/2.7/library/unittest.html#unittest.TestCase.debug" >断言方法<i class="fas fa-external-link-alt"></i></a></h1><p>unittest库提供了很多实用方法来检测程序运行的结果和预期。</p>
+<p>包括三种类型的方法，每一种都覆盖了典型的类型，比如：</p>
+<ol>
+<li>检查相等值</li>
+<li>逻辑比较</li>
+<li>异常</li>
+</ol>
+<p>如果给定的assertion通过了，那么测试会执行下一行代码。<br>如果给定的assertion没有通过，测试会暂停并且生成错误信息。<br>unittest库提供所有标准的xUnit assert方法。下面列出较重要方法的一部分：</p>
+<h2 id="元素相等"><a href="#元素相等" class="headerlink" title="元素相等"></a>元素相等</h2><p><code>assertEqual(a,b [,msg])</code>: 检测a&#x3D;&#x3D;b,这个方法检查a是否等于b，常用语检测元素属性等。如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">assertEqual(element.text, <span class="string">&quot;10&quot;</span>)</span><br><span class="line">assertNotEqual(a,b [,smg]):检测a!==b.</span><br></pre></td></tr></table></figure>
+<p>检测表达式是否为Ture，或者 False:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">assertTrue(x [,msg])  <span class="comment">#检测bool(x) is True.</span></span><br><span class="line"><span class="comment">#如：检测某个元素是否在页面上</span></span><br><span class="line"><span class="comment">#assertTrue(element.is_dispalyed())</span></span><br><span class="line">assertFalse(x [,msg])  <span class="comment">#检测bool(y) is Flase.</span></span><br><span class="line">assertIsNot(a, b [,msg])  <span class="comment">#检测 a is not b.</span></span><br></pre></td></tr></table></figure>
+<h2 id="检测异常"><a href="#检测异常" class="headerlink" title="检测异常"></a>检测异常</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">assertRaises(exc, fun, *args, **kwds)</span><br><span class="line">assertRaiseRegexp(exc, r, fun, *args, **kwds)</span><br></pre></td></tr></table></figure>
+<p>最有可能使用这些方法的是NoSuchElementFoundexception</p>
+<p>检测数字，先四舍五入到指定的小数位数后再进行比较</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">assertAlmostEqual(a, b)   <span class="comment">#检测round(a-b,7)==0</span></span><br><span class="line">assertNotAlmostEqual(a, b)   <span class="comment">#检测round(a-b,7)!=0</span></span><br></pre></td></tr></table></figure>
+<h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">assertGreater(a, b)  <span class="comment"># 检测a &gt; b.</span></span><br><span class="line">assertGreaterEqual(a ,b)  <span class="comment"># 检测a &gt;= b.</span></span><br><span class="line">assertLess(a, b)     <span class="comment">#检测a &lt; b.</span></span><br><span class="line">assertLessEqual(a, b)   <span class="comment">#检测a &lt;= b.</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="正则检测匹配text"><a href="#正则检测匹配text" class="headerlink" title="正则检测匹配text"></a>正则检测匹配text</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">assertRegexpMatches(s, r)       <span class="comment">#检测r.search(s).</span></span><br><span class="line">assertNotRegexpMatches(s, r)  <span class="comment">#检测not r.search(s).</span></span><br></pre></td></tr></table></figure>
+<p>检测字符串<br><code>assertMultiLineEqual(a, b) #检测string</code><br>检测lists之间是否相等<br><code>assertListEqual(a, b)  #检测lists</code><br>fail()无条件失败，用户自定义<br><code>fail()</code></p>
+<h1 id="跳过测试和预期的失败"><a href="#跳过测试和预期的失败" class="headerlink" title="跳过测试和预期的失败"></a>跳过测试和预期的失败</h1><p>Unittest支持跳过单个的测试方法甚至整个类的测试。使用 skip() decorator来设置特定跳过的条件，如指定操作系统不执行该测试。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@unittest.skipIf(<span class="params">mylib.__version__ &lt; (<span class="params"><span class="number">1</span>, <span class="number">3</span></span>), <span class="string">&quot;not supported in this library version&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test_format</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="comment"># Tests that work for only a certain version of the library.</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>执行的时候如果满足跳过条件，控制台会将后面的说明打印出来，并跳过该测试用例。跳过类也是相似的写法。<br>也可以自定义skipping装饰器。</p>
+<p>定义预期的失败使用<a class="link"   target="_blank" rel="noopener" href="https://docs.python.org/2/library/unittest.html#unittest.expectedFailure" >unittest.expectedFailure()<i class="fas fa-external-link-alt"></i></a>,运行时 ,如果测试失败,测试不算作失败。</p>
+<h1 id="使用HTMLTestRunner生成报告"><a href="#使用HTMLTestRunner生成报告" class="headerlink" title="使用HTMLTestRunner生成报告"></a>使用HTMLTestRunner生成报告</h1><p>unittest本身并不具备这个功能，需要使用<a class="link"   target="_blank" rel="noopener" href="https://pypi.python.org/pypi/HTMLTestRunner" >HTMLTestRunner库<i class="fas fa-external-link-alt"></i></a><br>使用步骤：</p>
+<ol>
+<li>首先需要下载.py文件：<a class="link"   target="_blank" rel="noopener" href="http://tungwaiyip.info/software/HTMLTestRunner.html" >HTMLTestRunner<i class="fas fa-external-link-alt"></i></a>(这里试用的时候为0.8.2版本)</li>
+<li>下载后放入python安装目录的lib文件夹下面，如果使用的为虚拟环境则要放在虚拟环境下面</li>
+<li>打开终端进入python交互模式导入HTMLTestRunner ,如果无导入错误显示，则说明添加成功<br><code>import HTMLTestRunner</code></li>
+</ol>
+<p><strong>注意</strong>：python3的stringIO有变化，使用该HTMLTestRunner会报错ImportError: No module named ‘StringIO’。这里使用python2.7试验。</p>
+<h2 id="help-查看类帮助信息"><a href="#help-查看类帮助信息" class="headerlink" title="help()查看类帮助信息"></a>help()查看类帮助信息</h2><p>为了说明在报告中显示用例的注释，这里先了解下help()帮助函数。<br>help帮助信息息都是代码中通过  <code>&#39;&#39;&#39;xxx &#39;&#39;&#39;</code>  或者 <code>&quot;&quot;&quot;xxx&quot;&quot;&quot;</code>  注释符号来标注的。<br>如我们自定义一个模块helpin.py,并将其放入python目录的lib文件夹下面：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="string">u&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">这是help能够显示的帮助信息</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a</span>):</span><br><span class="line">    <span class="string">u&quot;&quot;&quot;这个函数用来输入a的值&quot;&quot;&quot;</span></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;a&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>在cmd命令行中，进入python27的交互模式，导入后通过help查看帮助信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import helpin</span><br><span class="line">&gt;&gt;&gt; help(helpin)</span><br><span class="line">Help on module helpin:</span><br><span class="line">NAME</span><br><span class="line">    helpin - 这是help能够显示的帮助信息</span><br><span class="line">FILE</span><br><span class="line">    e:\python27\lib\helpin.py</span><br><span class="line">FUNCTIONS</span><br><span class="line">    add(a)</span><br><span class="line">        这个函数用来输入a的值</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="报告中显示用例的注释"><a href="#报告中显示用例的注释" class="headerlink" title="报告中显示用例的注释"></a>报告中显示用例的注释</h2><p>给报告中的每个测试用例添加注释，来说明该测试用例是用来干什么的，非常有必要。<br>通过help()函数来查看HTMLTestRunner类的详细说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import HTMLTestRunner</span><br><span class="line">&gt;&gt;&gt; help(HTMLTestRunner)</span><br></pre></td></tr></table></figure>
+<p>可以看到该类的注释说明，一个好的开源的框架应该有这样的规范。</p>
+<p>python 时间函数：</p>
+<ol>
+<li>time.time() 获取当前时间戳。</li>
+<li>time.ctime() 当前时间的字符串形式。</li>
+<li>time.localtime() 当前时间的 struct_time 形式。</li>
+<li>time.strftime() 用来获得当前时间，可以将时间格式化为字符串。</li>
+</ol>
+<p>修改之前的代码，将文件名字中添加上当前获取到的时间：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">t_suites = unittest.TestSuite(some suite)</span><br><span class="line"></span><br><span class="line">now = time.strftime(<span class="string">&quot;%Y-%m-%d %H_%M_%S&quot;</span>)</span><br><span class="line">report_path = <span class="string">&#x27;report/&#x27;</span> + now + <span class="string">&#x27;_result.html&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(report_path, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    runner = HTMLTestRunner.HTMLTestRunner(</span><br><span class="line">        stream=fp,</span><br><span class="line">        title=<span class="string">&#x27;测试报告&#x27;</span>,</span><br><span class="line">        verbosity=<span class="number">2</span></span><br><span class="line">    )</span><br><span class="line">    runner.run(t_suites)</span><br></pre></td></tr></table></figure>
+<p>参数verbosity默认为1，如果设置大于1则会在测试过程中输出测试相关信息。<br>生成的文件名称以2016-03-09_17_37_26_result.html格式出现。</p>
+<div align="center"><img     src="/images/test/unittest_2.png"   width=700px></div>
+
+<p>这里在每个测试函数的下方添加上注释：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">test_equal</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;这里是测试a和b的两个值是否相等&#x27;&#x27;&#x27;</span></span><br><span class="line">    a = <span class="number">1</span></span><br><span class="line">    b = <span class="number">2</span></span><br><span class="line">    <span class="variable language_">self</span>.assertEqual(a,b)</span><br></pre></td></tr></table></figure>
+<p>运行后，打开生成的html文件可以看到，每个测试用例函数的后面有该用例的注释。</p>
+<h2 id="python3使用需要修改的地方"><a href="#python3使用需要修改的地方" class="headerlink" title="python3使用需要修改的地方"></a>python3使用需要修改的地方</h2><p>如果当前环境使用的是python3,则需要修改HTMLTestRunner.py的源文件，该文件基于py2.7编写，有的方法在python3中已经修改或弃用</p>
+<ol>
+<li>第94行的<code>import StringIO</code>修改<code>import io</code></li>
+<li>第118行的<code>self.fp.write(s)</code>修改<code>self.fp.write(bytes(s,&#39;UTF-8&#39;))</code></li>
+<li>第539行的<code>self.outputBuffer = StringIO.StringIO()</code>修改<code>self.outputBuffer = io.StringIO()</code></li>
+<li>第642行的<code>if not rmap.has_key(cls)</code>修改<code>if not cls in rmap</code></li>
+<li>第767行的<code>uo = o.decode(&#39;latin-1&#39;)</code>修改<code>uo = o</code></li>
+<li>第769行的<code>uo = o</code>修改<code>uo = o.decode(&#39;utf-8&#39;)</code></li>
+<li>第773行的<code>ue = e.decode(&#39;latin-1&#39;)</code>修改<code>ue = e</code></li>
+<li>第775行的<code>ue = e</code>修改<code>ue = e.decode(&#39;utf-8&#39;)</code></li>
+<li>第631行的<code>print &gt;&gt; sys.stderr, &#39;\nTime Elapsed: %s&#39; % (self.stopTime-self.startTime)``修改</code>print(sys.stderr, ‘\nTime Elapsed: %s’ % (self.stopTime-self.startTime))&#96;&#96;</li>
+</ol>
+<p>修改后的py文件可直接用<a class="link"   target="_blank" rel="noopener" href="https://gist.github.com/lunalife/00b6f34143bc97d8ce7cd80d87f5d79e" >py<i class="fas fa-external-link-alt"></i></a>.</p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2016/05/21/%E6%B5%8B%E8%AF%95/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/postman%E7%AC%94%E8%AE%B0/"
+                                   title="api联调神器postman使用详解"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">api联调神器postman使用详解</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2016/05/01/%E6%9C%AA%E5%88%86%E7%B1%BB/%E6%90%AD%E5%BB%BAHexo%E6%95%99%E7%A8%8B/"
+                                   title="搭建Hexo教程"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">搭建Hexo教程</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%B1%E7%A4%BA%E4%BE%8B%E5%BC%80%E5%A7%8B"><span class="nav-text">由示例开始</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84%E6%A6%82%E8%A7%88"><span class="nav-text">整体结构概览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="nav-text">常用命令行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E5%86%99%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="nav-text">开始写测试用例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Testcase%E7%B1%BB"><span class="nav-text">Testcase类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E5%9B%BA%E5%AE%9A%E8%A3%85%E7%BD%AEfixtures"><span class="nav-text">测试固定装置fixtures</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%9B%BA%E5%AE%9A%E8%A3%85%E7%BD%AE"><span class="nav-text">方法固定装置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class%E5%9B%BA%E5%AE%9A%E8%A3%85%E7%BD%AE%EF%BC%9A"><span class="nav-text">Class固定装置：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Module%E5%9B%BA%E5%AE%9A%E8%A3%85%E7%BD%AE%EF%BC%9A"><span class="nav-text">Module固定装置：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setUpClass%E4%B8%AD%E7%9A%84%E5%80%BC%E5%9C%A8testcase%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="nav-text">setUpClass中的值在testcase中使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E5%A5%97%E4%BB%B6%E7%BB%84%E7%BB%87%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="nav-text">测试套件组织测试代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8TestSuite%E6%B7%BB%E5%8A%A0"><span class="nav-text">使用TestSuite添加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8WidgetTestCase%EF%BC%8C%E5%B0%86%E8%AF%A5%E6%B5%8B%E8%AF%95%E5%A5%97%E4%BB%B6%E7%9B%B4%E6%8E%A5%E8%BF%94%E5%9B%9E"><span class="nav-text">使用WidgetTestCase，将该测试套件直接返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8TestLoader%E5%AF%BC%E5%85%A5%E6%95%B4%E4%B8%AAClass%E5%92%8CModule%E4%B8%AD%E7%9A%84%E7%94%A8%E4%BE%8B"><span class="nav-text">使用TestLoader导入整个Class和Module中的用例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E6%B5%8B%E8%AF%95%E5%A5%97%E4%BB%B6%E4%B8%AD%E6%B7%BB%E5%8A%A0%E6%B5%8B%E8%AF%95%E5%A5%97%E4%BB%B6"><span class="nav-text">在测试套件中添加测试套件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="nav-text">执行测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95%E5%A5%97%E4%BB%B6"><span class="nav-text">运行测试套件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%BE%8B%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="nav-text">用例执行顺序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%AD%E8%A8%80%E6%96%B9%E6%B3%95"><span class="nav-text">常用断言方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E7%9B%B8%E7%AD%89"><span class="nav-text">元素相等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E5%BC%82%E5%B8%B8"><span class="nav-text">检测异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97"><span class="nav-text">逻辑运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E6%A3%80%E6%B5%8B%E5%8C%B9%E9%85%8Dtext"><span class="nav-text">正则检测匹配text</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%B3%E8%BF%87%E6%B5%8B%E8%AF%95%E5%92%8C%E9%A2%84%E6%9C%9F%E7%9A%84%E5%A4%B1%E8%B4%A5"><span class="nav-text">跳过测试和预期的失败</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8HTMLTestRunner%E7%94%9F%E6%88%90%E6%8A%A5%E5%91%8A"><span class="nav-text">使用HTMLTestRunner生成报告</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#help-%E6%9F%A5%E7%9C%8B%E7%B1%BB%E5%B8%AE%E5%8A%A9%E4%BF%A1%E6%81%AF"><span class="nav-text">help()查看类帮助信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%A5%E5%91%8A%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%94%A8%E4%BE%8B%E7%9A%84%E6%B3%A8%E9%87%8A"><span class="nav-text">报告中显示用例的注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python3%E4%BD%BF%E7%94%A8%E9%9C%80%E8%A6%81%E4%BF%AE%E6%94%B9%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="nav-text">python3使用需要修改的地方</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2016</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Whisper</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%B1%E7%A4%BA%E4%BE%8B%E5%BC%80%E5%A7%8B"><span class="nav-text">由示例开始</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84%E6%A6%82%E8%A7%88"><span class="nav-text">整体结构概览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="nav-text">常用命令行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E5%86%99%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="nav-text">开始写测试用例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Testcase%E7%B1%BB"><span class="nav-text">Testcase类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E5%9B%BA%E5%AE%9A%E8%A3%85%E7%BD%AEfixtures"><span class="nav-text">测试固定装置fixtures</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%9B%BA%E5%AE%9A%E8%A3%85%E7%BD%AE"><span class="nav-text">方法固定装置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class%E5%9B%BA%E5%AE%9A%E8%A3%85%E7%BD%AE%EF%BC%9A"><span class="nav-text">Class固定装置：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Module%E5%9B%BA%E5%AE%9A%E8%A3%85%E7%BD%AE%EF%BC%9A"><span class="nav-text">Module固定装置：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setUpClass%E4%B8%AD%E7%9A%84%E5%80%BC%E5%9C%A8testcase%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="nav-text">setUpClass中的值在testcase中使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E5%A5%97%E4%BB%B6%E7%BB%84%E7%BB%87%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="nav-text">测试套件组织测试代码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8TestSuite%E6%B7%BB%E5%8A%A0"><span class="nav-text">使用TestSuite添加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8WidgetTestCase%EF%BC%8C%E5%B0%86%E8%AF%A5%E6%B5%8B%E8%AF%95%E5%A5%97%E4%BB%B6%E7%9B%B4%E6%8E%A5%E8%BF%94%E5%9B%9E"><span class="nav-text">使用WidgetTestCase，将该测试套件直接返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8TestLoader%E5%AF%BC%E5%85%A5%E6%95%B4%E4%B8%AAClass%E5%92%8CModule%E4%B8%AD%E7%9A%84%E7%94%A8%E4%BE%8B"><span class="nav-text">使用TestLoader导入整个Class和Module中的用例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E6%B5%8B%E8%AF%95%E5%A5%97%E4%BB%B6%E4%B8%AD%E6%B7%BB%E5%8A%A0%E6%B5%8B%E8%AF%95%E5%A5%97%E4%BB%B6"><span class="nav-text">在测试套件中添加测试套件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="nav-text">执行测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95%E5%A5%97%E4%BB%B6"><span class="nav-text">运行测试套件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E4%BE%8B%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="nav-text">用例执行顺序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%AD%E8%A8%80%E6%96%B9%E6%B3%95"><span class="nav-text">常用断言方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E7%9B%B8%E7%AD%89"><span class="nav-text">元素相等</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E5%BC%82%E5%B8%B8"><span class="nav-text">检测异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97"><span class="nav-text">逻辑运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E6%A3%80%E6%B5%8B%E5%8C%B9%E9%85%8Dtext"><span class="nav-text">正则检测匹配text</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%B3%E8%BF%87%E6%B5%8B%E8%AF%95%E5%92%8C%E9%A2%84%E6%9C%9F%E7%9A%84%E5%A4%B1%E8%B4%A5"><span class="nav-text">跳过测试和预期的失败</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8HTMLTestRunner%E7%94%9F%E6%88%90%E6%8A%A5%E5%91%8A"><span class="nav-text">使用HTMLTestRunner生成报告</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#help-%E6%9F%A5%E7%9C%8B%E7%B1%BB%E5%B8%AE%E5%8A%A9%E4%BF%A1%E6%81%AF"><span class="nav-text">help()查看类帮助信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%A5%E5%91%8A%E4%B8%AD%E6%98%BE%E7%A4%BA%E7%94%A8%E4%BE%8B%E7%9A%84%E6%B3%A8%E9%87%8A"><span class="nav-text">报告中显示用例的注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python3%E4%BD%BF%E7%94%A8%E9%9C%80%E8%A6%81%E4%BF%AE%E6%94%B9%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="nav-text">python3使用需要修改的地方</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="山中何事？松花酿酒，春水煎茶。">
+    <meta name="author" content="Whisper">
+    
+    <title>
+        
+            页面对象模型 |
+        
+        但知行好事，莫要问前程
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/tx.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/keep-theme-custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"lucia.xicp.cn","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#10ac84","title":"但知行好事，莫要问前程","author":"Whisper","avatar":"/images/tx.jpg","logo":"/images/tx.jpg","favicon":"/images/tx.jpg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg5.jpg","background_img_dark":"/images/bg5.jpg","description":"自动化测试、性能、前后端、测试平台、安全、爬虫等","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":false},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2016,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/keep-theme-custom.css"],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/tx.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               但知行好事，莫要问前程
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        页面对象模型
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/tx.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Whisper</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2019-01-24 08:09:03</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Thu Jan 29 2026 13:31:50 GMT+0800">2026-01-29 13:31:50</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">自动化测试</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Page Object Model：页面对象模型，是Selenium中的一种测试设计模式，一个页面对象代表用户界面交互测试的一个区域。<br>使用page object来实现：测试、逻辑、数据、驱动相互分离。</p>
+<p>使用页面对象模式的好处:</p>
+<ol>
+<li>创建可重用的代码,可以跨多个测试用例共享</li>
+<li>减少重复代码的数量</li>
+<li>如果用户界面更改,只需要修改一个地方</li>
+</ol>
+<h1 id="基类"><a href="#基类" class="headerlink" title="基类"></a>基类</h1><p>每个页面类继承。该类封装了下级page类的基本功能和公共的功能。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BasePageElement</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Base page class that is initialized on every page object class.&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__set__</span>(<span class="params">self, obj, value</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;Sets the text to the value supplied&quot;&quot;&quot;</span></span><br><span class="line">        driver = obj.driver</span><br><span class="line">        WebDriverWait(driver, <span class="number">100</span>).until(</span><br><span class="line">            <span class="keyword">lambda</span> driver: driver.find_element_by_name(<span class="variable language_">self</span>.locator))</span><br><span class="line">        driver.find_element_by_name(<span class="variable language_">self</span>.locator).send_keys(value)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__get__</span>(<span class="params">self, obj, owner</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;Gets the text of the specified object&quot;&quot;&quot;</span></span><br><span class="line">        driver = obj.driver</span><br><span class="line">        WebDriverWait(driver, <span class="number">100</span>).until(</span><br><span class="line">            <span class="keyword">lambda</span> driver: driver.find_element_by_name(<span class="variable language_">self</span>.locator))</span><br><span class="line">        element = driver.find_element_by_name(<span class="variable language_">self</span>.locator)</span><br><span class="line">        <span class="keyword">return</span> element.get_attribute(<span class="string">&quot;value&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="各页面对象"><a href="#各页面对象" class="headerlink" title="各页面对象"></a>各页面对象</h1><p>页面对象模式将为每个web页面创建一个对象。封装一些各页面的方法。</p>
+<p>page.py如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> element <span class="keyword">import</span> BasePageElement</span><br><span class="line"><span class="keyword">from</span> locators <span class="keyword">import</span> MainPageLocators</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SearchTextElement</span>(<span class="title class_ inherited__">BasePageElement</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;这个类从指定的定位器中获得搜索文本&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#The locator for search box where search string is entered</span></span><br><span class="line">    locator = <span class="string">&#x27;q&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BasePage</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Base class to initialize the base page that will be called from all pages&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, driver</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;该driver是测试用例使用时传过来的&quot;&quot;&quot;</span></span><br><span class="line">        <span class="variable language_">self</span>.driver = driver</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MainPage</span>(<span class="title class_ inherited__">BasePage</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Home page action methods come here. I.e. Python.org&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#Declares a variable that will contain the retrieved text</span></span><br><span class="line">    search_text_element = SearchTextElement()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">is_title_matches</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;验证&quot;Python&quot;字符串在title中&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Python&quot;</span> <span class="keyword">in</span> <span class="variable language_">self</span>.driver.title</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">click_go_button</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;触发搜索&quot;&quot;&quot;</span></span><br><span class="line">        element = <span class="variable language_">self</span>.driver.find_element(*MainPageLocators.GO_BUTTON)</span><br><span class="line">        element.click()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SearchResultsPage</span>(<span class="title class_ inherited__">BasePage</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Search results page action methods come here&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">is_results_found</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># Probably should search for this text in the specific page</span></span><br><span class="line">        <span class="comment"># element, but as for now it works fine</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;No results found.&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> <span class="variable language_">self</span>.driver.page_source</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="测试基础类"><a href="#测试基础类" class="headerlink" title="测试基础类"></a>测试基础类</h1><p>封装setup 和 teardown的类。这里用appium的例子。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BaseTest</span>(unittest.TestCase):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setUp</span>(<span class="params">self</span>):</span><br><span class="line">        path = <span class="keyword">lambda</span> p: os.path.abspath(</span><br><span class="line">            os.path.join(os.path.dirname(__file__), p)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    desired_caps = &#123;</span><br><span class="line">        <span class="string">&quot;platformName&quot;</span>: <span class="string">&quot;Android&quot;</span>,</span><br><span class="line">        <span class="string">&quot;platformVersion&quot;</span>: <span class="string">&quot;5.0.1&quot;</span>,</span><br><span class="line">        <span class="string">&quot;deviceName&quot;</span>: <span class="string">&quot;MX5&quot;</span>,</span><br><span class="line">        <span class="string">&quot;appPackage&quot;</span>: <span class="string">&quot;net.xxx.debug&quot;</span>,</span><br><span class="line">        <span class="string">&quot;appActivity&quot;</span>: <span class="string">&quot;net.xxx.MainActivity&quot;</span>,</span><br><span class="line">        <span class="string">&quot;unicodeKeyboard&quot;</span>: <span class="string">&quot;True&quot;</span>,</span><br><span class="line">        <span class="string">&quot;resetKeyboard&quot;</span>: <span class="string">&quot;True&quot;</span>,</span><br><span class="line">        <span class="string">&quot;app&quot;</span>: path(<span class="string">&quot;./apps/debug.10.apk&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">self</span>.driver = webdriver.Remote(<span class="string">&#x27;http://localhost:4723/wd/hub&#x27;</span>, desired_caps)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tearDown</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="variable language_">self</span>.driver.quit()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h1><p>具体的测试用例写在这里。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> page</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PythonOrgSearch</span>(<span class="title class_ inherited__">BaseTest</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setUp</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.driver = webdriver.Firefox()</span><br><span class="line">        <span class="variable language_">self</span>.driver.get(<span class="string">&quot;http://www.python.org&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">test_search_in_python_org</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        验证查找的元素存在</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#加载main page.这里使用Python.org.</span></span><br><span class="line">        main_page = page.MainPage(<span class="variable language_">self</span>.driver)</span><br><span class="line">        <span class="comment">#检验“python”在title中</span></span><br><span class="line">        <span class="keyword">assert</span> main_page.is_title_matches(), <span class="string">&quot;python.org title doesn&#x27;t match.&quot;</span></span><br><span class="line">        <span class="comment">#设置搜索模式 &quot;pycon&quot;</span></span><br><span class="line">        main_page.search_text_element = <span class="string">&quot;pycon&quot;</span></span><br><span class="line">        main_page.click_go_button()</span><br><span class="line">        search_results_page = page.SearchResultsPage(<span class="variable language_">self</span>.driver)</span><br><span class="line">        <span class="comment">#验证搜索结果页不为空</span></span><br><span class="line">        <span class="keyword">assert</span> search_results_page.is_results_found(), <span class="string">&quot;No results found.&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">tearDown</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.driver.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    unittest.main()</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="定位器"><a href="#定位器" class="headerlink" title="定位器"></a>定位器</h1><p>定位器将定位的字符串和使用它们的地方分隔开来，将来开发修改了定位的方式和字符串只用来改该文件。<br>locators.py如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MainPageLocators</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;主页的定位器们&quot;&quot;&quot;</span></span><br><span class="line">    GO_BUTTON = (By.ID, <span class="string">&#x27;submit&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SearchResultsPageLocators</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;搜索结果页定位器们&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>要将全部定位器放在同一个module中，应该定位器中也有很多公用的部分。</p>
+<p>这里使用类，方便refactor，多个页面有相同的class或者是xpath的时候，是放在公用的定位器中还是单独的页面定位器中呢？</p>
+<p>如果页面时公用的部分，如loading，title等则放在公用的定位器中，否则放在单独的页面定位器中。这就要求对前端的设计有一些大概的了解，如果没有把握的话最好放在单独的页面定位器中。</p>
+<p>菜单的定位器集中放在common.py中，不放在每个页面中，菜单不属于各个页面。</p>
+<h1 id="添加注释"><a href="#添加注释" class="headerlink" title="添加注释"></a>添加注释</h1><p>会显示在报告中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AddAccount</span>(<span class="title class_ inherited__">Login</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;添加账号&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">setUp</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(AddAccount, <span class="variable language_">self</span>).setUp()</span><br></pre></td></tr></table></figure>
+<p>写在class下面，不要写在setup下面。</p>
+<h2 id="添加类注释"><a href="#添加类注释" class="headerlink" title="添加类注释"></a>添加类注释</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 添加测试用例注释</span><br><span class="line">​```python</span><br><span class="line">    def test_search_in_python_org(self):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        验证查找的元素存在</span><br><span class="line">        &quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2019/02/14/%E6%B5%8B%E8%AF%95/%E6%B5%8B%E8%AF%95%E7%AE%A1%E7%90%86/%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%E7%AE%A1%E7%90%86/"
+                                   title="测试流程管理"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">测试流程管理</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2019/01/12/%E6%B5%8B%E8%AF%95/UI%E8%87%AA%E5%8A%A8%E5%8C%96/selenium%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/"
+                                   title="selenium错误总结"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">selenium错误总结</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%B1%BB"><span class="nav-text">基类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%84%E9%A1%B5%E9%9D%A2%E5%AF%B9%E8%B1%A1"><span class="nav-text">各页面对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80%E7%B1%BB"><span class="nav-text">测试基础类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="nav-text">测试代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E5%99%A8"><span class="nav-text">定位器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%B3%A8%E9%87%8A"><span class="nav-text">添加注释</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%B1%BB%E6%B3%A8%E9%87%8A"><span class="nav-text">添加类注释</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2016</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Whisper</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%B1%BB"><span class="nav-text">基类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%84%E9%A1%B5%E9%9D%A2%E5%AF%B9%E8%B1%A1"><span class="nav-text">各页面对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80%E7%B1%BB"><span class="nav-text">测试基础类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="nav-text">测试代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E5%99%A8"><span class="nav-text">定位器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%B3%A8%E9%87%8A"><span class="nav-text">添加注释</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%B1%BB%E6%B3%A8%E9%87%8A"><span class="nav-text">添加类注释</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+
+</body>
+</html>

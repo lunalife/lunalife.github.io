@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="山中何事？松花酿酒，春水煎茶。">
+    <meta name="author" content="Whisper">
+    
+    <title>
+        
+            windows下testlink环境搭建 |
+        
+        但知行好事，莫要问前程
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/tx.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/keep-theme-custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"lucia.xicp.cn","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#10ac84","title":"但知行好事，莫要问前程","author":"Whisper","avatar":"/images/tx.jpg","logo":"/images/tx.jpg","favicon":"/images/tx.jpg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg5.jpg","background_img_dark":"/images/bg5.jpg","description":"自动化测试、性能、前后端、测试平台、安全、爬虫等","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":false},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2016,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/keep-theme-custom.css"],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/tx.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               但知行好事，莫要问前程
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        windows下testlink环境搭建
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/tx.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Whisper</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2017-10-29 08:09:03</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Thu Jan 29 2026 13:31:50 GMT+0800">2026-01-29 13:31:50</span>
+                </span>
+            
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/testlink/">testlink</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>最好不要使用最新版本，新版本未稳定有各种问题，使用最新版本的前一两个版本最好。该篇使用版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql 5.7</span><br><span class="line">php 7</span><br><span class="line">testlink 1.9.15</span><br></pre></td></tr></table></figure>
+<p>testlink1.9.17还未修改对8.0的代码，有错误，都使用之前的版本。</p>
+<h1 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h1><ol>
+<li>安装MySQL</li>
+<li>安装PHP</li>
+<li>安装Apache</li>
+<li>安装TestLink</li>
+</ol>
+<h1 id="安装Mysql"><a href="#安装Mysql" class="headerlink" title="安装Mysql"></a>安装Mysql</h1><p>见<a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/for-you/p/8940614.html" >wondows下安装mysql<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="安装PHP"><a href="#安装PHP" class="headerlink" title="安装PHP"></a>安装PHP</h1><p><a class="link"   target="_blank" rel="noopener" href="http://php.net/downloads.php" >下载PHP<i class="fas fa-external-link-alt"></i></a>后解压，将PHP的文件的地址添加到环境变量中，即可。</p>
+<blockquote>
+<p>注意：这里要下载安全线程版，供apache使用，非线程安全中没有<code>php7apache2_4.dll</code>文件。<a class="link"   target="_blank" rel="noopener" href="https://www.quora.com/What-is-the-meaning-of-TS-and-NTS-in-PHP" >TS和NTS区别<i class="fas fa-external-link-alt"></i></a>。</p>
+</blockquote>
+<p>打开cmd，输入<code>php -v</code>如果显示出版本则说明环境配置成功。</p>
+<h2 id="配置PHP支持MySQL"><a href="#配置PHP支持MySQL" class="headerlink" title="配置PHP支持MySQL"></a>配置PHP支持MySQL</h2><p>打开php文件夹，复制一个php.ini-development文件，修改为php.ini</p>
+<blockquote>
+<p>这里一定要修改为php.ini，有的程序只认php.ini文件，这样做也可以保存一份最原始的配置文件，之后都修改php.ini文件。</p>
+</blockquote>
+<p>打开php.ini文件，去掉前面的注释符号(；)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">extension=php_mysql.dll</span><br><span class="line">extension=php_mysqli.dll</span><br></pre></td></tr></table></figure>
+<h2 id="指定extension-dir路径"><a href="#指定extension-dir路径" class="headerlink" title="指定extension_dir路径"></a>指定extension_dir路径</h2><p>打开php.ini文件，修改extension_dir路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extension_dir = &quot;F:\php4\ext&quot;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="安装apache"><a href="#安装apache" class="headerlink" title="安装apache"></a>安装apache</h1><p>打开apache主页找到<a class="link"   target="_blank" rel="noopener" href="https://httpd.apache.org/download.cgi" >apache server 下载地址<i class="fas fa-external-link-alt"></i></a></p>
+<img     src="/images/test/windows_testlink_install_1.png"   width="200px">
+
+<p>点击for windows</p>
+<img     src="/images/test/windows_testlink_install_2.png"   width="400px">
+
+<p>下载ApacheHaus</p>
+<img     src="/images/test/windows_testlink_install_3.png"   width="400px">
+
+<blockquote>
+<p>ApacheHaus：<br>Apache Lounge：<br>BitNami WAMP Stack：Bitname集成安装<br>WampServer：Windows集成安装<br>XAMPP：Linux下的集成安装</p>
+</blockquote>
+<p>下载完后解压出来，根据根目录下的read_first进行安装：</p>
+<p><img   src="/images/test/windows_testlink_install_4.png" ></p>
+<p>步骤：</p>
+<ol>
+<li>以<strong>管理员</strong>身份运行cmd，进入到apache下的bin目录运行命令：<code>httpd.exe</code>，如果有错误则会输出错误，根据错误修改，如果么有错误则光标换行后停留在那里。</li>
+<li>访问<a class="link"   target="_blank" rel="noopener" href="http://localhost,看到apache/" >http://localhost，看到Apache<i class="fas fa-external-link-alt"></i></a> Haus’s 页面则说明环境OK，ctrl+c停止服务。</li>
+<li>输入命令<code>httpd -k install</code>将apache安装为windows服务。</li>
+<li>输入命令<code>httpd -k start</code>启动apache服务，访问<a class="link"   target="_blank" rel="noopener" href="http://localhost查看是否启动成功./" >http://localhost查看是否启动成功。<i class="fas fa-external-link-alt"></i></a></li>
+</ol>
+<h2 id="常用apache命令"><a href="#常用apache命令" class="headerlink" title="常用apache命令"></a>常用apache命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Stop Apache	 	httpd -k stop</span><br><span class="line">Restart Apache	httpd -k restart</span><br><span class="line">Uninstall Apache Service	httpd -k uninstall</span><br><span class="line">Test Config Syntax	httpd -t</span><br><span class="line">Version Details	httpd -V</span><br><span class="line">Command Line Options List	httpd -h</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h2><p>根据需要修改apache相关配置文件(Apache24\conf\httpd.conf)：</p>
+<ul>
+<li>修改apache路径：<code>Define SRVROOT &quot;F:\Apache24&quot;</code></li>
+<li>端口默认80如果冲突则修改：<code>Listen 80</code></li>
+<li>网址根目录默认在apache目录下，可以就使用这个也可以自定义：<code>DocumentRoot &quot;${SRVROOT}/htdocs&quot;</code></li>
+</ul>
+<h2 id="配置对PHP的支持"><a href="#配置对PHP的支持" class="headerlink" title="配置对PHP的支持"></a>配置对PHP的支持</h2><p>在网站根目录新建一个test.php的文件，输入：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">phpinfo</span>();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>访问该文件：<a class="link"   target="_blank" rel="noopener" href="http://localhost/test.php%EF%BC%8C%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%9A%84%E6%BA%90%E4%BB%A3%E7%A0%81%EF%BC%8C%E8%AF%B4%E6%98%8Eapache%E8%BF%98%E6%9C%AA%E6%94%AF%E6%8C%81%E5%AF%B9PHP%E7%9A%84%E8%A7%A3%E6%9E%90%EF%BC%8C%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AEapache%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E3%80%82" >http://localhost/test.php，页面显示的源代码，说明apache还未支持对PHP的解析，需要配置apache的配置文件。<i class="fas fa-external-link-alt"></i></a></p>
+<p>添加下面两行到apache的配置文件，第一行说明了通过loadmodule方式加载PHP，第二行指定php.ini的路径，第三行定义html和php格式文件都能执行php程序：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LoadModule php5_module &quot;F:\php\php5apache2_4.dll&quot;</span><br><span class="line">PHPIniDir &quot;F:\php-5.6.36-Win32-VC11-x64&quot;</span><br><span class="line">AddType Application/x-httpd-php .php .html</span><br></pre></td></tr></table></figure>
+<p>注意PHP版本号对应，上面版本是5+，如果是版本是7+则要对应修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LoadModule php7_module &quot;F:\php\php7apache2_4.dll&quot;</span><br><span class="line">PHPIniDir &quot;F:\php&quot;</span><br><span class="line">AddType Application/x-httpd-php .php .html</span><br></pre></td></tr></table></figure>
+
+<p>重启apache，重新访问<a class="link"   target="_blank" rel="noopener" href="http://localhost/test.php%EF%BC%8C%E6%88%90%E5%8A%9F%EF%BC%9A" >http://localhost/test.php，成功：<i class="fas fa-external-link-alt"></i></a><br><img     src="/images/test/windows_testlink_install_5.png"   width="500px"></p>
+<h1 id="安装TestLink"><a href="#安装TestLink" class="headerlink" title="安装TestLink"></a>安装TestLink</h1><p>安装testlink是直接在网页安装的，所以所有平台的安装都是相同的。<a class="link"   target="_blank" rel="noopener" href="http://sourceforge.net/projects/testlink/files/TestLink%201.9/" >TestLink下载地址<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>将下载下来的testlink放入到Apache的网站根目录下，访问。浏览器输入<code>localhost:8080/testlink_1.9.13/index.php</code>，点击<code>new installation</code>，根据提示安装。</p>
+<p>最后一步配置：</p>
+<img     src="/images/test/windows_testlink_install_6.png"   width="500px">
+
+<p>图中红框部分，填写数据库的地址，尤其注意黄色部分，写的是如果数据库是使用的默认端口(3306)号则不加端口号(如：localhost)，如果不是默认端口号则需要添加端口号(如：localhost:5502)。</p>
+<blockquote>
+<p>这里踩了一个大坑：端口号为3306的mysql，写上了端口号，下一步创建数据库一直不成功，报错<code>php_network_getaddresses: getaddrinfo failed </code>。去掉端口号就OK了。</p>
+</blockquote>
+<p>Database admin login： 数据库登录名<br>Database admin password：数据库登录密码<br>主要用于创建testlink数据库。</p>
+<p>TestLink DB login：创建一个testlink DB的账号<br>TestLink DB password：创建一个TestLink DB密码<br>所有需要连接testlink数据库的请求都使用该账号。</p>
+<h1 id="安装错误总结"><a href="#安装错误总结" class="headerlink" title="安装错误总结"></a>安装错误总结</h1><h2 id="修改php目录下的php-ini"><a href="#修改php目录下的php-ini" class="headerlink" title="修改php目录下的php.ini"></a>修改php目录下的php.ini</h2><p>错误<code>checking max.execution time</code><br>max_execution_time时间，修改为120,大概在372行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">max_execution_time = 120</span><br></pre></td></tr></table></figure>
+
+<p>错误<code>maximum session idle time before timeout</code><br>修改<code>session.gc_maxlifetime = 2400</code></p>
+<p>错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PHP Warning: date(): It is not safe to rely on the system’s timezone settings. You are *required* to use the date.timezone setting</span><br><span class="line">or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most</span><br><span class="line">likely misspelled the timezone identifier. We selected ‘UTC’...</span><br></pre></td></tr></table></figure>
+<p>设置date.timezone的值为PRC，设置好以后的为：date.timezone&#x3D;PRC，同时取消这一行代码的注释。</p>
+<h2 id="修改testlink目录下的config-inc-php"><a href="#修改testlink目录下的config-inc-php" class="headerlink" title="修改testlink目录下的config.inc.php"></a>修改testlink目录下的config.inc.php</h2><p>错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">checking if testlink/logs/ directory exists</span><br><span class="line">checking if upload_area directory exists</span><br></pre></td></tr></table></figure>
+
+<p>修改logs路径：<code>$tlCfg-&gt;log_path = &#39;[tesklink安装目录]/logs/&#39;;</code><br>修改upload_area路径：<code>$g_repositoryPath = &#39;[tesklink安装目录]/upload_area/&#39;;</code><br>错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*   copy from config.inc.php, [SMTP] Section into custom_config.inc.php.</span><br><span class="line">*   complete correct data regarding email addresses and mail server.</span><br></pre></td></tr></table></figure>
+<p>修改邮箱。</p>
+<p>安装完后，打开<a class="link"   target="_blank" rel="noopener" href="http://localhost/testlink/index.html%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8%E4%BA%86%E3%80%82" >http://localhost/testlink/index.html就可以开始使用了。<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="wamp集成安装"><a href="#wamp集成安装" class="headerlink" title="wamp集成安装"></a>wamp集成安装</h1><p>如果不想单独安装各个程序，可以使用<a class="link"   target="_blank" rel="noopener" href="http://www.wampserver.com/en/" >wamp<i class="fas fa-external-link-alt"></i></a>来集成安装PHP and a MySQL。</p>
+<h1 id="bitnami-testlink集成安装"><a href="#bitnami-testlink集成安装" class="headerlink" title="bitnami-testlink集成安装"></a>bitnami-testlink集成安装</h1><p>还可以使用bitnami的集成安装，Apache，mysql，phpadmin，<a class="link"   target="_blank" rel="noopener" href="https://bitnami.com/stack/testlink/installer" >bitnami-testlink下载地址<i class="fas fa-external-link-alt"></i></a>。</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>如果忘记安装过程中填写的testlink密码，可以直接查看数据库的账号密码，密码可以将<a class="link"   target="_blank" rel="noopener" href="http://www.cmd5.com/" >MD5转为明文<i class="fas fa-external-link-alt"></i></a>。</p>
+<p><img   src="/images/test/windows_testlink_install_7.png" ></p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/testlink/">testlink</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2017/11/16/%E6%B5%8B%E8%AF%95/UI%E8%87%AA%E5%8A%A8%E5%8C%96/appium%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%84%9A%E6%9C%AC/"
+                                   title="appium准备第一个脚本"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">appium准备第一个脚本</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2017/09/01/git/gitbook%E5%91%BD%E4%BB%A4/"
+                                   title="gitbook命令"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">gitbook命令</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Mysql"><span class="nav-text">安装Mysql</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85PHP"><span class="nav-text">安装PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEPHP%E6%94%AF%E6%8C%81MySQL"><span class="nav-text">配置PHP支持MySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E5%AE%9Aextension-dir%E8%B7%AF%E5%BE%84"><span class="nav-text">指定extension_dir路径</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85apache"><span class="nav-text">安装apache</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8apache%E5%91%BD%E4%BB%A4"><span class="nav-text">常用apache命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="nav-text">修改配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%AF%B9PHP%E7%9A%84%E6%94%AF%E6%8C%81"><span class="nav-text">配置对PHP的支持</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85TestLink"><span class="nav-text">安装TestLink</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93"><span class="nav-text">安装错误总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9php%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84php-ini"><span class="nav-text">修改php目录下的php.ini</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9testlink%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84config-inc-php"><span class="nav-text">修改testlink目录下的config.inc.php</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#wamp%E9%9B%86%E6%88%90%E5%AE%89%E8%A3%85"><span class="nav-text">wamp集成安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bitnami-testlink%E9%9B%86%E6%88%90%E5%AE%89%E8%A3%85"><span class="nav-text">bitnami-testlink集成安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-text">其他</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2016</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Whisper</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Mysql"><span class="nav-text">安装Mysql</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85PHP"><span class="nav-text">安装PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEPHP%E6%94%AF%E6%8C%81MySQL"><span class="nav-text">配置PHP支持MySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E5%AE%9Aextension-dir%E8%B7%AF%E5%BE%84"><span class="nav-text">指定extension_dir路径</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85apache"><span class="nav-text">安装apache</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8apache%E5%91%BD%E4%BB%A4"><span class="nav-text">常用apache命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="nav-text">修改配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%AF%B9PHP%E7%9A%84%E6%94%AF%E6%8C%81"><span class="nav-text">配置对PHP的支持</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85TestLink"><span class="nav-text">安装TestLink</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93"><span class="nav-text">安装错误总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9php%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84php-ini"><span class="nav-text">修改php目录下的php.ini</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9testlink%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84config-inc-php"><span class="nav-text">修改testlink目录下的config.inc.php</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#wamp%E9%9B%86%E6%88%90%E5%AE%89%E8%A3%85"><span class="nav-text">wamp集成安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bitnami-testlink%E9%9B%86%E6%88%90%E5%AE%89%E8%A3%85"><span class="nav-text">bitnami-testlink集成安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-text">其他</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+
+</body>
+</html>

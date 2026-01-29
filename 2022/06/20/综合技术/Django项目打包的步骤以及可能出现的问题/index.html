@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="山中何事？松花酿酒，春水煎茶。">
+    <meta name="author" content="Whisper">
+    
+    <title>
+        
+            Django项目打包的步骤以及可能出现的问题 |
+        
+        但知行好事，莫要问前程
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/tx.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/keep-theme-custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"lucia.xicp.cn","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#10ac84","title":"但知行好事，莫要问前程","author":"Whisper","avatar":"/images/tx.jpg","logo":"/images/tx.jpg","favicon":"/images/tx.jpg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg5.jpg","background_img_dark":"/images/bg5.jpg","description":"自动化测试、性能、前后端、测试平台、安全、爬虫等","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":false},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2016,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/keep-theme-custom.css"],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/tx.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               但知行好事，莫要问前程
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Django项目打包的步骤以及可能出现的问题
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/tx.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Whisper</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2022-06-20 10:00:12</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Thu Jan 29 2026 13:31:50 GMT+0800">2026-01-29 13:31:50</span>
+                </span>
+            
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>在anaconda虚拟环境下打包失败了，切换到系统python下pipenv打包成功了。</p>
+<h1 id="打包成exe"><a href="#打包成exe" class="headerlink" title="打包成exe"></a>打包成exe</h1><p>若想要打包的项目为单独的py文件，则使用 <code>pyinstaller-F xxx.py</code> ’打包<br>若想要打包的项目为一个的文件夹，则使用 <code>pyi-makespec -D manage.py</code><br>生成spec文件，执行成功后，会显示如下信息，表示可以去构建可执行文件了</p>
+<p>在目录下面会生成一个 manage.spec的文件。  </p>
+<p>然后运行 <code>pyinstaller manage.spec</code> 命令，生成打包的exe文件<br>打包程序的运行方式： 在manage.exe的位置打开cmd,输入 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">manage runserver ip:port --noreload </span><br></pre></td></tr></table></figure>
+<p>运行服务即可</p>
+<h1 id="新建直接运行的程序"><a href="#新建直接运行的程序" class="headerlink" title="新建直接运行的程序"></a>新建直接运行的程序</h1><p>新建一个run.py文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">os.system(&#x27;manage.exe runserver 8000 --noreload&#x27;)</span><br><span class="line">input()</span><br></pre></td></tr></table></figure>
+<p><code>pyinstaller -F run.py</code> 在dist目录下得到一个run.exe，双击运行run.exe 就能运行django项目。</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-运行服务是会提示No-module-named-XXX"><a href="#1-运行服务是会提示No-module-named-XXX" class="headerlink" title="1 运行服务是会提示No module named XXX"></a>1 运行服务是会提示No module named XXX</h2><p>这是因为Django有些module不会自动收集，需要手动添加  </p>
+<p>解决方法：在manage.spec文件中修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hiddenimports=[&#x27;django&#x27;, &#x27;users&#x27;,&#x27;users.apps&#x27;.........]</span><br></pre></td></tr></table></figure>
+
+<p>提示缺少什么module就在此处添加什么。（但是很恶心人的是每次只会提示一个错误，需要一直修改manage.spec文件，然后重新打包）</p>
+<h2 id="2-打开网页出现TemplateDoesNotExist-错误"><a href="#2-打开网页出现TemplateDoesNotExist-错误" class="headerlink" title="2 打开网页出现TemplateDoesNotExist 错误"></a>2 打开网页出现TemplateDoesNotExist 错误</h2><p>解决方法：.spec文件添加datas配置</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/m0_52137715/article/details/125687287#:~:text=Django%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E7%9A%84%E6%AD%A5%E9%AA%A4%E4%BB%A5%E5%8F%8A%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98%201%E3%80%81%E7%8E%AF%E5%A2%83%20%E8%BF%99%E9%87%8C%E7%AC%94%E8%80%85%E4%BD%BF%E7%94%A8%E7%9A%84%E7%8E%AF%E5%A2%83%E4%B8%BAPython3.7%E4%B8%8EDjango3.2.1%202%E3%80%81%E5%AE%89%E8%A3%85pyinstaller%20%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%20pip%20install%20-i,https%3A%2F%2Fpypi.tuna.tsinghua.edu.cn%2Fsimple%20pyinstaller%20%E6%AD%A4%E5%A4%84%E4%BD%BF%E7%94%A8%E4%BA%86%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E7%9A%84%E9%95%9C%E5%83%8F%E7%BD%91%E7%AB%99%203%E3%80%81%E6%89%93%E5%8C%85%E6%88%90exe%20%E8%8B%A5%E6%83%B3%E8%A6%81%E6%89%93%E5%8C%85%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%B8%BA%E5%8D%95%E7%8B%AC%E7%9A%84py%E6%96%87%E4%BB%B6%EF%BC%8C%E5%88%99%E4%BD%BF%E7%94%A8%20pyinstaller-F%20xxx.py%20%E2%80%99%E6%89%93%E5%8C%85" >原文<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="3：Failed-to-execute-script-manage"><a href="#3：Failed-to-execute-script-manage" class="headerlink" title="3：Failed to execute script manage"></a>3：Failed to execute script manage</h2><ul>
+<li>pyinstaller 打包后运行manager.exe runserver 出现以下问题：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">File &quot;django\utils\ [ autoreload.py</span><br><span class="line">](https://link.zhihu.com/?target=http%3A//autoreload.py/) &quot;, line 256, in</span><br><span class="line">restart_with_reloader</span><br><span class="line"></span><br><span class="line">File &quot;django\utils\ [ autoreload.py</span><br><span class="line">](https://link.zhihu.com/?target=http%3A//autoreload.py/) &quot;, line 243, in</span><br><span class="line">get_child_arguments</span><br><span class="line"></span><br><span class="line">RuntimeError: Script runserver does not exist.</span><br><span class="line"></span><br><span class="line">[7964] Failed to execute script manage</span><br></pre></td></tr></table></figure>
+
+<p>解决方案:</p>
+<p>运行时加–noreload 开关，即：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">manage.exe runserver 8000 --noreload  </span><br></pre></td></tr></table></figure>
+
+<h1 id="自定义的filter需要手动添加"><a href="#自定义的filter需要手动添加" class="headerlink" title="自定义的filter需要手动添加"></a>自定义的filter需要手动添加</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hiddenimports=[  </span><br><span class="line">&#x27;django&#x27;,  </span><br><span class="line">...... </span><br><span class="line">&#x27;task.templatetags.myfilter&#x27;,  </span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+<h1 id="添加-bat"><a href="#添加-bat" class="headerlink" title="添加.bat"></a>添加.bat</h1><p>Windows下直接运行bat<br>xxx.bat写入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">manage.exe runserver 8000 --noreload  </span><br></pre></td></tr></table></figure>
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2022/01/23/%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB%E9%97%AE%E9%A2%98/"
+                                   title="爬虫问题"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">爬虫问题</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E6%88%90exe"><span class="nav-text">打包成exe</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E7%9B%B4%E6%8E%A5%E8%BF%90%E8%A1%8C%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="nav-text">新建直接运行的程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%BF%90%E8%A1%8C%E6%9C%8D%E5%8A%A1%E6%98%AF%E4%BC%9A%E6%8F%90%E7%A4%BANo-module-named-XXX"><span class="nav-text">1 运行服务是会提示No module named XXX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%89%93%E5%BC%80%E7%BD%91%E9%A1%B5%E5%87%BA%E7%8E%B0TemplateDoesNotExist-%E9%94%99%E8%AF%AF"><span class="nav-text">2 打开网页出现TemplateDoesNotExist 错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%EF%BC%9AFailed-to-execute-script-manage"><span class="nav-text">3：Failed to execute script manage</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84filter%E9%9C%80%E8%A6%81%E6%89%8B%E5%8A%A8%E6%B7%BB%E5%8A%A0"><span class="nav-text">自定义的filter需要手动添加</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-bat"><span class="nav-text">添加.bat</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2016</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Whisper</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E6%88%90exe"><span class="nav-text">打包成exe</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E7%9B%B4%E6%8E%A5%E8%BF%90%E8%A1%8C%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="nav-text">新建直接运行的程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%BF%90%E8%A1%8C%E6%9C%8D%E5%8A%A1%E6%98%AF%E4%BC%9A%E6%8F%90%E7%A4%BANo-module-named-XXX"><span class="nav-text">1 运行服务是会提示No module named XXX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%89%93%E5%BC%80%E7%BD%91%E9%A1%B5%E5%87%BA%E7%8E%B0TemplateDoesNotExist-%E9%94%99%E8%AF%AF"><span class="nav-text">2 打开网页出现TemplateDoesNotExist 错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%EF%BC%9AFailed-to-execute-script-manage"><span class="nav-text">3：Failed to execute script manage</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84filter%E9%9C%80%E8%A6%81%E6%89%8B%E5%8A%A8%E6%B7%BB%E5%8A%A0"><span class="nav-text">自定义的filter需要手动添加</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-bat"><span class="nav-text">添加.bat</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+
+</body>
+</html>

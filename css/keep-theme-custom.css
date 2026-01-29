@@ -1,0 +1,6 @@
+:root {
+    --post-create-datetime: none;
+    --post-update-datetime: none;
+    --first-screen-height: 400px;
+    --home-post-history:none;
+}
