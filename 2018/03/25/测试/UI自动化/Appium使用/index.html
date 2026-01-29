@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="山中何事？松花酿酒，春水煎茶。">
+    <meta name="author" content="Whisper">
+    
+    <title>
+        
+            Appium使用 |
+        
+        但知行好事，莫要问前程
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/tx.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/keep-theme-custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"lucia.xicp.cn","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#10ac84","title":"但知行好事，莫要问前程","author":"Whisper","avatar":"/images/tx.jpg","logo":"/images/tx.jpg","favicon":"/images/tx.jpg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg5.jpg","background_img_dark":"/images/bg5.jpg","description":"自动化测试、性能、前后端、测试平台、安全、爬虫等","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":false},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2016,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/keep-theme-custom.css"],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/tx.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               但知行好事，莫要问前程
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Appium使用
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/tx.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Whisper</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2018-03-25 08:41:19</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Thu Jan 29 2026 22:57:02 GMT+0800">2026-01-29 22:57:02</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/UI%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">UI自动化测试</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="Appium环境搭建"><a href="#Appium环境搭建" class="headerlink" title="Appium环境搭建"></a>Appium环境搭建</h1><p>Android iOS环境搭建 可以参考：《测试开发软件自动》 邹辉 第2章</p>
+<h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2><p>去nodejs官网，依据操作系统是32位或者是64位，下载对应的文件，双击安装，注意把node.js的安装路劲加入到path的环境变量。安装完成后，运行cmd，输入node<br>-v查看是否安装成功。</p>
+<h2 id="安装appium-doctor"><a href="#安装appium-doctor" class="headerlink" title="安装appium-doctor"></a>安装appium-doctor</h2><p>appium-doctor用于检查系统是否准备完善</p>
+<p>npm install appium-doctor -g</p>
+<p>运行命令appium-doctor，此时运行会列出还没完善的环境，根据提示设置。</p>
+<p>如果所有环境都准备就绪，运行appium-doctor结果看起来如下样子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ appium-doctor</span><br><span class="line">info AppiumDoctor \#\#\# Diagnostic starting</span><br><span class="line">info AppiumDoctor ✔ ANDROID_HOME is set to: F:\\Android\\android-sdk\</span><br><span class="line">info AppiumDoctor ✔ JAVA_HOME is set to: G:\\Java\\jdk1.8.0_101\</span><br><span class="line">info AppiumDoctor ✔ adb exists at:</span><br><span class="line">F:\\Android\\android-sdk\\platform-tools\\adb.exe\</span><br><span class="line">info AppiumDoctor ✔ android exists at:</span><br><span class="line">F:\\Android\\android-sdk\\tools\\android.bat\</span><br><span class="line">info AppiumDoctor ✔ emulator exists at:</span><br><span class="line">F:\\Android\\android-sdk\\tools\\emulator.exe\</span><br><span class="line">info AppiumDoctor ✔ Bin directory of \$JAVA_HOME is set\</span><br><span class="line">info AppiumDoctor \#\#\# Diagnostic completed, no fix needed. \#\#\#\</span><br><span class="line">info AppiumDoctor\</span><br><span class="line">info AppiumDoctor Everything looks good, bye!\</span><br><span class="line">info AppiumDoctor</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="安装Java-JDK"><a href="#安装Java-JDK" class="headerlink" title="安装Java JDK"></a>安装Java JDK</h2><p>下载jdk8, 并安装,输入java -version检测是否安装成功。</p>
+<p>设置环境变量：</p>
+<p>系统变量→新建 JAVA_HOME 变量，值为java根目录(如：E:\Java\jdk1.7.0)</p>
+<p>系统变量的Path变量值中添加：%JAVA_HOME%\bin和%JAVA_HOME%\jre\bin两个变量</p>
+<p>系统变量→新建 CLASSPATH<br>变量,值填写.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar（注意最前面有一点）</p>
+<p>检验是否配置成功:运行cmd 输入 java -version （java和-version<br>之间有空格）</p>
+<p>如果有错，打开cmd，输入path后查看环境变量是否有正确解析出来。</p>
+<h2 id="安装Android-sdk"><a href="#安装Android-sdk" class="headerlink" title="安装Android sdk"></a>安装Android sdk</h2><p>官网下载，在下面的SDK Tools(仅获取命令行工具)部分选择合适的平台下载。</p>
+<p>设置环境变量：</p>
+<p>新建ANDROID_HOME设置其值为你的Android SDK路径如：F:&#x2F;android_sdk<br>添加path环境变量：Android<br>SDK下面的tools和platform-tools文件夹路径到PATH变量中<br>%ANDROID_HOME%\tools<br>%ANDROID_HOME%\platform-tools</p>
+<p>设置完成后命令行输入path查看是否设置正确。输出的path不应该有%了。犯过一个蠢错误，少写了一个%，导致安装appium时无法找到Android相关包，一定要每个步骤都验证是否成功。</p>
+<p>如果下载的是纯命令行工具，可能是未包含platform-tools可以在这里下载然后放在Android<br>home下面。</p>
+<p>安装完后，运行SDK Manager，选择一个API&gt;&#x3D;17的版本，点击安装。</p>
+<p>注：Android的platform-tools下面自带了adb。</p>
+<h2 id="安装appium"><a href="#安装appium" class="headerlink" title="安装appium"></a>安装appium</h2><p>命令行安装： 直接输入npm install -g appium安装完后，cmd输入 appium<br>查看结果如下则安装成功：</p>
+<p>C:\Users\Administrator&gt;appium<br>info: Welcome to Appium v1.4.14 (REV<br>c3fe3472417cbc37b54b4f6b1da58c7aa23dbff6)<br>info: Appium REST http interface listener started on 0.0.0.0:4723info:<br>Console LogLevel: debug</p>
+<p>习惯用命令行还是推荐命令行安装</p>
+<p>同时安装了Python3和Python2的话，要将Python2的环境变量放在Python3前面，appium有的是依赖Python2的。</p>
+<p>也可以安装图形化界面版：<br>图形化界面版，可以可视化来填写配置，可视化运行appium，inspector查找元素。</p>
+<p>下载地址，<br>点击首页的download进入下载页面，连接vpn下载，不然每次下载到最后都网络出错，无法下载。windows：下载AppiumForWindows.zip双击安装，有GUI界面。</p>
+<h2 id="启动appium"><a href="#启动appium" class="headerlink" title="启动appium"></a>启动appium</h2><p>&gt; appium<br>[Appium] Welcome to Appium v1.5.3<br>[Appium] Appium REST http interface listener started on 0.0.0.0:4723</p>
+<h2 id="安装Appium-Python客户端包"><a href="#安装Appium-Python客户端包" class="headerlink" title="安装Appium Python客户端包"></a>安装Appium Python客户端包</h2><p>pip install Appium-Python-Client</p>
+<p>该包提供了一些帮助使得appium结合Python的移动测试变得简单。</p>
+<h2 id="错误-warning的可以不修改，用到再安装"><a href="#错误-warning的可以不修改，用到再安装" class="headerlink" title="错误(warning的可以不修改，用到再安装)"></a>错误(warning的可以不修改，用到再安装)</h2><ol>
+<li>没有找到F:\Android\android-sdk\platform-tools\adb.exe</li>
+</ol>
+<p>C:\Users\Administrator&gt;appium-doctor<br>Running Android Checks<br>✔ ANDROID_HOME is set to &quot;F:\Android\android-sdk&quot;<br>✔ JAVA_HOME is set to &quot;F:\Java\jdk1.8.0_51.&quot;<br>✖ ADB could not be found at<br>F:\Android\android-sdk\platform-tools\adb.exe<br>Appium-Doctor detected problems. Please fix and rerun Appium-Doctor.</p>
+<p>我看了，我都没有platform-tools这个目录。需要安装：</p>
+<p>打开Android SKD Manager勾选Android SDK platform-tools安装。</p>
+<ol>
+<li><p>opencv4nodejs未安装</p>
+</li>
+<li><p>解决，查看文档, 运行以下命令安装</p>
+</li>
+</ol>
+<p>npm i -g opencv4nodejs</p>
+<p>每个appium版本要求的依赖库可能不一样，其它的问题在输入中其实都很详细，注意仔细阅读解决</p>
+<ol>
+<li><p>打开uiautomatorviewer.bat后闪退</p>
+</li>
+<li><p>在西西软件下载jdk8，之间试jdk12重新安装设置环境变量，然后打开一次sdkmanager.bat在下载什么配置文件，然后再打开sdkmanager.bat就可以了。</p>
+</li>
+<li><p>opencv4nodejs安装时cmake未找到</p>
+</li>
+<li><p>cmake安装后重新打开cmd安装</p>
+</li>
+</ol>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2018/04/21/python/%E5%8F%91%E7%8E%B0%E5%A5%BD%E7%94%A8%E7%9A%84python%E5%BA%93/"
+                                   title="发现好用的python库"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">发现好用的python库</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2018/02/10/%E6%B5%8B%E8%AF%95/UI%E8%87%AA%E5%8A%A8%E5%8C%96/ubuntu%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BAselenium/"
+                                   title="ubuntu环境搭建selenium"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">ubuntu环境搭建selenium</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Appium%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-text">Appium环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85node-js"><span class="nav-text">安装node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85appium-doctor"><span class="nav-text">安装appium-doctor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Java-JDK"><span class="nav-text">安装Java JDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Android-sdk"><span class="nav-text">安装Android sdk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85appium"><span class="nav-text">安装appium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8appium"><span class="nav-text">启动appium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Appium-Python%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8C%85"><span class="nav-text">安装Appium Python客户端包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%99%E8%AF%AF-warning%E7%9A%84%E5%8F%AF%E4%BB%A5%E4%B8%8D%E4%BF%AE%E6%94%B9%EF%BC%8C%E7%94%A8%E5%88%B0%E5%86%8D%E5%AE%89%E8%A3%85"><span class="nav-text">错误(warning的可以不修改，用到再安装)</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2016</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Whisper</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Appium%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-text">Appium环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85node-js"><span class="nav-text">安装node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85appium-doctor"><span class="nav-text">安装appium-doctor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Java-JDK"><span class="nav-text">安装Java JDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Android-sdk"><span class="nav-text">安装Android sdk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85appium"><span class="nav-text">安装appium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8appium"><span class="nav-text">启动appium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Appium-Python%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8C%85"><span class="nav-text">安装Appium Python客户端包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%99%E8%AF%AF-warning%E7%9A%84%E5%8F%AF%E4%BB%A5%E4%B8%8D%E4%BF%AE%E6%94%B9%EF%BC%8C%E7%94%A8%E5%88%B0%E5%86%8D%E5%AE%89%E8%A3%85"><span class="nav-text">错误(warning的可以不修改，用到再安装)</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+
+</body>
+</html>

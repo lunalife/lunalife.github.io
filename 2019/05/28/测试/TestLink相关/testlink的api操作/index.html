@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="山中何事？松花酿酒，春水煎茶。">
+    <meta name="author" content="Whisper">
+    
+    <title>
+        
+            testlink api 操作 |
+        
+        但知行好事，莫要问前程
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/tx.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/keep-theme-custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"lucia.xicp.cn","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#10ac84","title":"但知行好事，莫要问前程","author":"Whisper","avatar":"/images/tx.jpg","logo":"/images/tx.jpg","favicon":"/images/tx.jpg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg5.jpg","background_img_dark":"/images/bg5.jpg","description":"自动化测试、性能、前后端、测试平台、安全、爬虫等","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":false},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2016,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/keep-theme-custom.css"],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/tx.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               但知行好事，莫要问前程
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        testlink api 操作
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/tx.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Whisper</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2019-05-28 10:40:02</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Thu Jan 29 2026 23:16:12 GMT+0800">2026-01-29 23:16:12</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/test/">test</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/testlink/">testlink</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>testlink可以做很多事情，如API测试参数管理，Excel导入导出，快速模板创建测试用例，集成Jenkins。</p>
+<p>TestLink API第三方库:<br><a class="link"   target="_blank" rel="noopener" href="https://github.com/lczub/TestLink-API-Python-client" >TestLink-API-Python-client-0.8.0<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://github.com/lczub/TestLink-API-Python-client/tree/master/example" >example 示例<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install TestLink-API-Python-client</span><br></pre></td></tr></table></figure>
+
+<h1 id="获取xmlrpc-php地址"><a href="#获取xmlrpc-php地址" class="headerlink" title="获取xmlrpc.php地址"></a>获取xmlrpc.php地址</h1><p>搜索：<code>find -name xmlrpc.php</code><br>输出地址为：<code>./opt/bitnami/testlink/lib/api/xmlrpc/v1/xmlrpc.php</code></p>
+<p>搭建的testlink主页地址：<a class="link"   target="_blank" rel="noopener" href="http://localhost:8086/index.php" >http://localhost:8086/index.php<i class="fas fa-external-link-alt"></i></a></p>
+<p>那这里就是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8086/lib/api/xmlrpc/v1/xmlrpc.php</span><br></pre></td></tr></table></figure>
+<p>不行就试试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8086/testlink/lib/api/xmlrpc/v1/xmlrpc.php</span><br></pre></td></tr></table></figure>
+
+<h1 id="1-9-15-获取私人key"><a href="#1-9-15-获取私人key" class="headerlink" title="1.9.15 获取私人key"></a>1.9.15 获取私人key</h1><p>点击进入用户的页面，点击生成key按钮，生成成功后会通过邮件发送到该用户邮箱。<br>搜索：<code>grep -r g_smtp_host *</code></p>
+<p>需要配置testlink配置中的SMTP，否则会报错：<code>LOCALIZE: apikey_cannot_be_reseted_invalid_smtp_hostname。</code></p>
+<h1 id="1-9-20-获取私人key"><a href="#1-9-20-获取私人key" class="headerlink" title="1.9.20 获取私人key"></a>1.9.20 获取私人key</h1><p>坑惨了，一直发邮件都没有收到。原来这个版本直接在个人设置中查看就行了。<br>点击这个小人进入到账号设置，最下面就有。<br>![[Snipaste_07-07_11-44-19.png]]</p>
+<h1 id="获取TestlinkAPIClient对象实例"><a href="#获取TestlinkAPIClient对象实例" class="headerlink" title="获取TestlinkAPIClient对象实例"></a>获取TestlinkAPIClient对象实例</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url = &quot;http://11.12.13.16/lib/api/xmlrpc/v1/xmlrpc.php&quot;</span><br><span class="line">key = &quot;9f5ec9cd058457usdko2191188&quot;</span><br><span class="line">tlc = testlink.TestlinkAPIClient(url, key)</span><br></pre></td></tr></table></figure>
+
+<p><a name="ac60039b"></a></p>
+<h1 id="获取基础信息"><a href="#获取基础信息" class="headerlink" title="获取基础信息"></a>获取基础信息</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(tlc.countProjects())</span><br><span class="line">projects = tlc.getProjects()</span><br><span class="line">for project in projects:</span><br><span class="line">    print(project)</span><br></pre></td></tr></table></figure>
+
+<p><a name="aa0022a8"></a></p>
+<h1 id="操作测试用例集"><a href="#操作测试用例集" class="headerlink" title="操作测试用例集"></a>操作测试用例集</h1><p><a name="0de07ca6"></a></p>
+<h2 id="创建用例集"><a href="#创建用例集" class="headerlink" title="创建用例集"></a>创建用例集</h2><ol>
+<li>无测试用例集</li>
+<li>新建项目，未创建测试集，此时获取first level的测试集为空。</li>
+<li>使用创建测试用例集函数createTestSuite时，最后一个参数parentid此时可以不用传输。</li>
+<li>有测试用例集</li>
+<li>如果是创建在项目的根上，最后一个参数parentid此时可以不用传输。</li>
+<li>如果是创建在已有的测试用例集下面，最后一个参数parentid此时要传输为目标用例集的ID。</li>
+</ol>
+<p><a name="28f11d33"></a></p>
+<h2 id="创建名称相同的用例集"><a href="#创建名称相同的用例集" class="headerlink" title="创建名称相同的用例集"></a>创建名称相同的用例集</h2><p>如创建已经存在相同名称的用例集，不会报错，返回0。</p>
+<p>创建不重复的用例集，成功后，返回结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[&#123;&#x27;id&#x27;: 68219, &#x27;name&#x27;: &#x27;&#x27;, &#x27;name_changed&#x27;: False, &#x27;status&#x27;: True, </span><br><span class="line">&#x27;operation&#x27;: &#x27;createTestSuite&#x27;, &#x27;additionalInfo&#x27;: &#x27;&#x27;, &#x27;message&#x27;: &#x27;ok&#x27;&#125;]</span><br></pre></td></tr></table></figure>
+
+<p><a name="f9f4d976"></a></p>
+<h2 id="获取用例集"><a href="#获取用例集" class="headerlink" title="获取用例集"></a>获取用例集</h2><ol>
+<li>获取顶级用例集</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getFirstLevelTestSuitesForTestProject(project_id)</span><br></pre></td></tr></table></figure>
+
+<p><img   src="/files/imgs/2021/2021-01-29_10_32_41_3241.png#alt=" ></p>
+<p>处于顶级用例集下的用例集不会被返回，只返回(一级)标红的用例集。</p>
+<ol>
+<li>获取指定用例集下的用例集</li>
+<li>用例集下只有一个用例集</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用例集1</span><br><span class="line">  用例集2</span><br></pre></td></tr></table></figure>
+
+<p>使用tlc.getTestSuitesForTestSuite(testsuite_id)返回的数据结构如下，开头不会多一个key：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#x27;id&#x27;: &#x27;68596&#x27;, &#x27;details&#x27;: &#x27;&#x27;, &#x27;name&#x27;: &#x27;用例集2&#x27;, &#x27;node_type_id&#x27;: &#x27;2&#x27;, &#x27;node_order&#x27;: &#x27;1&#x27;, &#x27;parent_id&#x27;: &#x27;68576&#x27;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用例集下有多个用例集</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">用例集1</span><br><span class="line">  用例集2</span><br><span class="line">  用例集3</span><br></pre></td></tr></table></figure>
+
+<p>使用tlc.getTestSuitesForTestSuite(testsuite_id)返回的数据结构如下, 前面会多一个id的key：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#x27;68596&#x27;:</span><br><span class="line">    &#123;&#x27;id&#x27;: &#x27;68596&#x27;, &#x27;details&#x27;: &#x27;&#x27;, &#x27;name&#x27;: &#x27;用例集2&#x27;, &#x27;node_type_id&#x27;: &#x27;2&#x27;, &#x27;node_order&#x27;: &#x27;1&#x27;, &#x27;parent_id&#x27;: &#x27;68576&#x27;&#125;,</span><br><span class="line"> &#x27;68673&#x27;:</span><br><span class="line">    &#123;&#x27;id&#x27;: &#x27;68673&#x27;, &#x27;details&#x27;: &#x27;&#x27;, &#x27;name&#x27;: &#x27;用例集3&#x27;, &#x27;node_type_id&#x27;: &#x27;2&#x27;, &#x27;node_order&#x27;: &#x27;2&#x27;, &#x27;parent_id&#x27;: &#x27;68576&#x27;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>试了下有3个子集的，情况和2个子集相同：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">用例集1</span><br><span class="line">  用例集2</span><br><span class="line">  用例集3</span><br><span class="line">  用例集4</span><br><span class="line">&#123;&#x27;68596&#x27;:</span><br><span class="line">    &#123;&#x27;id&#x27;: &#x27;68596&#x27;, &#x27;details&#x27;: &#x27;&#x27;, &#x27;name&#x27;: &#x27;用例集2&#x27;, &#x27;node_type_id&#x27;: &#x27;2&#x27;, &#x27;node_order&#x27;: &#x27;1&#x27;, &#x27;parent_id&#x27;: &#x27;68576&#x27;&#125;,</span><br><span class="line">&#x27;68673&#x27;:</span><br><span class="line">    &#123;&#x27;id&#x27;: &#x27;68673&#x27;, &#x27;details&#x27;: &#x27;&#x27;, &#x27;name&#x27;: &#x27;用例集3&#x27;, &#x27;node_type_id&#x27;: &#x27;2&#x27;, &#x27;node_order&#x27;: &#x27;2&#x27;, &#x27;parent_id&#x27;: &#x27;68576&#x27;&#125;,</span><br><span class="line">&#x27;68674&#x27;:</span><br><span class="line">    &#123;&#x27;id&#x27;: &#x27;68674&#x27;, &#x27;details&#x27;: &#x27;&#x27;, &#x27;name&#x27;: &#x27;用例集4&#x27;, &#x27;node_type_id&#x27;: &#x27;2&#x27;, &#x27;node_order&#x27;: &#x27;3&#x27;, &#x27;parent_id&#x27;: &#x27;68576&#x27;&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>针对以上不同格式做不同处理。</p>
+<p><a name="be52f302"></a></p>
+<h1 id="操作测试用例"><a href="#操作测试用例" class="headerlink" title="操作测试用例"></a>操作测试用例</h1><p><a name="797d2a02"></a></p>
+<h2 id="通过用例ID获取"><a href="#通过用例ID获取" class="headerlink" title="通过用例ID获取"></a>通过用例ID获取</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> def get_test_case(test_case_id):</span><br><span class="line">     test_case = tlc.getTestCase(None, testcaseexternalid=test_case_id)</span><br><span class="line">     for i in test_case:</span><br><span class="line">         print (&quot;序列&quot;, &quot;执行步骤&quot;, &quot;预期结果&quot;)</span><br><span class="line">         for m in i.get(&quot;steps&quot;):</span><br><span class="line">             print (m.get(&quot;step_number&quot;), m.get(&quot;actions&quot;), m.get(&quot;expected_results&quot;))</span><br><span class="line"> </span><br><span class="line">get_test_case(&quot;auto-10&quot;)  #要加上项目前缀</span><br></pre></td></tr></table></figure>
+
+<p>注意：这里的用例ID要加上项目前缀，否则获取不到</p>
+<p><a name="f6033caf"></a></p>
+<h2 id="通过用例集ID获取其下所有用例"><a href="#通过用例集ID获取其下所有用例" class="headerlink" title="通过用例集ID获取其下所有用例"></a>通过用例集ID获取其下所有用例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test_cases = self.tlc.getTestCasesForTestSuite(testsuiteid=suite_id)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果有其他有用例集，循环获取即可</p>
+</blockquote>
+<p><a name="86a1f19c"></a></p>
+<h1 id="创建测试用例"><a href="#创建测试用例" class="headerlink" title="创建测试用例"></a>创建测试用例</h1><p>源代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">def createTestCase(self, *argsPositional, **argsOptional):</span><br></pre></td></tr></table></figure>
+
+<p>参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">positional argument位置参数:</span><br><span class="line">testcasename :测试用例名称</span><br><span class="line">testsuiteid :创建在某个测试集，该测试集的ID</span><br><span class="line">testprojectid :测试项目ID</span><br><span class="line">authorlogin :创建人姓名</span><br><span class="line">summary :用例总结</span><br></pre></td></tr></table></figure>
+
+<p>可选参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">steps :步骤，为一个list</span><br><span class="line">preconditions :前置条件</span><br><span class="line">importance</span><br><span class="line">executiontype</span><br><span class="line">order</span><br><span class="line">internalid</span><br><span class="line">checkduplicatedname</span><br><span class="line">actiononduplicatedname</span><br><span class="line">status</span><br><span class="line">estimatedexecduration</span><br></pre></td></tr></table></figure>
+
+<p>创建成功返回值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">&#123;&#x27;operation&#x27;: &#x27;createTestCase&#x27;, </span><br><span class="line">&#x27;status&#x27;: True, </span><br><span class="line">&#x27;id&#x27;: 71278, </span><br><span class="line">&#x27;additionalInfo&#x27;: </span><br><span class="line">      &#123;&#x27;id&#x27;: 71278, </span><br><span class="line">      &#x27;external_id&#x27;: &#x27;119&#x27;, </span><br><span class="line">      &#x27;status_ok&#x27;: 1, </span><br><span class="line">      &#x27;msg&#x27;: &#x27;ok&#x27;, </span><br><span class="line">      &#x27;new_name&#x27;: &#x27;&#x27;, </span><br><span class="line">      &#x27;version_number&#x27;: 1, </span><br><span class="line">      &#x27;has_duplicate&#x27;: False, </span><br><span class="line">      &#x27;external_id_already_exists&#x27;: False, </span><br><span class="line">      &#x27;update_name&#x27;: False, </span><br><span class="line">      &#x27;tcversion_id&#x27;: 71279&#125;, </span><br><span class="line">      &#x27;message&#x27;: &#x27;Success!&#x27;&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>external_id: 用例的ID</p>
+<p><a name="b1dae3f6"></a></p>
+<h2 id="步骤预先定义"><a href="#步骤预先定义" class="headerlink" title="步骤预先定义"></a>步骤预先定义</h2><p>方法1 使用list</p>
+<p>必须是定义好的由字典组成的列表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">steps =</span><br><span class="line">[&#123;&#x27;step_number&#x27; : 1, &#x27;actions&#x27; : &quot;action A&quot; ,</span><br><span class="line">    &#x27;expected_results&#x27; : &quot;result A&quot;, &#x27;execution_type&#x27; : 0&#125;,</span><br><span class="line"> &#123;&#x27;step_number&#x27; : 2, &#x27;actions&#x27; : &quot;action B&quot; ,</span><br><span class="line">    &#x27;expected_results&#x27; : &quot;result B&quot;, &#x27;execution_type&#x27; : 1&#125;,</span><br><span class="line"> &#123;&#x27;step_number&#x27; : 3, &#x27;actions&#x27; : &quot;action C&quot; ,</span><br><span class="line">    &#x27;expected_results&#x27; : &quot;result C&quot;, &#x27;execution_type&#x27; : 0&#125;]</span><br><span class="line">newTestCase = self.tlc.createTestCase(........steps=steps)</span><br></pre></td></tr></table></figure>
+
+<p>方法2 使用initStep</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">该方法无需传递steps参数，已经预存在了tlc对象中</span><br><span class="line">tlc.initStep(&quot;添加一个动作&quot;, &quot;期望一个结果&quot;, 1)</span><br><span class="line">tlc.appendStep(&quot;添加一个动作2&quot;, &quot;期望一个结果2&quot;, 1)</span><br><span class="line">tlc.appendStep(&quot;添加一个动作3&quot;, &quot;期望一个结果3&quot;, 1)</span><br><span class="line">newTestCase = self.tlc.createTestCase(.......)</span><br></pre></td></tr></table></figure>
+<h1 id="自定义字段"><a href="#自定义字段" class="headerlink" title="自定义字段"></a>自定义字段</h1><p>这里常用的是版本号，导入Excel的时候使用</p>
+<p><a name="7288a0a0"></a></p>
+<h1 id="自定义关键字"><a href="#自定义关键字" class="headerlink" title="自定义关键字"></a>自定义关键字</h1><p>![[Snipaste_07-08_10-52-42.png]]<br><a name="b3fb8122"></a></p>
+<h2 id="获取关键字"><a href="#获取关键字" class="headerlink" title="获取关键字"></a>获取关键字</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tlc.listKeywordsForTC(testcase_id)</span><br></pre></td></tr></table></figure>
+
+<p><a name="967ad3d4"></a></p>
+<h2 id="自定义字段-1"><a href="#自定义字段-1" class="headerlink" title="自定义字段"></a>自定义字段</h2><p>自定义关键字的操作方法，在编辑器中输入custom后，搜出的关键字有如下</p>
+<p>第一个猜测是需求关键字。 get开头的获取关键字。 update开头的是更新关键字。</p>
+<p>注意: testcaseexternalid一定要写全”au-117”,-符号不能少。</p>
+<p><a name="a2032f23"></a></p>
+<h2 id="获取用例自定义字段值"><a href="#获取用例自定义字段值" class="headerlink" title="获取用例自定义字段值"></a>获取用例自定义字段值</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getTestCaseCustomFieldDesignValue(</span><br><span class="line">    testcaseexternalid=&quot;au-117&quot;,</span><br><span class="line">    testprojectid=&quot;68194&quot;,</span><br><span class="line">    customfieldname=&#x27;版本号&#x27;,</span><br><span class="line">    version=1</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>这里的version没找到是指哪里，填写1就可以了。</p>
+<p><a name="69703c0c"></a></p>
+<h2 id="更新用例自定义字段值"><a href="#更新用例自定义字段值" class="headerlink" title="更新用例自定义字段值"></a>更新用例自定义字段值</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tlc.updateTestCaseCustomFieldDesignValue(</span><br><span class="line">    testcaseexternalid=&quot;au-117&quot;,</span><br><span class="line">    testprojectid=&quot;68194&quot;,</span><br><span class="line">    version=1,</span><br><span class="line">    customfields=&#123;&quot;版本号&quot;: &quot;6.6&quot;&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><a name="955a2dc0"></a></p>
+<h2 id="给用例添加自定义的关键字"><a href="#给用例添加自定义的关键字" class="headerlink" title="给用例添加自定义的关键字"></a>给用例添加自定义的关键字</h2><p>先在项目的自定义关键字中添加号要用的关键字(自动添加关键字还不知道怎么添加)</p>
+<p><img   src="/files/imgs/2021/2021-09-28_10_55_47_5547.jpg#alt=" ></p>
+<p>给用例添加上某个关键字，直接用关键字的名称即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ts = TestLinkOpr(&quot;auto&quot;)</span><br><span class="line">a = &#123;&quot;auto-68&quot;: [&quot;测试关键字B&quot;]&#125;</span><br><span class="line">print(ts.tlc.addTestCaseKeywords(a))</span><br></pre></td></tr></table></figure>
+
+<p><a name="39425858"></a></p>
+<h2 id="创建项目关键字"><a href="#创建项目关键字" class="headerlink" title="创建项目关键字"></a>创建项目关键字</h2><p>研究中。。</p>
+<p>搜索到了php添加关键字部分代码</p>
+<p><img   src="/files/imgs/2021/2021-09-28_11_08_43_843.jpg#alt=" ></p>
+<p>研究不出来</p>
+<p>可以导入关键字csv后，加上再导入，保存一份常用的关键字</p>
+<p><img   src="/files/imgs/2021/2021-09-28_18_18_37_1837.jpg#alt=" ></p>
+<p>用xml导入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;keywords&gt;</span><br><span class="line">&lt;keyword name=&quot;功能权限&quot;&gt;&lt;notes&gt;&lt;![CDATA[]]&gt;&lt;/notes&gt;&lt;/keyword&gt;</span><br><span class="line">&lt;keyword name=&quot;地方都是&quot;&gt;&lt;notes&gt;&lt;![CDATA[]]&gt;&lt;/notes&gt;&lt;/keyword&gt;</span><br><span class="line">&lt;keyword name=&quot;数据权限&quot;&gt;&lt;notes&gt;&lt;![CDATA[]]&gt;&lt;/notes&gt;&lt;/keyword&gt;</span><br><span class="line">&lt;keyword name=&quot;附件管理&quot;&gt;&lt;notes&gt;&lt;![CDATA[]]&gt;&lt;/notes&gt;&lt;/keyword&gt;</span><br><span class="line">&lt;/keywords&gt;</span><br></pre></td></tr></table></figure>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/testlink/">testlink</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2019/06/04/python/Mac%E5%AE%89%E8%A3%85python3%E7%8E%AF%E5%A2%83/"
+                                   title="Mac安装python3环境"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Mac安装python3环境</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2019/05/19/%E6%B5%8B%E8%AF%95/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/API%E6%B5%8B%E8%AF%95%E5%B8%B8%E7%94%A8%E6%9E%B6%E6%9E%84/"
+                                   title="API测试常用架构"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">API测试常用架构</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96xmlrpc-php%E5%9C%B0%E5%9D%80"><span class="nav-text">获取xmlrpc.php地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-9-15-%E8%8E%B7%E5%8F%96%E7%A7%81%E4%BA%BAkey"><span class="nav-text">1.9.15 获取私人key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-9-20-%E8%8E%B7%E5%8F%96%E7%A7%81%E4%BA%BAkey"><span class="nav-text">1.9.20 获取私人key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96TestlinkAPIClient%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B"><span class="nav-text">获取TestlinkAPIClient对象实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF"><span class="nav-text">获取基础信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E9%9B%86"><span class="nav-text">操作测试用例集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E4%BE%8B%E9%9B%86"><span class="nav-text">创建用例集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%90%8D%E7%A7%B0%E7%9B%B8%E5%90%8C%E7%9A%84%E7%94%A8%E4%BE%8B%E9%9B%86"><span class="nav-text">创建名称相同的用例集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%94%A8%E4%BE%8B%E9%9B%86"><span class="nav-text">获取用例集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="nav-text">操作测试用例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E7%94%A8%E4%BE%8BID%E8%8E%B7%E5%8F%96"><span class="nav-text">通过用例ID获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E7%94%A8%E4%BE%8B%E9%9B%86ID%E8%8E%B7%E5%8F%96%E5%85%B6%E4%B8%8B%E6%89%80%E6%9C%89%E7%94%A8%E4%BE%8B"><span class="nav-text">通过用例集ID获取其下所有用例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="nav-text">创建测试用例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E9%A2%84%E5%85%88%E5%AE%9A%E4%B9%89"><span class="nav-text">步骤预先定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E6%AE%B5"><span class="nav-text">自定义字段</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">自定义关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">获取关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E6%AE%B5-1"><span class="nav-text">自定义字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%94%A8%E4%BE%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E6%AE%B5%E5%80%BC"><span class="nav-text">获取用例自定义字段值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E7%94%A8%E4%BE%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E6%AE%B5%E5%80%BC"><span class="nav-text">更新用例自定义字段值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%99%E7%94%A8%E4%BE%8B%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">给用例添加自定义的关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">创建项目关键字</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2016</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Whisper</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96xmlrpc-php%E5%9C%B0%E5%9D%80"><span class="nav-text">获取xmlrpc.php地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-9-15-%E8%8E%B7%E5%8F%96%E7%A7%81%E4%BA%BAkey"><span class="nav-text">1.9.15 获取私人key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-9-20-%E8%8E%B7%E5%8F%96%E7%A7%81%E4%BA%BAkey"><span class="nav-text">1.9.20 获取私人key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96TestlinkAPIClient%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B"><span class="nav-text">获取TestlinkAPIClient对象实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF"><span class="nav-text">获取基础信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E9%9B%86"><span class="nav-text">操作测试用例集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E4%BE%8B%E9%9B%86"><span class="nav-text">创建用例集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%90%8D%E7%A7%B0%E7%9B%B8%E5%90%8C%E7%9A%84%E7%94%A8%E4%BE%8B%E9%9B%86"><span class="nav-text">创建名称相同的用例集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%94%A8%E4%BE%8B%E9%9B%86"><span class="nav-text">获取用例集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="nav-text">操作测试用例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E7%94%A8%E4%BE%8BID%E8%8E%B7%E5%8F%96"><span class="nav-text">通过用例ID获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E7%94%A8%E4%BE%8B%E9%9B%86ID%E8%8E%B7%E5%8F%96%E5%85%B6%E4%B8%8B%E6%89%80%E6%9C%89%E7%94%A8%E4%BE%8B"><span class="nav-text">通过用例集ID获取其下所有用例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B"><span class="nav-text">创建测试用例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E9%A2%84%E5%85%88%E5%AE%9A%E4%B9%89"><span class="nav-text">步骤预先定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E6%AE%B5"><span class="nav-text">自定义字段</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">自定义关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">获取关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E6%AE%B5-1"><span class="nav-text">自定义字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%94%A8%E4%BE%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E6%AE%B5%E5%80%BC"><span class="nav-text">获取用例自定义字段值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E7%94%A8%E4%BE%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E6%AE%B5%E5%80%BC"><span class="nav-text">更新用例自定义字段值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%99%E7%94%A8%E4%BE%8B%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">给用例添加自定义的关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">创建项目关键字</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+
+</body>
+</html>
