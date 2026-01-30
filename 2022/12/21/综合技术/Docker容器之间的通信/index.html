@@ -9,7 +9,7 @@
     
     <title>
         
-            归档 |
+            容器之间的通信 |
         
         但知行好事，莫要问前程
     </title>
@@ -99,7 +99,7 @@
                         </li>
                     
                         
-                        <li class="menu-item flex-start border-box active">
+                        <li class="menu-item flex-start border-box">
                             <a class="menu-text-color border-box" href="/archives">
                                 
                                 归档
@@ -166,7 +166,7 @@
                 </li>
             
                 
-                <li class="drawer-menu-item border-box not-sub-menu active">
+                <li class="drawer-menu-item border-box not-sub-menu">
                     <label class="drawer-menu-label border-box">
                         <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
                             
@@ -228,78 +228,161 @@
             <div class="main-content border-box">
                 
 
-                    <div class="fade-in-down-animation">
-    <div class="archives-container">
-        <div class="archives-timeline border-box">
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
             
-<div class="archive-list-container border-box">
-    
-        <section class="archive-item border-box">
-            <div class="archive-item-header border-box">
-                <span class="archive-year">2016</span>
-            </div>
-            <ul class="archive-item-body border-box">
+
+            <div class="post-content-bottom border-box">
                 
-                    <li class="post-item border-box">
-                        <span class="starting-point border-box flex-center"></span>
-                        <span class="post-date border-box">05-01</span>
-                        <a class="post-title border-box text-ellipsis"
-                           href="/2016/05/01/%E6%9C%AA%E5%88%86%E7%B1%BB/%E6%90%AD%E5%BB%BAHexo%E6%95%99%E7%A8%8B/"
-                        >搭建Hexo教程</a>
-                    </li>
+                    <div class="post-title">
+                        容器之间的通信
+                    </div>
                 
-                    <li class="post-item border-box">
-                        <span class="starting-point border-box flex-center"></span>
-                        <span class="post-date border-box">04-19</span>
-                        <a class="post-title border-box text-ellipsis"
-                           href="/2016/04/19/python/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E4%B9%8Bpipenv/"
-                        >python虚拟环境之pipenv</a>
-                    </li>
+
                 
-            </ul>
-        </section>
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/tx.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Whisper</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2022-12-21 09:11:20</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Fri Jan 30 2026 22:47:20 GMT+0800">2026-01-30 22:47:20</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/docker/">docker</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
     
 </div>
 
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="1-通过宿主机网络通信"><a href="#1-通过宿主机网络通信" class="headerlink" title="1. 通过宿主机网络通信"></a>1. 通过宿主机网络通信</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 容器共享宿主机网络命名空间</span><br><span class="line">docker run --network=host nginx</span><br></pre></td></tr></table></figure>
+
+<p><strong>原理</strong>：容器直接使用宿主机的IP和端口，没有网络隔离。<br><strong>使用场景</strong>：</p>
+<ul>
+<li>性能要求极高的场景（无NAT转换）</li>
+<li>需要直接绑定主机端口的应用</li>
+<li><strong>注意</strong>：存在端口冲突风险</li>
+</ul>
+<h1 id="2-默认桥接网络"><a href="#2-默认桥接网络" class="headerlink" title="2. 默认桥接网络"></a>2. 默认桥接网络</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Docker自动创建docker0网桥</span><br><span class="line">docker run -d --name web nginx</span><br><span class="line">docker run -it --name client alpine ping web</span><br></pre></td></tr></table></figure>
+
+<p><strong>问题</strong>：默认桥接网络下，容器只能通过IP访问，不能通过容器名访问（需要使用–link）</p>
+<h1 id="3-用户自定义桥接网络"><a href="#3-用户自定义桥接网络" class="headerlink" title="3. 用户自定义桥接网络"></a>3. 用户自定义桥接网络</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 创建自定义网络</span><br><span class="line">docker network create my-network</span><br><span class="line"></span><br><span class="line"># 将容器连接到网络</span><br><span class="line">docker run -d --name web --network my-network nginx</span><br><span class="line">docker run -d --name db --network my-network redis</span><br><span class="line"></span><br><span class="line"># 容器间可以通过容器名直接通信</span><br><span class="line">docker exec web ping db  # 可以解析db为IP</span><br></pre></td></tr></table></figure>
+
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2022/08/16/%E7%BB%BC%E5%90%88%E6%8A%80%E6%9C%AF/%E5%B8%B8%E7%94%A8shell%E8%84%9A%E6%9C%AC/"
+                                   title="常用shell脚本"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">常用shell脚本</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
         </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E9%80%9A%E8%BF%87%E5%AE%BF%E4%B8%BB%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1"><span class="nav-text">1. 通过宿主机网络通信</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E9%BB%98%E8%AE%A4%E6%A1%A5%E6%8E%A5%E7%BD%91%E7%BB%9C"><span class="nav-text">2. 默认桥接网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A1%A5%E6%8E%A5%E7%BD%91%E7%BB%9C"><span class="nav-text">3. 用户自定义桥接网络</span></a></li></ol>
     </div>
-    
-    <div class="paginator border-box flex-center">
-        <div class="border-box first-page paginator-btn allowed">
-            <a class="border-box"><i class="fa-solid fa-angle-double-left"></i></a>
-        </div>
+</div>
 
-        <div class="border-box paginator-btn allowed">
-            <a class="border-box"
-               href="/archives/page/6/"
-            ><i class="fa-solid fa-chevron-left"></i></a>
-        </div>
-
-
-        <div class="page-number-box border-box flex-center">
-            <input class="page-number-input border-box base-style"
-                   type="number"
-                   value="7"
-                   min="1"
-                   max="7"
-            /><span class="delimiter base-style">/</span><span class="base-style">7</span>
-        </div>
-
-
-        <div class="border-box paginator-btn">
-            <a class="border-box"
-               href="/"
-            ><i class="fa-solid fa-chevron-right"></i></a>
-        </div>
-
-        <div class="border-box last-page paginator-btn not-allow">
-            <a class="border-box"><i class="fa-solid fa-angle-double-right"></i></a>
-        </div>
+            </div>
+        
     </div>
-
-
-
-
 </div>
 
 
@@ -333,6 +416,31 @@
 
     <!-- post tools -->
     
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
 
     <!-- side tools -->
     <div class="side-tools">
@@ -364,6 +472,10 @@
 
     <ul class="exposed-tools-list border-box">
         
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
 
         
 
@@ -391,8 +503,18 @@
 
     <!-- tablet toc -->
     
-</main>
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E9%80%9A%E8%BF%87%E5%AE%BF%E4%B8%BB%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1"><span class="nav-text">1. 通过宿主机网络通信</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E9%BB%98%E8%AE%A4%E6%A1%A5%E6%8E%A5%E7%BD%91%E7%BB%9C"><span class="nav-text">2. 默认桥接网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A1%A5%E6%8E%A5%E7%BD%91%E7%BB%9C"><span class="nav-text">3. 用户自定义桥接网络</span></a></li></ol>
+    </div>
+</div>
 
+            </div>
+        </div>
+    
+</main>
 
 
 
@@ -426,6 +548,24 @@
     
 
     <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
     
 
     <!-- categories page -->
