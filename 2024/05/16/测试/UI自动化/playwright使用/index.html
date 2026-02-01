@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="山中何事？松花酿酒，春水煎茶。">
+    <meta name="author" content="Whisper">
+    
+    <title>
+        
+            playwright使用 |
+        
+        但知行好事，莫要问前程
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/tx.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+        
+            
+        
+            
+                
+<link rel="stylesheet" href="/css/keep-theme-custom.css">
+
+            
+        
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"lucia.xicp.cn","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#10ac84","title":"但知行好事，莫要问前程","author":"Whisper","avatar":"/images/tx.jpg","logo":"/images/tx.jpg","favicon":"/images/tx.jpg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg5.jpg","background_img_dark":"/images/bg5.jpg","description":"自动化测试、性能、前后端、测试平台、安全、爬虫等","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":false},"home":{"announcement":null,"category":false,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2016,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":[null,"/css/keep-theme-custom.css"],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/tx.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               但知行好事，莫要问前程
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        playwright使用
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/tx.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Whisper</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-05-16 12:21:26</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Sun Feb 01 2026 19:37:38 GMT+0800">2026-02-01 19:37:38</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/UI%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">UI自动化测试</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install playwright</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="安装浏览器驱动"><a href="#安装浏览器驱动" class="headerlink" title="安装浏览器驱动"></a>安装浏览器驱动</h1><p>输入命令后，playwright会自动下载浏览器驱动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">playwright install</span><br></pre></td></tr></table></figure>
+
+<h1 id="第一个代码文件"><a href="#第一个代码文件" class="headerlink" title="第一个代码文件"></a>第一个代码文件</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> playwright.sync_api <span class="keyword">import</span> sync_playwright</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上下文管理器,自动启动/关闭浏览器</span></span><br><span class="line"><span class="keyword">with</span> sync_playwright() <span class="keyword">as</span> p:</span><br><span class="line">    browser = p.chromium.launch(headless=<span class="literal">False</span>, slow_mo=<span class="number">500</span>)  <span class="comment"># 操作延迟500ms</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 创建一个新的标签页</span></span><br><span class="line">    page = browser.new_page()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 访问百度</span></span><br><span class="line">    page.goto(<span class="string">&quot;https://www.baidu.com&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 截图</span></span><br><span class="line">    page.screenshot(path=<span class="string">&quot;baidu_home.png&quot;</span>)</span><br><span class="line">    <span class="comment"># 上下文管理器会自动关闭浏览器，当然也可以手动调用 browser.close()</span></span><br><span class="line">    browser.close()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;操作完成&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="常用元素定位"><a href="#常用元素定位" class="headerlink" title="常用元素定位"></a>常用元素定位</h1><h2 id="ID"><a href="#ID" class="headerlink" title="ID"></a>ID</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`page.locator(&quot;#kw&quot;)`</span><br></pre></td></tr></table></figure>
+
+<h2 id="Name属性"><a href="#Name属性" class="headerlink" title="Name属性"></a>Name属性</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">page.locator(&quot;[name=wd]&quot;)</span><br></pre></td></tr></table></figure>
+<h2 id="CSS-选择器"><a href="#CSS-选择器" class="headerlink" title="CSS 选择器"></a>CSS 选择器</h2><p>id：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">page.locator(&quot;#kw&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>class:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">page.locator(&quot;.s_ipt&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="XPath-选择器"><a href="#XPath-选择器" class="headerlink" title="XPath 选择器"></a>XPath 选择器</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">page.locator(<span class="string">&quot;//*[@id=&#x27;kw&#x27;]&quot;</span>) <span class="comment"># id定位</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="元素交互"><a href="#元素交互" class="headerlink" title="元素交互"></a>元素交互</h1><h2 id="按键操作"><a href="#按键操作" class="headerlink" title="按键操作"></a>按键操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 搜索框输入后，按回车键提交（替换点击按钮）</span></span><br><span class="line">search_input.press(<span class="string">&quot;Enter&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="勾选复选框-单选框"><a href="#勾选复选框-单选框" class="headerlink" title="勾选复选框&#x2F;单选框"></a>勾选复选框&#x2F;单选框</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">page.locator(<span class="string">&quot;#agree&quot;</span>).check()  <span class="comment"># 勾选「同意协议」复选框</span></span><br><span class="line">page.locator(<span class="string">&quot;#agree&quot;</span>).uncheck()  <span class="comment"># 取消勾选「同意协议」复选框</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="下拉框选择"><a href="#下拉框选择" class="headerlink" title="下拉框选择"></a>下拉框选择</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下拉框选择</span></span><br><span class="line">page.locator(<span class="string">&quot;#city&quot;</span>).select_option(label=<span class="string">&quot;北京&quot;</span>) <span class="comment"># 文本选择「北京」</span></span><br><span class="line">page.locator(<span class="string">&quot;#city&quot;</span>).select_option(value=<span class="string">&quot;bj&quot;</span>) <span class="comment"># 按值选择「bj」</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="获取元素文本-属性"><a href="#获取元素文本-属性" class="headerlink" title="获取元素文本&#x2F;属性"></a>获取元素文本&#x2F;属性</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kw = page.locator(<span class="string">&quot;#kw&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;获取文本：&quot;</span>, kw.inner_text())</span><br><span class="line"></span><br><span class="line">href = kw.get_attribute(<span class="string">&quot;href&quot;</span>) <span class="comment"># 获取属性用get_attribute</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="悬浮操作"><a href="#悬浮操作" class="headerlink" title="悬浮操作"></a>悬浮操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">page.locator(<span class="string">&quot;#nav-setting&quot;</span>).hover()  <span class="comment"># 悬浮到设置按钮</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="等待"><a href="#等待" class="headerlink" title="等待"></a>等待</h1><p>Playwright 内置<strong>自动等待机制</strong>，会在操作元素前，自动等待元素「可交互」（默认超时 30 秒），无需手动加等待。</p>
+<ul>
+<li>操作元素（<code>click()</code>&#x2F;<code>fill()</code> 等）时，自动等待元素出现、可交互。</li>
+<li>可手动设置超时时间（如 <code>page.locator(&quot;#kw&quot;).fill(&quot;内容&quot;, timeout=10000)</code>，10 秒超时）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 等待元素可见</span></span><br><span class="line">page.locator(<span class="string">&quot;#kw&quot;</span>).wait_for(state=<span class="string">&quot;visible&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 等待页面加载完成（load：DOM 加载完成，networkidle：网络空闲）</span></span><br><span class="line">page.wait_for_load_state(<span class="string">&quot;networkidle&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 等待自定义条件（如页面标题包含测试）</span></span><br><span class="line">page.wait_for_function(<span class="string">&quot;document.title.includes(&#x27;测试&#x27;)&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="iframe处理"><a href="#iframe处理" class="headerlink" title="iframe处理"></a>iframe处理</h1><p>先定位到iframe： <code>page.frame_locator()</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iframe = page.frame_locator(<span class="string">&quot;iframe[name=&#x27;rich&#x27;]&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>定位内部元素：<code>.locator()</code> 定位 iframe 内部元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p = iframe.locator(<span class="string">&quot;body &gt; p&quot;</span>)</span><br><span class="line">text = p.inner_text()</span><br><span class="line"> <span class="built_in">print</span>(<span class="string">&quot;文本：&quot;</span>, text)</span><br></pre></td></tr></table></figure>
+
+<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p><code>input[type=&quot;file&quot;]</code>: 这种直接提交file名称。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">page.locator(<span class="string">&quot;#upload-input&quot;</span>).set_input_files(<span class="string">&quot;test.jpg&quot;</span>)  <span class="comment"># 单文件</span></span><br><span class="line">page.locator(<span class="string">&quot;#upload-input&quot;</span>).set_input_files([<span class="string">&quot;test1.jpg&quot;</span>, <span class="string">&quot;test2.pdf&quot;</span>])  <span class="comment"># 多文件</span></span><br></pre></td></tr></table></figure>
+
+<p>拖拽上传：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">page.locator(<span class="string">&quot;#drop-area&quot;</span>).set_input_files(<span class="string">&quot;test.jpg&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="穿透影子DOM"><a href="#穿透影子DOM" class="headerlink" title="穿透影子DOM"></a>穿透影子DOM</h1><p>直接使用css定位</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">page.locator(<span class="string">&quot;#my-component button.primary&quot;</span>).click()</span><br></pre></td></tr></table></figure>
+
+<h1 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h1><p>安装断言库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install playwright-stubs</span><br></pre></td></tr></table></figure>
+
+
+<p>实例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> playwright.sync_api <span class="keyword">import</span> sync_playwright, expect</span><br><span class="line">......</span><br><span class="line"><span class="comment"># 断言标题</span></span><br><span class="line">expect(page).to_have_title(<span class="string">&quot;百度一下，你就知道&quot;</span>)</span><br><span class="line"><span class="comment"># 断言输入框可见、可编辑</span></span><br><span class="line">search = page.locator(<span class="string">&quot;#kw&quot;</span>)</span><br><span class="line">expect(search).to_be_visible()</span><br><span class="line">expect(search).to_be_enabled()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 断言文本存在</span></span><br><span class="line">expect(page.locator(<span class="string">&quot;text=百度一下&quot;</span>)).to_be_visible()</span><br></pre></td></tr></table></figure>
+
+<h1 id="报告"><a href="#报告" class="headerlink" title="报告"></a>报告</h1><p>安装pytest-playwright</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pytest-playwright</span><br></pre></td></tr></table></figure>
+<p>结合pytest使用。</p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/01/23/%E6%B5%8B%E8%AF%95/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/Prometheus%20+%20Grafana%20%E7%9B%91%E6%8E%A7%E5%B9%B3%E5%8F%B0/"
+                                   title="Prometheus + Grafana 监控平台"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Prometheus + Grafana 监控平台</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%B5%8F%E8%A7%88%E5%99%A8%E9%A9%B1%E5%8A%A8"><span class="nav-text">安装浏览器驱动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6"><span class="nav-text">第一个代码文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D"><span class="nav-text">常用元素定位</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ID"><span class="nav-text">ID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Name%E5%B1%9E%E6%80%A7"><span class="nav-text">Name属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">CSS 选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XPath-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">XPath 选择器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E4%BA%A4%E4%BA%92"><span class="nav-text">元素交互</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E9%94%AE%E6%93%8D%E4%BD%9C"><span class="nav-text">按键操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8B%BE%E9%80%89%E5%A4%8D%E9%80%89%E6%A1%86-%E5%8D%95%E9%80%89%E6%A1%86"><span class="nav-text">勾选复选框&#x2F;单选框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E6%8B%89%E6%A1%86%E9%80%89%E6%8B%A9"><span class="nav-text">下拉框选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E6%96%87%E6%9C%AC-%E5%B1%9E%E6%80%A7"><span class="nav-text">获取元素文本&#x2F;属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%82%AC%E6%B5%AE%E6%93%8D%E4%BD%9C"><span class="nav-text">悬浮操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AD%89%E5%BE%85"><span class="nav-text">等待</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iframe%E5%A4%84%E7%90%86"><span class="nav-text">iframe处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-text">文件上传</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A9%BF%E9%80%8F%E5%BD%B1%E5%AD%90DOM"><span class="nav-text">穿透影子DOM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%AD%E8%A8%80"><span class="nav-text">断言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%A5%E5%91%8A"><span class="nav-text">报告</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2016</span>&nbsp;-&nbsp;2026
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Whisper</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%B5%8F%E8%A7%88%E5%99%A8%E9%A9%B1%E5%8A%A8"><span class="nav-text">安装浏览器驱动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%A0%81%E6%96%87%E4%BB%B6"><span class="nav-text">第一个代码文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D"><span class="nav-text">常用元素定位</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ID"><span class="nav-text">ID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Name%E5%B1%9E%E6%80%A7"><span class="nav-text">Name属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">CSS 选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XPath-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">XPath 选择器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E4%BA%A4%E4%BA%92"><span class="nav-text">元素交互</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E9%94%AE%E6%93%8D%E4%BD%9C"><span class="nav-text">按键操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8B%BE%E9%80%89%E5%A4%8D%E9%80%89%E6%A1%86-%E5%8D%95%E9%80%89%E6%A1%86"><span class="nav-text">勾选复选框&#x2F;单选框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E6%8B%89%E6%A1%86%E9%80%89%E6%8B%A9"><span class="nav-text">下拉框选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E6%96%87%E6%9C%AC-%E5%B1%9E%E6%80%A7"><span class="nav-text">获取元素文本&#x2F;属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%82%AC%E6%B5%AE%E6%93%8D%E4%BD%9C"><span class="nav-text">悬浮操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AD%89%E5%BE%85"><span class="nav-text">等待</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iframe%E5%A4%84%E7%90%86"><span class="nav-text">iframe处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-text">文件上传</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A9%BF%E9%80%8F%E5%BD%B1%E5%AD%90DOM"><span class="nav-text">穿透影子DOM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%AD%E8%A8%80"><span class="nav-text">断言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%A5%E5%91%8A"><span class="nav-text">报告</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+    
+        
+    
+
+</body>
+</html>
