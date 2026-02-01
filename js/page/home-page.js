@@ -2,6 +2,7 @@
 
 function homePageHandler() {
   const { post_datetime, post_datetime_format, announcement } = KEEP.theme_config?.home || {}
+  console.log(KEEP.theme_config)
   const fsc = KEEP.theme_config?.first_screen || {}
 
   // reset home post update datetime
@@ -25,9 +26,15 @@ function homePageHandler() {
     const datetimeDoms = document.querySelectorAll('.post-meta-info .home-post-history')
     datetimeDoms.forEach((v) => {
       const nowTimestamp = Date.now()
-      const updatedTimestamp = new Date(v.dataset.updated).getTime()
+      const updatedTimestamp = new Date(v.dataset.updated).getTime() //这个更新时间就是发布时间
       // v.innerHTML = KEEP.utils.getHowLongAgo(Math.floor((nowTimestamp - updatedTimestamp) / 1000))
-      v.innerHTML = ""
+
+      //格式化：年 月 日
+      const date = new Date(updatedTimestamp); // 解析毫秒时间戳
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1; // 月份从0开始，需+1
+      const day = date.getDate();
+      v.innerHTML = `${year}年${month}月${day}日`
     })
   }
 
