@@ -9,7 +9,7 @@
     
     <title>
         
-            分布式压测 |
+            jsonpath语法 |
         
         但知行好事，莫要问前程
     </title>
@@ -237,7 +237,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        分布式压测
+                        jsonpath语法
                     </div>
                 
 
@@ -265,13 +265,13 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2023-04-10 19:21:05</span>
+                <span class="datetime">2023-07-25 10:02:20</span>
             </span>
 
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Sat Jan 31 2026 22:36:35 GMT+0800">2026-01-31 22:36:35</span>
+                    <span class="datetime" data-updated="Sun Feb 01 2026 17:58:59 GMT+0800">2026-02-01 17:58:59</span>
                 </span>
             
         
@@ -307,26 +307,104 @@
                     
 
                     
-                         <p>JMeter分布式采用<strong>C&#x2F;S架构</strong>，一台Master控制多台Slave，Master将压测脚本分发给所有Slave，Slave同时向被测服务发起请求，最后把结果回传给Master，Master汇总生成最终报告。</p>
-<h1 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h1><ul>
-<li>单机压测时，压测机CPU&#x2F;网络已打满，被测服务器资源还很空闲</li>
-<li>模拟跨地域、多节点的真实用户</li>
+                         <p>介绍：JSONPath 专门用于从 JSON 数据中提取指定内容，类比 XML 中的 XPath。</p>
+<hr>
+<h1 id="一、示例数据"><a href="#一、示例数据" class="headerlink" title="一、示例数据"></a>一、示例数据</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;code&quot;: 200,</span><br><span class="line">  &quot;msg&quot;: &quot;请求成功&quot;,</span><br><span class="line">  &quot;data&quot;: &#123;</span><br><span class="line">    &quot;total&quot;: 2,</span><br><span class="line">    &quot;users&quot;: [</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;id&quot;: 1001,</span><br><span class="line">        &quot;name&quot;: &quot;张三&quot;,</span><br><span class="line">        &quot;age&quot;: 28,</span><br><span class="line">        &quot;gender&quot;: &quot;男&quot;,</span><br><span class="line">        &quot;address&quot;: &#123;</span><br><span class="line">          &quot;province&quot;: &quot;北京&quot;,</span><br><span class="line">          &quot;city&quot;: &quot;北京市&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;id&quot;: 1002,</span><br><span class="line">        &quot;name&quot;: &quot;李四&quot;,</span><br><span class="line">        &quot;age&quot;: 25,</span><br><span class="line">        &quot;gender&quot;: &quot;女&quot;,</span><br><span class="line">        &quot;address&quot;: &#123;</span><br><span class="line">          &quot;province&quot;: &quot;上海&quot;,</span><br><span class="line">          &quot;city&quot;: &quot;上海市&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="二、JSONPath-核心语法详解"><a href="#二、JSONPath-核心语法详解" class="headerlink" title="二、JSONPath 核心语法详解"></a>二、JSONPath 核心语法详解</h1><h1 id="1-基础选择器"><a href="#1-基础选择器" class="headerlink" title="1. 基础选择器"></a>1. 基础选择器</h1><table>
+<thead>
+<tr>
+<th>JSONPath 语法</th>
+<th>说明</th>
+<th>示例</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>$</code></td>
+<td>根节点（JSON 数据的最顶层，所有路径都从 <code>$</code> 开始）</td>
+<td><code>$</code></td>
+<td>整个 JSON 数据</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>访问子节点（直接子级，层级之间用 <code>.</code> 分隔）</td>
+<td><code>$.code</code></td>
+<td>200</td>
+</tr>
+<tr>
+<td><code>..</code></td>
+<td>递归下降（访问所有层级的匹配节点，层级深度不限）</td>
+<td><code>$..name</code></td>
+<td>[“张三”, “李四”]</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>访问数组元素（数组索引、筛选条件都放在 <code>[]</code> 中）</td>
+<td><code>$.data.users[0]</code></td>
+<td>id&#x3D;1001的完整对象</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>通配符（匹配所有同级节点，可用于对象、数组）</td>
+<td><code>$.data.users[*].age</code></td>
+<td>[28, 25]</td>
+</tr>
+<tr>
+<td><code>@</code></td>
+<td>筛选条件中引用当前节点（仅在 <code>[]</code> 内的过滤表达式中使用）</td>
+<td><code>$.data.users[?(@.age&gt;26)]</code></td>
+<td>年龄大于26的用户（仅张三对象）</td>
+</tr>
+</tbody></table>
+<h2 id="2-数组操作"><a href="#2-数组操作" class="headerlink" title="2. 数组操作"></a>2. 数组操作</h2><p>JSON 数组是接口返回的常见格式，重点掌握以下操作：</p>
+<h3 id="（1）按索引取值"><a href="#（1）按索引取值" class="headerlink" title="（1）按索引取值"></a>（1）按索引取值</h3><ul>
+<li>数组索引从 <code>0</code> 开始</li>
+<li>支持负数索引（<code>-1</code> 表示最后一个元素，<code>-2</code> 表示倒数第二个，以此类推）<br>  示例：</li>
 </ul>
-<h1 id="Linux-安装JMeter-Slave"><a href="#Linux-安装JMeter-Slave" class="headerlink" title="Linux 安装JMeter - Slave"></a>Linux 安装JMeter - Slave</h1><p>注意： <strong>Master和所有Slave的JMeter版本、JDK版本必须完全一致</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local</span><br><span class="line"># 下载JMeter</span><br><span class="line">wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.6.3.zip</span><br><span class="line"># 安装unzip</span><br><span class="line">yum install -y unzip</span><br><span class="line"># 解压</span><br><span class="line">unzip apache-jmeter-5.6.3.zip</span><br><span class="line"># 重命名</span><br><span class="line">mv apache-jmeter-5.6.3 jmeter</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$.data.users[1]  // 取第二个用户（李四）</span><br><span class="line">$.data.users[-1] // 取最后一个用户（李四）</span><br><span class="line">$.data.users[0].name // 取第一个用户的姓名（张三）</span><br></pre></td></tr></table></figure>
 
-<h1 id="配置JMeter环境变量"><a href="#配置JMeter环境变量" class="headerlink" title="配置JMeter环境变量"></a>配置JMeter环境变量</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 编辑环境变量配置</span><br><span class="line">vim /etc/profile</span><br><span class="line"># 在文件末尾添加-使用vim添加</span><br><span class="line">export JMETER_HOME=/usr/local/jmeter</span><br><span class="line">export PATH=$PATH:$JMETER_HOME/bin</span><br><span class="line"># 刷新配置</span><br><span class="line">source /etc/profile</span><br><span class="line"># 验证</span><br><span class="line">jmeter -v</span><br></pre></td></tr></table></figure>
+<h3 id="（2）数组切片"><a href="#（2）数组切片" class="headerlink" title="（2）数组切片"></a>（2）数组切片</h3><p>语法：<code>[start:end:step]</code>（<code>end</code> 对应的元素不包含）<br>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$.data.users[0:1]  // 取索引 0 到 1（不包含1），即第一个用户</span><br><span class="line">$.data.users[0:2]  // 取索引 0 到 2（不包含2），即所有两个用户</span><br><span class="line">$.data.users[::1]  // 步长为 1，取所有用户（等同于 [*]）</span><br></pre></td></tr></table></figure>
 
-<h1 id="配置Master"><a href="#配置Master" class="headerlink" title="配置Master"></a>配置Master</h1><p>修改JMeter配置文件，添加所有Slave的IP。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">remote_hosts=SlaveIP:1099，SlaveIP2:1099，SlaveIP3:1099.....</span><br><span class="line"></span><br><span class="line"># 关闭SSL</span><br><span class="line">server.rmi.ssl.disable=true</span><br></pre></td></tr></table></figure>
-<p>重启JMeter。</p>
-<h1 id="配置Slave"><a href="#配置Slave" class="headerlink" title="配置Slave"></a>配置Slave</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">server.rmi.ssl.disable=true</span><br><span class="line">server.rmi.localhost=xx.xx.xx.xx</span><br></pre></td></tr></table></figure>
+<h3 id="（3）条件过滤（按属性值筛选数组元素）"><a href="#（3）条件过滤（按属性值筛选数组元素）" class="headerlink" title="（3）条件过滤（按属性值筛选数组元素）"></a>（3）条件过滤（按属性值筛选数组元素）</h3><p>语法：<code>[?(@.属性名 操作符 数值/字符串)]</code><br>支持的操作符：</p>
+<ul>
+<li>比较操作符：<code>==</code>、<code>!=</code>、<code>&gt;</code>、<code>&lt;</code>、<code>&gt;=</code>、<code>&lt;=</code></li>
+<li>逻辑操作符（多条件）：<code>&amp;&amp;</code>（且）、<code>||</code>（或）</li>
+<li>存在性判断：<code>@.属性名</code>（判断当前节点是否包含该属性）</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 1. 筛选年龄大于26的用户</span><br><span class="line">$.data.users[?(@.age&gt;26)]</span><br><span class="line">// 2. 筛选性别为&quot;女&quot;且id=1002的用户</span><br><span class="line">$.data.users[?(@.gender==&quot;女&quot; &amp;&amp; @.id==1002)]</span><br><span class="line">// 3. 筛选包含&quot;address&quot;属性的用户（这里两个用户都包含，返回全部）</span><br><span class="line">$.data.users[?(@.address)]</span><br></pre></td></tr></table></figure>
 
-<h1 id="开放的端口"><a href="#开放的端口" class="headerlink" title="开放的端口"></a>开放的端口</h1><p>1099, 4000-6000, 被测系统端口。</p>
-<h1 id="启动slave的jmeter服务"><a href="#启动slave的jmeter服务" class="headerlink" title="启动slave的jmeter服务"></a>启动slave的jmeter服务</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ./jmeter-server &gt; /usr/local/jmeter/bin/jmeter-server.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+<h2 id="3-其他常用"><a href="#3-其他常用" class="headerlink" title="3. 其他常用"></a>3. 其他常用</h2><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>语法</td>
+<td>说明</td>
+<td>示例</td>
+<td>结果</td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td>表达式分组（优先级控制，多条件时常用）</td>
+<td>&#96;$..users[?((@.age&gt;25)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>[&#39;属性名&#39;]</code></td>
+<td>替代 <code>.</code> 访问子节点（适合属性名包含特殊字符，如空格、横杠）</td>
+<td><code>$[&#39;data&#39;][&#39;users&#39;][0][&#39;name&#39;]</code></td>
+<td>张三（和 <code>$.data.users[0].name</code> 效果一致）</td>
+</tr>
+</tbody></table>
 
-<h1 id="Master连接Slave"><a href="#Master连接Slave" class="headerlink" title="Master连接Slave"></a>Master连接Slave</h1><p><code>运行</code> → <code>远程启动</code>，配置的Linux Slave IP.</p>
-<h1 id="执行分布式压测"><a href="#执行分布式压测" class="headerlink" title="执行分布式压测"></a>执行分布式压测</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jmeter -n -t D:\JMeter\script\xxx.jmx </span><br><span class="line">-R xx.xx.xx.xx </span><br><span class="line">-l D:\JMeter\result\dist_result.jtl </span><br><span class="line">-e -o D:\JMeter\report\dist_report</span><br></pre></td></tr></table></figure>
                     
                 </div>
 
@@ -346,31 +424,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2023/07/25/%E6%B5%8B%E8%AF%95/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/jsonpath%E8%AF%AD%E6%B3%95/"
-                                   title="jsonpath语法"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">jsonpath语法</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2023/03/12/%E6%B5%8B%E8%AF%95/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/Glances%E7%9B%91%E6%8E%A7/"
-                                   title="Glances监控"
+                                   href="/2023/04/10/%E6%B5%8B%E8%AF%95/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/%E5%88%86%E5%B8%83%E5%BC%8F%E5%8E%8B%E6%B5%8B/"
+                                   title="分布式压测"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Glances监控</span>
+                                        <span class="post-nav-title-item text-ellipsis">分布式压测</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -398,7 +460,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF"><span class="nav-text">场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-%E5%AE%89%E8%A3%85JMeter-Slave"><span class="nav-text">Linux 安装JMeter - Slave</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEJMeter%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-text">配置JMeter环境变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEMaster"><span class="nav-text">配置Master</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AESlave"><span class="nav-text">配置Slave</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E6%94%BE%E7%9A%84%E7%AB%AF%E5%8F%A3"><span class="nav-text">开放的端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8slave%E7%9A%84jmeter%E6%9C%8D%E5%8A%A1"><span class="nav-text">启动slave的jmeter服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Master%E8%BF%9E%E6%8E%A5Slave"><span class="nav-text">Master连接Slave</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E5%88%86%E5%B8%83%E5%BC%8F%E5%8E%8B%E6%B5%8B"><span class="nav-text">执行分布式压测</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%A4%BA%E4%BE%8B%E6%95%B0%E6%8D%AE"><span class="nav-text">一、示例数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81JSONPath-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3"><span class="nav-text">二、JSONPath 核心语法详解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%9F%BA%E7%A1%80%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">1. 基础选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C"><span class="nav-text">2. 数组操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E6%8C%89%E7%B4%A2%E5%BC%95%E5%8F%96%E5%80%BC"><span class="nav-text">（1）按索引取值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E6%95%B0%E7%BB%84%E5%88%87%E7%89%87"><span class="nav-text">（2）数组切片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E6%9D%A1%E4%BB%B6%E8%BF%87%E6%BB%A4%EF%BC%88%E6%8C%89%E5%B1%9E%E6%80%A7%E5%80%BC%E7%AD%9B%E9%80%89%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%EF%BC%89"><span class="nav-text">（3）条件过滤（按属性值筛选数组元素）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8"><span class="nav-text">3. 其他常用</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -529,7 +591,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF"><span class="nav-text">场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-%E5%AE%89%E8%A3%85JMeter-Slave"><span class="nav-text">Linux 安装JMeter - Slave</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEJMeter%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-text">配置JMeter环境变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEMaster"><span class="nav-text">配置Master</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AESlave"><span class="nav-text">配置Slave</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E6%94%BE%E7%9A%84%E7%AB%AF%E5%8F%A3"><span class="nav-text">开放的端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8slave%E7%9A%84jmeter%E6%9C%8D%E5%8A%A1"><span class="nav-text">启动slave的jmeter服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Master%E8%BF%9E%E6%8E%A5Slave"><span class="nav-text">Master连接Slave</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E5%88%86%E5%B8%83%E5%BC%8F%E5%8E%8B%E6%B5%8B"><span class="nav-text">执行分布式压测</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%A4%BA%E4%BE%8B%E6%95%B0%E6%8D%AE"><span class="nav-text">一、示例数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81JSONPath-%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3"><span class="nav-text">二、JSONPath 核心语法详解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%9F%BA%E7%A1%80%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-text">1. 基础选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C"><span class="nav-text">2. 数组操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E6%8C%89%E7%B4%A2%E5%BC%95%E5%8F%96%E5%80%BC"><span class="nav-text">（1）按索引取值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E6%95%B0%E7%BB%84%E5%88%87%E7%89%87"><span class="nav-text">（2）数组切片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E6%9D%A1%E4%BB%B6%E8%BF%87%E6%BB%A4%EF%BC%88%E6%8C%89%E5%B1%9E%E6%80%A7%E5%80%BC%E7%AD%9B%E9%80%89%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%EF%BC%89"><span class="nav-text">（3）条件过滤（按属性值筛选数组元素）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8"><span class="nav-text">3. 其他常用</span></a></li></ol></li></ol>
     </div>
 </div>
 
