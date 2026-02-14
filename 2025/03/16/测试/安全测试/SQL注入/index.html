@@ -271,7 +271,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Sat Feb 14 2026 22:18:57 GMT+0800">2026-02-14 22:18:57</span>
+                    <span class="datetime" data-updated="Sat Feb 14 2026 22:23:07 GMT+0800">2026-02-14 22:23:07</span>
                 </span>
             
         
@@ -320,7 +320,7 @@
 <h1 id="Docker搭建DVWA"><a href="#Docker搭建DVWA" class="headerlink" title="Docker搭建DVWA"></a>Docker搭建DVWA</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d -p 80:80 vulnerables/web-dvwa</span><br></pre></td></tr></table></figure>
 
 <p>默认账号 admin​，密码 password.</p>
-<p>登录后点左侧DVWA Security,把安全级别改成Low然后点Submit<br>![[d8f90ba2a41db17829e9bb0fdcad4d3e_MD5.jpg]]</p>
+<p>登录后点左侧DVWA Security,把安全级别改成Low然后点Submit<br><img   src="/images/security/d8f90ba2a41db17829e9bb0fdcad4d3e_MD5.jpg" ></p>
 <p>点击菜单SQL Injection</p>
 <h1 id="安装sqlmap"><a href="#安装sqlmap" class="headerlink" title="安装sqlmap"></a>安装sqlmap</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo docker exec -it 容器ID /bin/bash</span><br><span class="line">apt update &amp;&amp; apt install -y git python3 python3-pip</span><br><span class="line">git clone https://github.com/sqlmapproject/sqlmap.git /usr/local/sqlmap</span><br><span class="line">ln -s /usr/local/sqlmap/sqlmap.py /usr/bin/sqlmap</span><br><span class="line">chmod +x /usr/local/sqlmap/sqlmap.py</span><br></pre></td></tr></table></figure>
 
